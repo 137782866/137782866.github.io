@@ -247,7 +247,7 @@
 <p>在数据传输时经常遇到一类情况：使用全ASCII英文字母没问题，但是涉及中文就会乱码，或者网络传输的字符并不完全时可打印的字符，如二进制文件、图片等。Base64就是为了解决此问题，它是基于64个可打印的字符来表示二进制的数据的一种方法。</p>
 <p>电子邮件刚问世时，只能传输英文，但后来随着用户增加，中文、日文等文字也有需求，但这些字符并不能被服务器或网关有效处理，这时候Base64就登场了。之后，Base在URL、Cookie、网页传输小二进制文件也由广泛使用。</p>
 <h2 id="Base64-编码原理"><a href="#Base64-编码原理" class="headerlink" title="Base64 编码原理"></a>Base64 编码原理</h2><p>Base64的原理比较简单，Base64算法中通常都会定义一个类似这样的数组：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, ... <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, ... <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, ... <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;/&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, ... &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, ... &#39;0&#39;, &#39;1&#39;, ... &#39;+&#39;, &#39;&#x2F;&#39;]</span><br></pre></td></tr></table></figure>
 
 <p>Base64的字符索引表如下：</p>
 <p><img src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E7%AE%97%E6%B3%95/Base64%E5%AD%97%E7%AC%A6%E7%B4%A2%E5%BC%95%E8%A1%A8.png" alt="Base64字符索引表"></p>
@@ -313,6 +313,26 @@
             </div>
         
 
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/03/23/Shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Shell基础教程</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
         
 
         
