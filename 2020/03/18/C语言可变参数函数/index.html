@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="凡是过往，皆为序章">
+    <meta name="author" content="crazyang">
+    
+    <title>
+        
+            C语言可变参数函数 |
+        
+        crazyang
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"凡是过往，皆为序章。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="crazyang's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                crazyang
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">C语言可变参数函数</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">crazyang</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-18 21:55:14
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>参考链接：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/clover-toeic/p/3736748.html" >https://www.cnblogs.com/clover-toeic/p/3736748.html<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/longintchar/article/details/85490103" >https://blog.csdn.net/longintchar/article/details/85490103<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="可变参数函数概念"><a href="#可变参数函数概念" class="headerlink" title="可变参数函数概念"></a>可变参数函数概念</h2><p>C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">printf</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* format, ...)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到可变参数除了有一个 format 固定外，其他参数的个数和类型就是可变的，用三个点 <code>...</code> 作为参数占位符，代表可变参数。固定参数和可选参数共同构成可变参数函数的参数列表。</p>
+<p>任何一个可变参数的函数都可以分为两部分：固定参数和可选参数。至少要有一个固定参数，其声明与普通函数参数声明相同。可选参数由于数目不定（0个或以上），声明时用 <code>...</code> 表示。固定参数和可选参数共同构成可变参数函数的参数列表。</p>
+<p>由于参数数目不定，使用可变参数函数通常能缩短编码，灵活性和易用性较高。上面的 printf 函数除了format 固定外，其他参数都可以变化。实际调用可以是如下方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, i); </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, s); </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;number is %d, string is:%s&quot;</span>, i, s);</span><br></pre></td></tr></table></figure>
+
+<h2 id="可变参数函数原理"><a href="#可变参数函数原理" class="headerlink" title="可变参数函数原理"></a>可变参数函数原理</h2><p>C 语言中，使用 va_list 系列变长宏实现可变参数函数，va 开头代表 variable-argument (可变参数)。典型的用法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以固定参数的地址为起点依次确定各变参的内存起始地址</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">VaArgFunc</span><span class="params">(<span class="keyword">int</span> dwArgCnt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义va_list类型的指针pArgs，用于存储参数地址</span></span><br><span class="line">    va_list pArgs;</span><br><span class="line">    <span class="comment">//该宏返回变参列表中的当前变参值并使pArgs指向列表中的下个变参。</span></span><br><span class="line">    <span class="comment">//该宏第二个参数是要返回的当前变参类型</span></span><br><span class="line">    va_start(pArgs, dwArgCnt);</span><br><span class="line">    <span class="comment">//若函数有多个可变参数，则依次调用va_arg宏获取各个变参</span></span><br><span class="line">    <span class="keyword">int</span> dwVal = va_arg(pArgs, <span class="keyword">int</span>);</span><br><span class="line">    <span class="comment">//将指针pArgs置为无效，结束变参的获取</span></span><br><span class="line">    va_end(pArgs);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Linux 在 varargs.h 头文件中定义变长宏，变参宏的定义和实现因操作系统、硬件平台及编译器而异(但原理相似)。</p>
+<p>X86 平台的 VC6.0 编译器中，stdarg.h头文件内变参宏定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> * va_list;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把 n 圆整到 sizeof(int) 的倍数，</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _INTSIZEOF(n)    ( (sizeof(n)+sizeof(int)-1) &amp; ~(sizeof(int)-1) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化 ap 指针，使其指向第一个可变参数。v 是变参列表的前一个参数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> va_start(ap,v)    ( ap = (va_list)&amp;v + _INTSIZEOF(v) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 该宏返回当前变参值,并使 ap 指向列表中的下个变参</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> va_arg(ap, type)    ( *(type *)((ap += _INTSIZEOF(type)) - _INTSIZEOF(type)) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// /将指针 ap 置为无效，结束变参的获取</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> va_end(ap)    ( ap = (va_list)0 )</span></span><br></pre></td></tr></table></figure>
+
+<p><font color='red'> <strong>_INTSIZEOF(n)</strong> </font><br>_INTSIZEOF 宏考虑到某些系统需要内存地址对齐。从宏名看应按照 sizeof(int) 即栈粒度对齐，参数在内存中的地址均为 sizeof(int) = 4 的倍数。</p>
+<p>例如，若 1≤sizeof(n)≤4，则 _INTSIZEOF(n)＝4；若 5≤sizeof(n)≤8，则_INTSIZEOF(n)=8。</p>
+<p><font color='red'><strong>va_start(ap, v)</strong></font><br>va_start 宏首先根据 (va_list)&amp;v 得到参数 v 在栈中的内存地址，加上 _INTSIZEOF(v) 即 v 所占内存大小后，使 ap 指向 v 的下一个参数。在使用的时候，一般用这个宏初始化 ap 指针，v 是变参列表的前一个参数，即最后一个固定参数，初始化的结果是 ap 指向第一个变参。</p>
+<p><font color='red'><strong>va_arg(ap, type)</strong></font><br>这个宏取得 type 类型的可变参数值。首先 ap += _INTSIZEOF(type)，即 ap 跳过当前可变参数而指向下个变参的地址；然后 ap -  _INTSIZEOF(type) 得到当前变参的内存地址，类型转换后解引用，最后返回当前变参值。</p>
+<p><font color='red'><strong>va_end(ap)</strong></font><br>va_end 宏使 ap 不再指向有效的内存地址。该宏的某些实现定义为 ((void*)0)，编译时不会为其产生代码，调用与否并无区别。但某些实现中 va_end 宏用于在函数返回前完成一些必要的清理工作：如 va_start 宏可能以某种方式修改栈，导致返回操作无法完成，va_end 宏可将有关修改复原；又如 va_start 宏可能为参数列表动态分配内存以便于遍历，va_end 宏可释放此内存。因此，从使用 va_start 宏的函数中退出之前，必须调用一次 va_end 宏。</p>
+<p><strong>如下图理解可变宏函数：</strong></p>
+<p><img src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/C%2B%2B/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0.png" alt="可变宏定义"></p>
+<h2 id="可变参数函数实例"><a href="#可变参数函数实例" class="headerlink" title="可变参数函数实例"></a>可变参数函数实例</h2><p>变参宏无法智能识别可变参数的数目和类型，因此实现变参函数时需自行判断可变参数的数目和类型。所以我们就要想一些办法，比如：</p>
+<ol>
+<li>显式提供变参数目或设定遍历结束条件。</li>
+<li>显式提供变参类型枚举值，或在固定参数中包含足够的类型信息（如printf函数通过分析format字符串即可确定各变参类型）。</li>
+<li>主调函数和被调函数可约定变参的数目和类型等。</li>
+</ol>
+<p><strong>例1：函数通过固定参数指定可变参数个数，打印所有变参值。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_valist_by_num</span><span class="params">(<span class="keyword">int</span> arg_cnt, ...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    parse_valist_by_num(<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    parse_valist_by_num(<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    parse_valist_by_num(<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>); <span class="comment">//多余的变参被忽略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第一个参数定义可变参数的个数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_valist_by_num</span><span class="params">(<span class="keyword">int</span> arg_cnt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    va_list p_args;</span><br><span class="line">    va_start(p_args, arg_cnt);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> idx;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (idx = <span class="number">1</span>; idx &lt;= arg_cnt; ++idx)</span><br><span class="line">    &#123;</span><br><span class="line">        val = va_arg(p_args, <span class="keyword">int</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第 %d 个参数: %d\n&quot;</span>, idx, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;---------------\n&quot;</span>);</span><br><span class="line">    va_end(p_args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;test </span><br><span class="line">第 1 个参数: 1</span><br><span class="line">第 2 个参数: 2</span><br><span class="line">第 3 个参数: 3</span><br><span class="line">第 4 个参数: 4</span><br><span class="line">---------------</span><br><span class="line">第 1 个参数: 1</span><br><span class="line">第 2 个参数: 2</span><br><span class="line">第 3 个参数: 3</span><br><span class="line">第 4 个参数: 3440</span><br><span class="line">---------------</span><br><span class="line">第 1 个参数: 1</span><br><span class="line">第 2 个参数: 2</span><br><span class="line">第 3 个参数: 3</span><br><span class="line">第 4 个参数: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>例2：函数定义一个结束标记 (-1)，调用时通过最后一个参数传递该标记，打印标记前所有变参值。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_valist_by_flag</span><span class="params">(<span class="keyword">int</span> num_1, ...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    parse_valist_by_flag(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    parse_valist_by_flag(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">-1</span>);</span><br><span class="line">    parse_valist_by_flag(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数定义一个结束标记(-1)，调用时通过最后一个参数传递该标记，以结束变参的遍历打印。</span></span><br><span class="line"><span class="comment">//最后一个参数作为变参结束符(-1)，用于循环获取变参内容</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_valist_by_flag</span><span class="params">(<span class="keyword">int</span> num_1, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list p_args;</span><br><span class="line">    va_start(p_args, num_1);</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> val = num_1;</span><br><span class="line">    <span class="keyword">while</span> (val != <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ++idx;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第 %d 个参数: %d\n&quot;</span>, idx, val);</span><br><span class="line">        val = va_arg(p_args, <span class="keyword">int</span>); <span class="comment">//得到下个变参值</span></span><br><span class="line">    &#125;</span><br><span class="line">    va_end(p_args);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;---------------\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;test </span><br><span class="line">第 1 个参数: 1</span><br><span class="line">---------------</span><br><span class="line">第 1 个参数: 1</span><br><span class="line">第 2 个参数: 2</span><br><span class="line">第 3 个参数: 3</span><br><span class="line">第 4 个参数: 5</span><br><span class="line">---------------</span><br><span class="line">---------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="可变参数函数注意事项"><a href="#可变参数函数注意事项" class="headerlink" title="可变参数函数注意事项"></a>可变参数函数注意事项</h2><p>可变参数函数在编程中应注意以下问题：</p>
+<ol>
+<li><p>编译器对可变参数函数的原型检查不够严格，不利于编程查错。</p>
+</li>
+<li><p>va_arg(ap, type) 宏获取变参时，type不可指定为以下类型：char、short、float</p>
+</li>
+<li><p>在C语言中，调用不带原型声明或声明为变参的函数时，主调函数会在传递未显式声明的参数前对其执行缺省参数提升(default argument promotions)，将提升后的参数值传递给被调函数。</p>
+<p>提升操作如下：</p>
+<p>float 类型的参数提升为 double 类型。</p>
+<p>char、short 和相应的 signed、unsigned 类型参数提升为 int 类型。</p>
+<p>若 int 类型不能容纳原值，则提升为 unsigned int 类型。</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：C语言可变参数函数</li>
+        <li>本文作者：crazyang</li>
+        <li>创建时间：2020-03-18 21:55:14</li>
+        <li>
+            本文链接：https://blog.codepeak.cn/2020/03/18/C语言可变参数函数/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/03/18/Base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Base64原理与实现</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'CzEmjFJHlFCf3XcUvvEvPwDP-gzGzoHsz',
+                    appKey: 'xCTlyhxw0KWahOoJ8MM1EsPi',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '期待你的评论~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'crazyang';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">crazyang</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">陕ICP备19013935号</a></div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">可变参数函数概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">可变参数函数原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">可变参数函数实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">可变参数函数注意事项</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
