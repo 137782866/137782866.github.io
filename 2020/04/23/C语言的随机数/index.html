@@ -243,7 +243,7 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="rand-和-srand-函数"><a href="#rand-和-srand-函数" class="headerlink" title="rand 和 srand 函数"></a>rand 和 srand 函数</h2><p>在 C 语言中使用 rand 函数产生一个随机数函数。并在 stdlib.h 中定义 rand 产生的随机数最大是 RAND_MAX，在 4 个字节下，可以表示的最大范围是 4294967295 （unsigned int 类型）。</p>
+            <h2 id="rand-和-srand-函数"><a href="#rand-和-srand-函数" class="headerlink" title="rand 和 srand 函数"></a>rand 和 srand 函数</h2><p>在 C 语言中使用 rand 函数产生一个随机数函数。并在 stdlib.h 中定义 rand 产生的随机数最大是 RAND_MAX，在 4 个字节下，可以表示的最大正数范围是 2147483647（int 类型）。</p>
 <p><strong>rand 函数</strong>的原型如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#includ <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rand</span> <span class="params">(<span class="keyword">void</span>)</span></span></span><br></pre></td></tr></table></figure>
 
@@ -312,7 +312,7 @@
 <p>在 glibc 中 rand_r 函数实现如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rand_r</span> <span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> *seed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> next = *seed;</span><br><span class="line">  <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">  next *= <span class="number">1103515245</span>;</span><br><span class="line">  next += <span class="number">12345</span>;</span><br><span class="line">  result = (<span class="keyword">unsigned</span> <span class="keyword">int</span>) (next / <span class="number">65536</span>) % <span class="number">2048</span>;</span><br><span class="line"></span><br><span class="line">  next *= <span class="number">1103515245</span>;</span><br><span class="line">  next += <span class="number">12345</span>;</span><br><span class="line">  result &lt;&lt;= <span class="number">10</span>;</span><br><span class="line">  result ^= (<span class="keyword">unsigned</span> <span class="keyword">int</span>) (next / <span class="number">65536</span>) % <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">  next *= <span class="number">1103515245</span>;</span><br><span class="line">  next += <span class="number">12345</span>;</span><br><span class="line">  result &lt;&lt;= <span class="number">10</span>;</span><br><span class="line">  result ^= (<span class="keyword">unsigned</span> <span class="keyword">int</span>) (next / <span class="number">65536</span>) % <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">  *seed = next;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参考连接：</p>
+<p><strong>参考连接：</strong></p>
 <ul>
 <li><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/lvyibin890/article/details/80141412" >https://blog.csdn.net/lvyibin890/article/details/80141412<i class="fas fa-external-link-alt"></i></a></p>
 </li>
@@ -343,6 +343,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/05/20/C&amp;C++%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">C&amp;C++时间操作函数</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
