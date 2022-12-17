@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 晓风</title>
+    <link>https://blog.codepeak.cn/categories/</link>
+    <description>Recent content in Categories on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Sat, 04 Jul 2020 12:00:23 +0000</lastBuildDate><atom:link href="https://blog.codepeak.cn/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://blog.codepeak.cn/categories/c&#43;&#43;/</link>
+      <pubDate>Sat, 04 Jul 2020 12:00:23 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C语言</title>
+      <link>https://blog.codepeak.cn/categories/c%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Thu, 23 Apr 2020 16:00:14 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/c%E8%AF%AD%E8%A8%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell脚本</title>
+      <link>https://blog.codepeak.cn/categories/shell%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Mon, 23 Mar 2020 22:24:14 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/shell%E8%84%9A%E6%9C%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>category-2</title>
+      <link>https://blog.codepeak.cn/categories/category-2/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/category-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>category-3</title>
+      <link>https://blog.codepeak.cn/categories/category-3/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/category-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Theme preview</title>
+      <link>https://blog.codepeak.cn/categories/theme-preview/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/theme-preview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>English</title>
+      <link>https://blog.codepeak.cn/categories/english/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/english/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日本語</title>
+      <link>https://blog.codepeak.cn/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>中文</title>
+      <link>https://blog.codepeak.cn/categories/%E4%B8%AD%E6%96%87/</link>
+      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/%E4%B8%AD%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shortcodes</title>
+      <link>https://blog.codepeak.cn/categories/shortcodes/</link>
+      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/shortcodes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分类1</title>
+      <link>https://blog.codepeak.cn/categories/%E5%88%86%E7%B1%BB1/</link>
+      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/%E5%88%86%E7%B1%BB1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分类2</title>
+      <link>https://blog.codepeak.cn/categories/%E5%88%86%E7%B1%BB2/</link>
+      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/%E5%88%86%E7%B1%BB2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Syntax Highlighting</title>
+      <link>https://blog.codepeak.cn/categories/syntax-highlighting/</link>
+      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/categories/syntax-highlighting/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

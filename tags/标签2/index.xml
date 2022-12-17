@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>标签2 on 晓风</title>
+    <link>https://blog.codepeak.cn/tags/%E6%A0%87%E7%AD%BE2/</link>
+    <description>Recent content in 标签2 on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Fri, 06 Apr 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.codepeak.cn/tags/%E6%A0%87%E7%AD%BE2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>文章标题</title>
+      <link>https://blog.codepeak.cn/post/first_post/</link>
+      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/first_post/</guid>
+      <description>dsfsdafasdfasfdafasfasfsd
+shell 脚本第一行#! #!始终出现在shell脚本的第一行的前两个字符，用于指示这是一个解释程序。语法格式如下：
+1 #! BINEXECPATH [optional] BINEXECPATH 是解释脚本的二进制可执行程序的路径，bash程序运行后，会指定这个解释程序代替其运行。并将脚本的路径作为第一个参数传递给解释程序。
+例如：一个脚本程序路径是 path/to/script，而且它的内容以 #!/bin/bash 开头，那么程序加载器被指示用解释程序 /bin/bash 代替其运行，并将路径 path/to/script 作为第一个参数传递给解释程序 /bin/bash。
+如果 shell 脚本中没有指定 #! 行，则默认以 /bin/sh 作为解释器。
+shell 注释 shell 脚本中的注释以 # 开头，这一行在 # 之后的所有内容都将被解释程序忽略掉，注释用于解释脚本相关语句和含义，让别人更容易都懂和理解。例如：
+1 2 #!/bin/bash # 2020-07-09 多行注释
+开发过程中如果遇到大段的代码需要临时注释起来，过一会又要取消，每一行加一个 # 太费劲了，可以把一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会被执行，达到了和注释一样的效果。
+还可以用以下格式：
+1 2 3 4 5 :&amp;lt;&amp;lt;EOF 注释内容... 注释内容... 注释内容... EOF EOF 也可以使用其他符号：
+1 2 3 4 5 :&amp;lt;&amp;lt;! 注释内容... 注释内容... 注释内容... ! shell 设置权限和执行 编写一个脚本只是一个普通的文本，需要加上可执行权限次才可以执行，否则运行后只会出现 &amp;ldquo;Permission denied&amp;rdquo; 的错误信息。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>C语言可变参数函数 - 晓风</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="晓风" /><meta name="description" content="可变参数函数概念 C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义： 1 int printf (const char* format, ...); 可以看到" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.108.0 with theme even" />
+
+
+<link rel="canonical" href="https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.dc7b9f1584740d03a5826f27670e3104e44c7a1e7e1867aae08dc45a02fe95f5.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="C语言可变参数函数" />
+<meta property="og:description" content="可变参数函数概念 C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义： 1 int printf (const char* format, ...); 可以看到" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-13T21:55:14+00:00" />
+<meta property="article:modified_time" content="2020-04-13T21:55:14+00:00" />
+<meta itemprop="name" content="C语言可变参数函数">
+<meta itemprop="description" content="可变参数函数概念 C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义： 1 int printf (const char* format, ...); 可以看到"><meta itemprop="datePublished" content="2020-04-13T21:55:14+00:00" />
+<meta itemprop="dateModified" content="2020-04-13T21:55:14+00:00" />
+<meta itemprop="wordCount" content="2296">
+<meta itemprop="keywords" content="C语言," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C语言可变参数函数"/>
+<meta name="twitter:description" content="可变参数函数概念 C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义： 1 int printf (const char* format, ...); 可以看到"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">晓风</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">晓风</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">C语言可变参数函数</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-13 </span>
+        <div class="post-category">
+            <a href="/categories/c%E8%AF%AD%E8%A8%80/"> C语言 </a>
+            </div>
+          <span class="more-meta"> 约 2296 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#可变参数函数概念">可变参数函数概念</a></li>
+        <li><a href="#可变参数函数原理">可变参数函数原理</a></li>
+        <li><a href="#可变参数函数实例">可变参数函数实例</a></li>
+        <li><a href="#可变参数函数注意事项">可变参数函数注意事项</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="可变参数函数概念">可变参数函数概念</h2>
+<p>C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">printf</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到可变参数除了有一个 format 固定外，其他参数的个数和类型就是可变的，用三个点 <code>...</code> 作为参数占位符，代表可变参数。</p>
+<p>任何一个可变参数的函数都可以分为两部分：固定参数和可选参数。至少要有一个固定参数，其声明与普通函数参数声明相同。可选参数由于数目不定（0个或以上），声明时用 <code>...</code> 表示。固定参数和可选参数共同构成可变参数函数的参数列表。</p>
+<p>由于参数数目不定，使用可变参数函数通常能缩短编码，灵活性和易用性较高。上面的 printf 函数除了format 固定外，其他参数都可以变化。实际调用可以是如下方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;number is %d, string is:%s&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="可变参数函数原理">可变参数函数原理</h2>
+<p>C 语言中，使用 va_list 系列变长宏实现可变参数函数，va 开头代表 variable-argument (可变参数)。典型的用法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//以固定参数的地址为起点依次确定各变参的内存起始地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">VaArgFunc</span><span class="p">(</span><span class="kt">int</span> <span class="n">dwArgCnt</span><span class="p">,</span> <span class="p">...)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//定义va_list类型的指针pArgs，用于存储参数地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">va_list</span> <span class="n">pArgs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//该宏返回变参列表中的当前变参值并使pArgs指向列表中的下个变参。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//该宏第二个参数是要返回的当前变参类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">va_start</span><span class="p">(</span><span class="n">pArgs</span><span class="p">,</span> <span class="n">dwArgCnt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//若函数有多个可变参数，则依次调用va_arg宏获取各个变参
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">dwVal</span> <span class="o">=</span> <span class="nf">va_arg</span><span class="p">(</span><span class="n">pArgs</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//将指针pArgs置为无效，结束变参的获取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">va_end</span><span class="p">(</span><span class="n">pArgs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Linux 在 varargs.h 头文件中定义变长宏，变参宏的定义和实现因操作系统、硬件平台及编译器而异(但原理相似)。</p>
+<p>X86 平台的 VC6.0 编译器中，stdarg.h头文件内变参宏定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">va_list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 把 n 圆整到 sizeof(int) 的倍数，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define _INTSIZEOF(n)    ( (sizeof(n)+sizeof(int)-1) &amp; ~(sizeof(int)-1) )
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 初始化 ap 指针，使其指向第一个可变参数。v 是变参列表的前一个参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define va_start(ap,v)    ( ap = (va_list)&amp;v + _INTSIZEOF(v) )
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 该宏返回当前变参值,并使 ap 指向列表中的下个变参
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define va_arg(ap, type)    ( *(type *)((ap += _INTSIZEOF(type)) - _INTSIZEOF(type)) )
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// /将指针 ap 置为无效，结束变参的获取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define va_end(ap)    ( ap = (va_list)0 )
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><font color='red'> <strong>_INTSIZEOF(n)</strong> </font>
+_INTSIZEOF 宏考虑到某些系统需要内存地址对齐。从宏名看应按照 sizeof(int) 即栈粒度对齐，参数在内存中的地址均为 sizeof(int) = 4 的倍数。</p>
+<p>例如，若 1≤sizeof(n)≤4，则 _INTSIZEOF(n)＝4；若 5≤sizeof(n)≤8，则_INTSIZEOF(n)=8。</p>
+<p><font color='red'><strong>va_start(ap, v)</strong></font>
+va_start 宏首先根据 (va_list)&amp;v 得到参数 v 在栈中的内存地址，加上 _INTSIZEOF(v) 即 v 所占内存大小后，使 ap 指向 v 的下一个参数。在使用的时候，一般用这个宏初始化 ap 指针，v 是变参列表的前一个参数，即最后一个固定参数，初始化的结果是 ap 指向第一个变参。</p>
+<p><font color='red'><strong>va_arg(ap, type)</strong></font>
+这个宏取得 type 类型的可变参数值。首先 ap += _INTSIZEOF(type)，即 ap 跳过当前可变参数而指向下个变参的地址；然后 ap -  _INTSIZEOF(type) 得到当前变参的内存地址，类型转换后解引用，最后返回当前变参值。</p>
+<p><font color='red'><strong>va_end(ap)</strong></font>
+va_end 宏使 ap 不再指向有效的内存地址。该宏的某些实现定义为 ((void*)0)，编译时不会为其产生代码，调用与否并无区别。但某些实现中 va_end 宏用于在函数返回前完成一些必要的清理工作：如 va_start 宏可能以某种方式修改栈，导致返回操作无法完成，va_end 宏可将有关修改复原；又如 va_start 宏可能为参数列表动态分配内存以便于遍历，va_end 宏可释放此内存。因此，从使用 va_start 宏的函数中退出之前，必须调用一次 va_end 宏。</p>
+<p><strong>如下图理解可变宏函数：</strong></p>
+<p><img src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/C%2B%2B/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0.png" alt="可变宏定义"></p>
+<h2 id="可变参数函数实例">可变参数函数实例</h2>
+<p>变参宏无法智能识别可变参数的数目和类型，因此实现变参函数时需自行判断可变参数的数目和类型。所以我们就要想一些办法，比如：</p>
+<ol>
+<li>显式提供变参数目或设定遍历结束条件。</li>
+<li>显式提供变参类型枚举值，或在固定参数中包含足够的类型信息（如printf函数通过分析format字符串即可确定各变参类型）。</li>
+<li>主调函数和被调函数可约定变参的数目和类型等。</li>
+</ol>
+<p><strong>例1：函数通过固定参数指定可变参数个数，打印所有变参值。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">parse_valist_by_num</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg_cnt</span><span class="p">,</span> <span class="p">...);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_num</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_num</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_num</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">//多余的变参被忽略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第一个参数定义可变参数的个数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">parse_valist_by_num</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg_cnt</span><span class="p">,</span> <span class="p">...)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">va_list</span> <span class="n">p_args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">va_start</span><span class="p">(</span><span class="n">p_args</span><span class="p">,</span> <span class="n">arg_cnt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;=</span> <span class="n">arg_cnt</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">val</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">p_args</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;第 %d 个参数: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;---------------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">va_end</span><span class="p">(</span><span class="n">p_args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ./test 
+</span></span><span class="line"><span class="cl">第 1 个参数: 1
+</span></span><span class="line"><span class="cl">第 2 个参数: 2
+</span></span><span class="line"><span class="cl">第 3 个参数: 3
+</span></span><span class="line"><span class="cl">第 4 个参数: 4
+</span></span><span class="line"><span class="cl">---------------
+</span></span><span class="line"><span class="cl">第 1 个参数: 1
+</span></span><span class="line"><span class="cl">第 2 个参数: 2
+</span></span><span class="line"><span class="cl">第 3 个参数: 3
+</span></span><span class="line"><span class="cl">第 4 个参数: 3440
+</span></span><span class="line"><span class="cl">---------------
+</span></span><span class="line"><span class="cl">第 1 个参数: 1
+</span></span><span class="line"><span class="cl">第 2 个参数: 2
+</span></span><span class="line"><span class="cl">第 3 个参数: 3
+</span></span><span class="line"><span class="cl">第 4 个参数: 4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>例2：函数定义一个结束标记 (-1)，调用时通过最后一个参数传递该标记，打印标记前所有变参值。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">parse_valist_by_flag</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_1</span><span class="p">,</span> <span class="p">...);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_flag</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_flag</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parse_valist_by_flag</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//函数定义一个结束标记(-1)，调用时通过最后一个参数传递该标记，以结束变参的遍历打印。
+</span></span></span><span class="line"><span class="cl"><span class="c1">//最后一个参数作为变参结束符(-1)，用于循环获取变参内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">parse_valist_by_flag</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_1</span><span class="p">,</span> <span class="p">...)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">va_list</span> <span class="n">p_args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">va_start</span><span class="p">(</span><span class="n">p_args</span><span class="p">,</span> <span class="n">num_1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">num_1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">val</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">++</span><span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;第 %d 个参数: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">val</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">p_args</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//得到下个变参值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">va_end</span><span class="p">(</span><span class="n">p_args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;---------------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ./test 
+</span></span><span class="line"><span class="cl">第 1 个参数: 1
+</span></span><span class="line"><span class="cl">---------------
+</span></span><span class="line"><span class="cl">第 1 个参数: 1
+</span></span><span class="line"><span class="cl">第 2 个参数: 2
+</span></span><span class="line"><span class="cl">第 3 个参数: 3
+</span></span><span class="line"><span class="cl">第 4 个参数: 5
+</span></span><span class="line"><span class="cl">---------------
+</span></span><span class="line"><span class="cl">---------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="可变参数函数注意事项">可变参数函数注意事项</h2>
+<p>可变参数函数在编程中应注意以下问题：</p>
+<ol>
+<li>
+<p>编译器对可变参数函数的原型检查不够严格，不利于编程查错。</p>
+</li>
+<li>
+<p>va_arg(ap, type) 宏获取变参时，type不可指定为以下类型：char、short、float</p>
+</li>
+<li>
+<p>在C语言中，调用不带原型声明或声明为变参的函数时，主调函数会在传递未显式声明的参数前对其执行缺省参数提升(default argument promotions)，将提升后的参数值传递给被调函数。</p>
+<p>提升操作如下：</p>
+<p>float 类型的参数提升为 double 类型。</p>
+<p>char、short 和相应的 signed、unsigned 类型参数提升为 int 类型。</p>
+<p>若 int 类型不能容纳原值，则提升为 unsigned int 类型。</p>
+</li>
+</ol>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/clover-toeic/p/3736748.html">https://www.cnblogs.com/clover-toeic/p/3736748.html</a></li>
+<li><a href="https://blog.csdn.net/longintchar/article/details/85490103">https://blog.csdn.net/longintchar/article/details/85490103</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">晓风</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-04-13
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E5%BE%AE%E4%BF%A1.jpg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/c%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">C语言生成随机数函数</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">
+            <span class="next-text nav-default">Shell基础教程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+   
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'CzEmjFJHlFCf3XcUvvEvPwDP-gzGzoHsz',
+        appKey: 'xCTlyhxw0KWahOoJ8MM1EsPi',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:137782866@qq.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/137782866" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.codepeak.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy;
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>WindSun</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

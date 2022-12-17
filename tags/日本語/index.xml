@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日本語 on 晓风</title>
+    <link>https://blog.codepeak.cn/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+    <description>Recent content in 日本語 on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Wed, 30 Aug 2017 01:53:34 +0800</lastBuildDate><atom:link href="https://blog.codepeak.cn/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[日本語] 敬語体系</title>
+      <link>https://blog.codepeak.cn/post/japanese-preview/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/japanese-preview/</guid>
+      <description>日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに</description>
+    </item>
+    
+    <item>
+      <title>Base64</title>
+      <link>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
+      <description>Base64 概念 Base64已经成为网络上常见的传输8bit字节的编码方式之一。一般在做数据的传输时，系统之间的报文交互都需要使用Base64对明文进</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;时间</title>
+      <link>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</guid>
+      <description>UNIX 时间概念 在 UNIX 系统中，将从 1970 年 1 月 1 日开始经过的秒数用一个整数存放，这种高效简洁的时间表示方法被称为 Unix 时间戳，向左和向右偏移都可以得到更早或</description>
+    </item>
+    
+    <item>
+      <title>enable-shared_from_this</title>
+      <link>https://blog.codepeak.cn/post/c&#43;&#43;11%E7%9A%84enable_shared_from_this/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/c&#43;&#43;11%E7%9A%84enable_shared_from_this/</guid>
+      <description>c++11 中的 shared_from_this() 来源于 boost 中的 enable_shared_form_this 类和 shared_from_this() 函数，功能为返回一个当前类的 std::share_ptr，使用方法如下： 1 2 3 4 5 6 7 8 #include&amp;lt;memory&amp;gt; class Test: public std::enable_shared_from_this&amp;lt;Test&amp;gt; { public: Test(); ~Test(); std::shared_ptr&amp;lt;Test&amp;gt; getSharedFromThis() {</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell on 晓风</title>
+    <link>https://blog.codepeak.cn/tags/shell/</link>
+    <description>Recent content in Shell on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Mon, 23 Mar 2020 22:24:14 +0000</lastBuildDate><atom:link href="https://blog.codepeak.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell基础教程</title>
+      <link>https://blog.codepeak.cn/post/shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 23 Mar 2020 22:24:14 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</guid>
+      <description>shell 脚本第一行#! #!始终出现在shell脚本的第一行的前两个字符，用于指示这是一个解释程序。语法格式如下： 1 #! BINEXECPATH [optional] BINEXECPATH 是解释脚本的二进制可执行</description>
+    </item>
+    
+  </channel>
+</rss>

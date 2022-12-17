@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>gcc10.2编译安装 - 晓风</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="晓风" /><meta name="description" content="gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.108.0 with theme even" />
+
+
+<link rel="canonical" href="https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.dc7b9f1584740d03a5826f27670e3104e44c7a1e7e1867aae08dc45a02fe95f5.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="gcc10.2编译安装" />
+<meta property="og:description" content="gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-07-04T12:00:23+00:00" />
+<meta property="article:modified_time" content="2020-07-04T12:00:23+00:00" />
+<meta itemprop="name" content="gcc10.2编译安装">
+<meta itemprop="description" content="gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir"><meta itemprop="datePublished" content="2020-07-04T12:00:23+00:00" />
+<meta itemprop="dateModified" content="2020-07-04T12:00:23+00:00" />
+<meta itemprop="wordCount" content="560">
+<meta itemprop="keywords" content="C&#43;&#43;," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gcc10.2编译安装"/>
+<meta name="twitter:description" content="gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">晓风</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">晓风</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">gcc10.2编译安装</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-04 </span>
+        <div class="post-category">
+            <a href="/categories/c&#43;&#43;/"> C&#43;&#43; </a>
+            </div>
+          <span class="more-meta"> 约 560 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>gcc10.2 安装包获取：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解压包并进入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ tar -zxvf gcc-10.2.0.tar.gz
+</span></span><span class="line"><span class="cl">$ cd gcc-10.2.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装编译所需要的依赖坏境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ./contrib/download_prerequisites
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>建立临时文件并进行编译安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ cd ..
+</span></span><span class="line"><span class="cl">$ mkdir gcc-10.2-build
+</span></span><span class="line"><span class="cl">$ cd gcc-10.2-build
+</span></span><span class="line"><span class="cl">$ ../gcc-10.2.0/configure -enable-checking=release  -enable-languages=c,c++  -disable-multilib
+</span></span><span class="line"><span class="cl">$ make
+</span></span><span class="line"><span class="cl">$ make install
+</span></span><span class="line"><span class="cl">#备份旧gcc二进制文件，并进行替换
+</span></span><span class="line"><span class="cl">$ sudo mv /usr/bin/gcc /usr/bin/gcc.bckup
+</span></span><span class="line"><span class="cl">$ sudo ln -s /usr/local/bin/gcc /usr/bin/gcc
+</span></span><span class="line"><span class="cl">$ reboot    ##重启
+</span></span><span class="line"><span class="cl">$ gcc -v    ##查看gcc/c++版本
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查动态库是否为老版本的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ strings /usr/lib64/libstdc++.so.6 | grep GLIBC
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.1
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.2
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.3
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.4
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.5
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.6
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.7
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.8
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.9
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.10
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.11
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.12
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.13
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.14
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.15
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.16
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.17
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.18
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.19
+</span></span><span class="line"><span class="cl">GLIBC_2.3
+</span></span><span class="line"><span class="cl">GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">GLIBC_2.14
+</span></span><span class="line"><span class="cl">GLIBC_2.4
+</span></span><span class="line"><span class="cl">GLIBC_2.3.2
+</span></span><span class="line"><span class="cl">GLIBCXX_DEBUG_MESSAGE_LENGTH
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如显示上面的表示是老版本的。升级 gcc 的时候，新版的 gcc 动态库并没有替换老版本 gcc 的动态库，所以这里我们需要手动进行替换升级。</p>
+<p>先查找新版 gcc 生成的动态库位置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ sudo find / -name &#34;libstdc++.so*&#34;
+</span></span><span class="line"><span class="cl">/home/crazyang/gcc-10.2.0-build/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6
+</span></span><span class="line"><span class="cl">/home/crazyang/gcc-10.2.0-build/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so
+</span></span><span class="line"><span class="cl">/home/crazyang/gcc-10.2.0-build/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.28
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将新版 gcc 动态库 libstdc++.so.6.0.28 复制到 /usr/lib64 目录下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ sudo cp /home/crazyang/gcc-10.2.0-build/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.28 /usr/lib64/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将旧版动态库备份，然后将默认库的软链接指向最新版的 gcc 动态库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ cd /usr/lib64/
+</span></span><span class="line"><span class="cl">$ sudo mv libstdc++.so.6 libstdc++.so.6.backup
+</span></span><span class="line"><span class="cl">$ sudo ln -s libstdc++.so.6.0.28 libstdc++.so.6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ cd /usr/local/lib64/
+</span></span><span class="line"><span class="cl">$ sudo mv libstdc++.so.6 libstdc++.so.6.backup
+</span></span><span class="line"><span class="cl">$ sudo ln -s libstdc++.so.6.0.28 libstdc++.so.6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>指完之后再检查动态库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ strings /usr/lib64/libstdc++.so.6 | grep GLIBC
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.1
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.2
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.3
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.4
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.5
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.6
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.7
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.8
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.9
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.10
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.11
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.12
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.13
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.14
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.15
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.16
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.17
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.18
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.19
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.20
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.21
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.22
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.23
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.24
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.25
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.26
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.27
+</span></span><span class="line"><span class="cl">GLIBCXX_3.4.28
+</span></span><span class="line"><span class="cl">GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">GLIBC_2.3
+</span></span><span class="line"><span class="cl">GLIBC_2.14
+</span></span><span class="line"><span class="cl">GLIBC_2.6
+</span></span><span class="line"><span class="cl">GLIBC_2.4
+</span></span><span class="line"><span class="cl">GLIBC_2.16
+</span></span><span class="line"><span class="cl">GLIBC_2.17
+</span></span><span class="line"><span class="cl">GLIBC_2.3.2
+</span></span><span class="line"><span class="cl">GLIBCXX_DEBUG_MESSAGE_LENGTH
+</span></span><span class="line"><span class="cl">__strtof_l@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">symlink@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">_ZNKSt14basic_ifstreamIcSt11char_traitsIcEE7is_openEv@GLIBCXX_3.4
+</span></span><span class="line"><span class="cl">chdir@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">fileno@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">pthread_cond_destroy@@GLIBC_2.3.2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>内容太长，只截取前部分，到此 gcc10 已经升级完成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ gcc -v
+</span></span><span class="line"><span class="cl">Using built-in specs.
+</span></span><span class="line"><span class="cl">COLLECT_GCC=gcc
+</span></span><span class="line"><span class="cl">COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
+</span></span><span class="line"><span class="cl">Target: x86_64-pc-linux-gnu
+</span></span><span class="line"><span class="cl">Configured with: ../gcc-10.2.0/configure -enable-checking=release -enable-languages=c,c++ -disable-multilib
+</span></span><span class="line"><span class="cl">Thread model: posix
+</span></span><span class="line"><span class="cl">Supported LTO compression algorithms: zlib
+</span></span><span class="line"><span class="cl">gcc version 10.2.0 (GCC) 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：需要重启系统。</p>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_43976122/article/details/108053736">https://blog.csdn.net/weixin_43976122/article/details/108053736</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">晓风</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-07-04
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E5%BE%AE%E4%BF%A1.jpg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/even-preview/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Theme preview</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/c%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0/">
+            <span class="next-text nav-default">C语言生成随机数函数</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+   
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'CzEmjFJHlFCf3XcUvvEvPwDP-gzGzoHsz',
+        appKey: 'xCTlyhxw0KWahOoJ8MM1EsPi',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:137782866@qq.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/137782866" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.codepeak.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy;
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>WindSun</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

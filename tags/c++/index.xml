@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on 晓风</title>
+    <link>https://blog.codepeak.cn/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Sat, 04 Jul 2020 12:00:23 +0000</lastBuildDate><atom:link href="https://blog.codepeak.cn/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gcc10.2编译安装</title>
+      <link>https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Sat, 04 Jul 2020 12:00:23 +0000</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <description>gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir</description>
+    </item>
+    
+    <item>
+      <title>Base64</title>
+      <link>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
+      <description>Base64 概念 Base64已经成为网络上常见的传输8bit字节的编码方式之一。一般在做数据的传输时，系统之间的报文交互都需要使用Base64对明文进</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;时间</title>
+      <link>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</guid>
+      <description>UNIX 时间概念 在 UNIX 系统中，将从 1970 年 1 月 1 日开始经过的秒数用一个整数存放，这种高效简洁的时间表示方法被称为 Unix 时间戳，向左和向右偏移都可以得到更早或</description>
+    </item>
+    
+  </channel>
+</rss>
