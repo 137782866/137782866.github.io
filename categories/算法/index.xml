@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on 晓风</title>
+    <link>https://blog.codepeak.cn/categories/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on 晓风</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>WindSun</copyright>
+    <lastBuildDate>Sun, 25 Dec 2022 12:14:56 +0800</lastBuildDate><atom:link href="https://blog.codepeak.cn/categories/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>算法程序的输入输出框架与重定向读写</title>
+      <link>https://blog.codepeak.cn/post/%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A1%86%E6%9E%B6%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%BB%E5%86%99/</link>
+      <pubDate>Sun, 25 Dec 2022 12:14:56 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A1%86%E6%9E%B6%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%BB%E5%86%99/</guid>
+      <description>算法程序的三部曲是：输入、计算、输出。 例题：求圆柱体的表面积。 1 2 3 4 5 6 7 8 9 10 11 12 13 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; int main() { const double pi = acos(-1.0); double r, h, s1, s2, s; scanf(&amp;#34;%lf%lf&amp;#34;, &amp;amp;r, &amp;amp;h); //输入 s1</description>
+    </item>
+    
+    <item>
+      <title>算法题的ACM模式与核心代码模式</title>
+      <link>https://blog.codepeak.cn/post/%E7%BC%96%E7%A8%8B%E7%BD%91%E7%AB%99%E7%9A%84%E9%A2%98%E7%9B%AE%E5%A6%82%E4%BD%95%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Sun, 25 Dec 2022 12:14:56 +0800</pubDate>
+      
+      <guid>https://blog.codepeak.cn/post/%E7%BC%96%E7%A8%8B%E7%BD%91%E7%AB%99%E7%9A%84%E9%A2%98%E7%9B%AE%E5%A6%82%E4%BD%95%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95/</guid>
+      <description>不同的刷题模式 身为一名程序员，刷题网站系统我们应该再熟悉不过了，除了针对竞赛的 OJ 系统，比如：POJ；还有很多专为求职提供的刷题 OJ 系统，比如：</description>
+    </item>
+    
+  </channel>
+</rss>

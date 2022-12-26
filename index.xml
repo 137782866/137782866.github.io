@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>WindSun</copyright>
-    <lastBuildDate>Sat, 04 Jul 2020 12:00:23 +0000</lastBuildDate><atom:link href="https://blog.codepeak.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 12:14:56 +0800</lastBuildDate><atom:link href="https://blog.codepeak.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Theme preview</title>
       <link>https://blog.codepeak.cn/post/even-preview/</link>
@@ -23,43 +23,43 @@
       <pubDate>Thu, 15 Dec 2022 21:38:52 +0800</pubDate>
       
       <guid>https://blog.codepeak.cn/about/</guid>
-      <description>注意 该博客使用 Hugo 工具生成，主题是 Even。主要用来记录自己的学习和生活，希望通过写博客让自己不再浮躁，不要眼高手低，多 Coding，多自我总</description>
+      <description>注意 该博客使用 Hugo 工具生成，主题是 Even，部署于 GitPage。主要用来记录自己的学习和生活，希望通过写博客让自己有更多的积累，多 Codin</description>
     </item>
     
     <item>
-      <title>gcc10.2编译安装</title>
-      <link>https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Sat, 04 Jul 2020 12:00:23 +0000</pubDate>
+      <title>算法程序的输入输出框架与重定向读写</title>
+      <link>https://blog.codepeak.cn/post/%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A1%86%E6%9E%B6%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%BB%E5%86%99/</link>
+      <pubDate>Sun, 25 Dec 2022 12:14:56 +0800</pubDate>
       
-      <guid>https://blog.codepeak.cn/post/gcc10.2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
-      <description>gcc10.2 安装包获取： 1 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz 解压包并进入： 1 2 $ tar -zxvf gcc-10.2.0.tar.gz $ cd gcc-10.2.0 安装编译所需要的依赖坏境 1 $ ./contrib/download_prerequisites 建立临时文件并进行编译安装 1 2 3 4 5 6 7 8 9 10 11 $ cd .. $ mkdir</description>
+      <guid>https://blog.codepeak.cn/post/%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A1%86%E6%9E%B6%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%BB%E5%86%99/</guid>
+      <description>算法程序的三部曲是：输入、计算、输出。 例题：求圆柱体的表面积。 1 2 3 4 5 6 7 8 9 10 11 12 13 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; int main() { const double pi = acos(-1.0); double r, h, s1, s2, s; scanf(&amp;#34;%lf%lf&amp;#34;, &amp;amp;r, &amp;amp;h); //输入 s1</description>
     </item>
     
     <item>
-      <title>C语言生成随机数函数</title>
-      <link>https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Thu, 23 Apr 2020 16:00:14 +0000</pubDate>
+      <title>算法题的ACM模式与核心代码模式</title>
+      <link>https://blog.codepeak.cn/post/%E7%BC%96%E7%A8%8B%E7%BD%91%E7%AB%99%E7%9A%84%E9%A2%98%E7%9B%AE%E5%A6%82%E4%BD%95%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Sun, 25 Dec 2022 12:14:56 +0800</pubDate>
       
-      <guid>https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0/</guid>
-      <description>rand 和 srand 函数 在 C 语言中使用 rand 函数产生一个随机数函数。并在 stdlib.h 中定义 rand 产生的随机数最大是 RAND_MAX，在 4 个字节下，可以表示的最大正数范围是 2</description>
+      <guid>https://blog.codepeak.cn/post/%E7%BC%96%E7%A8%8B%E7%BD%91%E7%AB%99%E7%9A%84%E9%A2%98%E7%9B%AE%E5%A6%82%E4%BD%95%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95/</guid>
+      <description>不同的刷题模式 身为一名程序员，刷题网站系统我们应该再熟悉不过了，除了针对竞赛的 OJ 系统，比如：POJ；还有很多专为求职提供的刷题 OJ 系统，比如：</description>
     </item>
     
     <item>
-      <title>C语言可变参数函数</title>
-      <link>https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Mon, 13 Apr 2020 21:55:14 +0000</pubDate>
+      <title>《四月是你的谎言》语录</title>
+      <link>https://blog.codepeak.cn/post/%E5%9B%9B%E6%9C%88%E6%98%AF%E4%BD%A0%E7%9A%84%E8%B0%8E%E8%A8%80%E8%AF%AD%E5%BD%95/</link>
+      <pubDate>Sun, 18 Dec 2022 12:34:07 +0800</pubDate>
       
-      <guid>https://blog.codepeak.cn/post/c%E8%AF%AD%E8%A8%80%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0/</guid>
-      <description>可变参数函数概念 C99中，出现了函数变长参数特性，例如：printf 就可以接受任意长度的参数列表。看一下 printf 函数的定义： 1 int printf (const char* format, ...); 可以看到</description>
+      <guid>https://blog.codepeak.cn/post/%E5%9B%9B%E6%9C%88%E6%98%AF%E4%BD%A0%E7%9A%84%E8%B0%8E%E8%A8%80%E8%AF%AD%E5%BD%95/</guid>
+      <description>四月是你的谎言 每个人都会遇见那个属于你的公园熏，在不经意间和你相遇，即使即使时间流逝，她消散在樱花中。我们需要习惯悲伤，只有经历了一次次的痛</description>
     </item>
     
     <item>
-      <title>Shell基础教程</title>
-      <link>https://blog.codepeak.cn/post/shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Mon, 23 Mar 2020 22:24:14 +0000</pubDate>
+      <title>[诗词] 《长恨歌》</title>
+      <link>https://blog.codepeak.cn/post/%E8%AF%97%E8%AF%8D-%E9%95%BF%E6%81%A8%E6%AD%8C/</link>
+      <pubDate>Sat, 17 Dec 2022 12:34:07 +0800</pubDate>
       
-      <guid>https://blog.codepeak.cn/post/shell%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</guid>
-      <description>shell 脚本第一行#! #!始终出现在shell脚本的第一行的前两个字符，用于指示这是一个解释程序。语法格式如下： 1 #! BINEXECPATH [optional] BINEXECPATH 是解释脚本的二进制可执行</description>
+      <guid>https://blog.codepeak.cn/post/%E8%AF%97%E8%AF%8D-%E9%95%BF%E6%81%A8%E6%AD%8C/</guid>
+      <description>《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。所讲述的是李隆基、杨贵妃的爱情悲剧，堪称历代帝王爱情故事中的经典。 第一段：贵妃受宠爱 汉皇重色</description>
     </item>
     
     <item>
@@ -88,42 +88,6 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       
       <guid>https://blog.codepeak.cn/post/japanese-preview/</guid>
       <description>日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに</description>
-    </item>
-    
-    <item>
-      <title>Base64</title>
-      <link>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://blog.codepeak.cn/post/base64%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
-      <description>Base64 概念 Base64已经成为网络上常见的传输8bit字节的编码方式之一。一般在做数据的传输时，系统之间的报文交互都需要使用Base64对明文进</description>
-    </item>
-    
-    <item>
-      <title>C&#43;&#43;时间</title>
-      <link>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://blog.codepeak.cn/post/cc&#43;&#43;%E6%97%B6%E9%97%B4%E6%93%8D%E4%BD%9C/</guid>
-      <description>UNIX 时间概念 在 UNIX 系统中，将从 1970 年 1 月 1 日开始经过的秒数用一个整数存放，这种高效简洁的时间表示方法被称为 Unix 时间戳，向左和向右偏移都可以得到更早或</description>
-    </item>
-    
-    <item>
-      <title>enable-shared_from_this</title>
-      <link>https://blog.codepeak.cn/post/c&#43;&#43;11%E7%9A%84enable_shared_from_this/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://blog.codepeak.cn/post/c&#43;&#43;11%E7%9A%84enable_shared_from_this/</guid>
-      <description>c++11 中的 shared_from_this() 来源于 boost 中的 enable_shared_form_this 类和 shared_from_this() 函数，功能为返回一个当前类的 std::share_ptr，使用方法如下： 1 2 3 4 5 6 7 8 #include&amp;lt;memory&amp;gt; class Test: public std::enable_shared_from_this&amp;lt;Test&amp;gt; { public: Test(); ~Test(); std::shared_ptr&amp;lt;Test&amp;gt; getSharedFromThis() {</description>
-    </item>
-    
-    <item>
-      <title>[中文] 《长恨歌》</title>
-      <link>https://blog.codepeak.cn/post/chinese-preview/</link>
-      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
-      
-      <guid>https://blog.codepeak.cn/post/chinese-preview/</guid>
-      <description>《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初长成，养在深闺人未识。 天生丽质难</description>
     </item>
     
     <item>
