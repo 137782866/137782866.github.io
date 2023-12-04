@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lives on WindSun&#39;s Blog</title>
+    <link>https://example.org/life/</link>
+    <description>Recent content in Lives on WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 29 Oct 2023 23:57:51 +0800</lastBuildDate><atom:link href="https://example.org/life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第一次的日本自由行</title>
+      <link>https://example.org/life/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%97%A5%E6%9C%AC%E8%87%AA%E7%94%B1%E8%A1%8C/</link>
+      <pubDate>Sun, 29 Oct 2023 23:57:51 +0800</pubDate>
+      
+      <guid>https://example.org/life/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%97%A5%E6%9C%AC%E8%87%AA%E7%94%B1%E8%A1%8C/</guid>
+      <description>为时五天的日本旅行结束了，这次能去日本是项目组织的日本自由行，总共分为三批，</description>
+    </item>
+    
+    <item>
+      <title>Helloworld</title>
+      <link>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC-2/</link>
+      <pubDate>Sat, 28 Oct 2023 23:57:51 +0800</pubDate>
+      
+      <guid>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC-2/</guid>
+      <description>A* 寻路算法 原文地址： http://www.gamedev.net/reference/articles/article2003.asp 概述 虽然掌握了 A* 算法的人认为它容易，但是对于初学者来说， A* 算法还是很复杂的。 搜索区域(The Search Area) 我们假设某人要从 A 点移</description>
+    </item>
+    
+    <item>
+      <title>Helloworld</title>
+      <link>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC-3/</link>
+      <pubDate>Sat, 28 Oct 2023 23:57:51 +0800</pubDate>
+      
+      <guid>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC-3/</guid>
+      <description>A* 寻路算法 原文地址： http://www.gamedev.net/reference/articles/article2003.asp 概述 虽然掌握了 A* 算法的人认为它容易，但是对于初学者来说， A* 算法还是很复杂的。 搜索区域(The Search Area) 我们假设某人要从 A 点移</description>
+    </item>
+    
+    <item>
+      <title>Helloworld</title>
+      <link>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC/</link>
+      <pubDate>Sat, 28 Oct 2023 23:57:51 +0800</pubDate>
+      
+      <guid>https://example.org/life/helloworld-%E5%89%AF%E6%9C%AC/</guid>
+      <description>A* 寻路算法 原文地址： http://www.gamedev.net/reference/articles/article2003.asp 概述 虽然掌握了 A* 算法的人认为它容易，但是对于初学者来说， A* 算法还是很复杂的。 搜索区域(The Search Area) 我们假设某人要从 A 点移</description>
+    </item>
+    
+  </channel>
+</rss>
