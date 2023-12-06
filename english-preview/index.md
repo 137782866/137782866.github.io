@@ -1142,5 +1142,5 @@ DRY is a good design goal and Hugo does a great job supporting it. Part of the a
 ---
 
 > 作者: Michael Henderson  
-> URL: http://localhost:1313/english-preview/  
+> URL: http://blog.codepeak.cn/english-preview/  
 

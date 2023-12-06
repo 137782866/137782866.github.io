@@ -29,5 +29,5 @@
 ---
 
 > 作者: Wikipedia  
-> URL: http://localhost:1313/life/japanese-preview/  
+> URL: http://blog.codepeak.cn/life/japanese-preview/  
 

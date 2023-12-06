@@ -91,5 +91,5 @@ Note over A,B: Note over both A and B
 ---
 
 > 作者:   
-> URL: http://localhost:1313/note/js-sequence-diagrams/  
+> URL: http://blog.codepeak.cn/note/js-sequence-diagrams/  
 

@@ -1,89 +1,89 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>preview - 标签 - WindSun&#39;s Blog</title>
-    <link>http://localhost:1313/tags/preview/</link>
+    <link>http://blog.codepeak.cn/tags/preview/</link>
     <description>preview - 标签 - WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/preview/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/tags/preview/" rel="self" type="application/rss+xml" /><item>
   <title>Theme preview</title>
-  <link>http://localhost:1313/life/even-preview/</link>
+  <link>http://blog.codepeak.cn/life/even-preview/</link>
   <pubDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/life/even-preview/</guid>
+  <guid>http://blog.codepeak.cn/life/even-preview/</guid>
   <description><![CDATA[Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.]]></description>
 </item>
 <item>
   <title>Theme preview</title>
-  <link>http://localhost:1313/note/even-preview/</link>
+  <link>http://blog.codepeak.cn/note/even-preview/</link>
   <pubDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/note/even-preview/</guid>
+  <guid>http://blog.codepeak.cn/note/even-preview/</guid>
   <description><![CDATA[Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.]]></description>
 </item>
 <item>
   <title>Theme preview</title>
-  <link>http://localhost:1313/even-preview/</link>
+  <link>http://blog.codepeak.cn/even-preview/</link>
   <pubDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/even-preview/</guid>
+  <guid>http://blog.codepeak.cn/even-preview/</guid>
   <description><![CDATA[Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.]]></description>
 </item>
 <item>
   <title>[English] Creating a New Theme</title>
-  <link>http://localhost:1313/life/english-preview/</link>
+  <link>http://blog.codepeak.cn/life/english-preview/</link>
   <pubDate>Thu, 31 Aug 2017 15:43:48 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/life/english-preview/</guid>
+  <guid>http://blog.codepeak.cn/life/english-preview/</guid>
   <description><![CDATA[Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
 We&rsquo;ll start with creating a new site with a very basic template.]]></description>
 </item>
 <item>
   <title>[English] Creating a New Theme</title>
-  <link>http://localhost:1313/note/english-preview/</link>
+  <link>http://blog.codepeak.cn/note/english-preview/</link>
   <pubDate>Thu, 31 Aug 2017 15:43:48 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/note/english-preview/</guid>
+  <guid>http://blog.codepeak.cn/note/english-preview/</guid>
   <description><![CDATA[Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
 We&rsquo;ll start with creating a new site with a very basic template.]]></description>
 </item>
 <item>
   <title>[English] Creating a New Theme</title>
-  <link>http://localhost:1313/english-preview/</link>
+  <link>http://blog.codepeak.cn/english-preview/</link>
   <pubDate>Thu, 31 Aug 2017 15:43:48 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/english-preview/</guid>
+  <guid>http://blog.codepeak.cn/english-preview/</guid>
   <description><![CDATA[Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
 We&rsquo;ll start with creating a new site with a very basic template.]]></description>
 </item>
 <item>
   <title>[日本語] 敬語体系</title>
-  <link>http://localhost:1313/life/japanese-preview/</link>
+  <link>http://blog.codepeak.cn/life/japanese-preview/</link>
   <pubDate>Wed, 30 Aug 2017 01:53:34 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/life/japanese-preview/</guid>
+  <guid>http://blog.codepeak.cn/life/japanese-preview/</guid>
   <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
 </item>
 <item>
   <title>[日本語] 敬語体系</title>
-  <link>http://localhost:1313/note/japanese-preview/</link>
+  <link>http://blog.codepeak.cn/note/japanese-preview/</link>
   <pubDate>Wed, 30 Aug 2017 01:53:34 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/note/japanese-preview/</guid>
+  <guid>http://blog.codepeak.cn/note/japanese-preview/</guid>
   <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
 </item>
 <item>
   <title>[日本語] 敬語体系</title>
-  <link>http://localhost:1313/japanese-preview/</link>
+  <link>http://blog.codepeak.cn/japanese-preview/</link>
   <pubDate>Wed, 30 Aug 2017 01:53:34 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/japanese-preview/</guid>
+  <guid>http://blog.codepeak.cn/japanese-preview/</guid>
   <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
 </item>
 <item>
   <title>[中文] 《长恨歌》</title>
-  <link>http://localhost:1313/life/chinese-preview/</link>
+  <link>http://blog.codepeak.cn/life/chinese-preview/</link>
   <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://localhost:1313/life/chinese-preview/</guid>
+  <guid>http://blog.codepeak.cn/life/chinese-preview/</guid>
   <description><![CDATA[《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初长成，养在深闺人未识。 天生丽质难]]></description>
 </item>
 </channel>

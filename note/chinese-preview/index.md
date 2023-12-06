@@ -77,5 +77,5 @@
 ---
 
 > 作者: Wikipedia  
-> URL: http://localhost:1313/note/chinese-preview/  
+> URL: http://blog.codepeak.cn/note/chinese-preview/  
 

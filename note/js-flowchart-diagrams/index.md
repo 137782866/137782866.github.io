@@ -136,5 +136,5 @@ See more information from https://github.com/adrai/flowchart.js.
 ---
 
 > 作者:   
-> URL: http://localhost:1313/note/js-flowchart-diagrams/  
+> URL: http://blog.codepeak.cn/note/js-flowchart-diagrams/  
 

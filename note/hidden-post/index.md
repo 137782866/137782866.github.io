@@ -10,5 +10,5 @@ But you can see it in archives, rss or other pages.
 ---
 
 > 作者: <a href="https://halu.lu" target="_blank">Halulu</a>  
-> URL: http://localhost:1313/note/hidden-post/  
+> URL: http://blog.codepeak.cn/note/hidden-post/  
 
