@@ -1,0 +1,64 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Syntax Highlighting - 分类 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/categories/syntax-highlighting/</link>
+    <description>Syntax Highlighting - 分类 - WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 30 Aug 2011 16:01:23 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/syntax-highlighting/" rel="self" type="application/rss+xml" /><item>
+  <title>Syntax Highlighting</title>
+  <link>http://localhost:1313/life/syntax-highlighting/</link>
+  <pubDate>Tue, 30 Aug 2011 16:01:23 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://localhost:1313/life/syntax-highlighting/</guid>
+  <description><![CDATA[<div class="highlight" id="id-1"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+<item>
+  <title>Syntax Highlighting</title>
+  <link>http://localhost:1313/note/syntax-highlighting/</link>
+  <pubDate>Tue, 30 Aug 2011 16:01:23 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://localhost:1313/note/syntax-highlighting/</guid>
+  <description><![CDATA[<div class="highlight" id="id-1"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+<item>
+  <title>Syntax Highlighting</title>
+  <link>http://localhost:1313/syntax-highlighting/</link>
+  <pubDate>Tue, 30 Aug 2011 16:01:23 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://localhost:1313/syntax-highlighting/</guid>
+  <description><![CDATA[<div class="highlight" id="id-1"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+</channel>
+</rss>
