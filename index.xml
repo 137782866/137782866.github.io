@@ -3,121 +3,31 @@
     <title>WindSun&#39;s Blog</title>
     <link>http://blog.codepeak.cn/</link>
     <description>自由的编程爱好者</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</lastBuildDate>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate>
       <atom:link href="http://blog.codepeak.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
-  <title>Theme preview</title>
-  <link>http://blog.codepeak.cn/even-preview/</link>
-  <pubDate>Tue, 10 Jul 2018 00:00:00 &#43;0800</pubDate>
+  <title>English Test</title>
+  <link>http://blog.codepeak.cn/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://blog.codepeak.cn/even-preview/</guid>
-  <description><![CDATA[Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.]]></description>
-</item>
-<item>
-  <title>This is a hidden post.</title>
-  <link>http://blog.codepeak.cn/hidden-post/</link>
-  <pubDate>Thu, 08 Mar 2018 17:40:19 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/hidden-post/</guid>
-  <description><![CDATA[<p>This post is hidden from the home page.</p>]]></description>
-</item>
-<item>
-  <title>[English] Creating a New Theme</title>
-  <link>http://blog.codepeak.cn/english-preview/</link>
-  <pubDate>Thu, 31 Aug 2017 15:43:48 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/english-preview/</guid>
+  <guid>http://blog.codepeak.cn/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
   <description><![CDATA[Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
 We&rsquo;ll start with creating a new site with a very basic template.]]></description>
 </item>
 <item>
-  <title>[日本語] 敬語体系</title>
-  <link>http://blog.codepeak.cn/japanese-preview/</link>
-  <pubDate>Wed, 30 Aug 2017 01:53:34 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/japanese-preview/</guid>
-  <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
-</item>
-<item>
-  <title>[中文] 《长恨歌》</title>
-  <link>http://blog.codepeak.cn/chinese-preview/</link>
+  <title>Markdown测试</title>
+  <link>http://blog.codepeak.cn/markdown%E6%B5%8B%E8%AF%95/</link>
   <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://blog.codepeak.cn/chinese-preview/</guid>
-  <description><![CDATA[《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初长成，养在深闺人未识。 天生丽质难]]></description>
+  <guid>http://blog.codepeak.cn/markdown%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph. New paragraph. Anchor Define]]></description>
 </item>
 <item>
-  <title>JS Flowchart Diagrams</title>
-  <link>http://blog.codepeak.cn/js-flowchart-diagrams/</link>
-  <pubDate>Wed, 04 Mar 2015 21:57:50 &#43;0800</pubDate>
+  <title>代码高亮测试</title>
+  <link>http://blog.codepeak.cn/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>http://blog.codepeak.cn/js-flowchart-diagrams/</guid>
-  <description><![CDATA[<h2 id="usage">Usage</h2>
-<div class="highlight" id="id-1"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">st=&gt;start: Start|past:&gt;http://www.google.com[blank]
-</span></span><span class="line"><span class="cl">e=&gt;end: End:&gt;http://www.google.com
-</span></span><span class="line"><span class="cl">op1=&gt;operation: My Operation|past
-</span></span><span class="line"><span class="cl">op2=&gt;operation: Stuff|current
-</span></span><span class="line"><span class="cl">sub1=&gt;subroutine: My Subroutine|invalid
-</span></span><span class="line"><span class="cl">cond=&gt;condition: Yes
-</span></span><span class="line"><span class="cl">or No?|approved:&gt;http://www.google.com
-</span></span><span class="line"><span class="cl">c2=&gt;condition: Good idea|rejected
-</span></span><span class="line"><span class="cl">io=&gt;inputoutput: catch something...|request
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">st-&gt;op1(right)-&gt;cond
-</span></span><span class="line"><span class="cl">cond(yes, right)-&gt;c2
-</span></span><span class="line"><span class="cl">cond(no)-&gt;sub1(left)-&gt;op1
-</span></span><span class="line"><span class="cl">c2(yes)-&gt;io-&gt;e
-</span></span><span class="line"><span class="cl">c2(no)-&gt;op2-&gt;e</span></span></code></pre></td></tr></table>
-</div>
-</div>]]></description>
-</item>
-<item>
-  <title>JS Sequence Diagrams</title>
-  <link>http://blog.codepeak.cn/js-sequence-diagrams/</link>
-  <pubDate>Wed, 04 Mar 2015 21:57:45 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/js-sequence-diagrams/</guid>
-  <description><![CDATA[<h2 id="usage">Usage</h2>
-<div class="highlight" id="id-1"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Andrew-&gt;China: Says Hello
-</span></span><span class="line"><span class="cl">Note right of China: China thinks\nabout it
-</span></span><span class="line"><span class="cl">China--&gt;Andrew: How are you?
-</span></span><span class="line"><span class="cl">Andrew-&gt;&gt;China: I am good thanks!</span></span></code></pre></td></tr></table>
-</div>
-</div>]]></description>
-</item>
-<item>
-  <title>Syntax Highlighting</title>
-  <link>http://blog.codepeak.cn/syntax-highlighting/</link>
-  <pubDate>Tue, 30 Aug 2011 16:01:23 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/syntax-highlighting/</guid>
+  <guid>http://blog.codepeak.cn/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/</guid>
   <description><![CDATA[<div class="highlight" id="id-1"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -130,6 +40,22 @@ We&rsquo;ll start with creating a new site with a very basic template.]]></descr
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
+</item>
+<item>
+  <title>日文测试</title>
+  <link>http://blog.codepeak.cn/%E6%97%A5%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/%E6%97%A5%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
+</item>
+<item>
+  <title>中文测试</title>
+  <link>http://blog.codepeak.cn/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初长成，养在深闺人未识。 天生丽质难]]></description>
 </item>
 </channel>
 </rss>
