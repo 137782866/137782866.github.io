@@ -6,7 +6,25 @@
     <description>Recent content in 笔记 on WindSun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 09 Dec 2023 23:46:25 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Dec 2023 23:14:49 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-工厂方法模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 10 Dec 2023 23:14:49 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</guid>
+      <description>简单工厂模式的不足 在简单工厂模式中，只提供了一个工厂类，该工厂类处于对产品类进行实例化的中心位置，它知道每一个产品对象的创建细节，并决定何时</description>
+    </item>
+    
+    <item>
+      <title>设计模式-简单工厂模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 10 Dec 2023 22:15:56 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等），这些按钮都源自同一个基类，不</description>
+    </item>
+    
     <item>
       <title>设计模式的原则和分类</title>
       <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8E%9F%E5%88%99%E5%92%8C%E5%88%86%E7%B1%BB/</link>
