@@ -3,7 +3,31 @@
     <title>设计模式 - 标签 - WindSun&#39;s Blog</title>
     <link>http://blog.codepeak.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
     <description>设计模式 - 标签 - WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 10 Dec 2023 23:14:49 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Dec 2023 00:29:08 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>设计模式-原型模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Thu, 14 Dec 2023 00:29:08 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 在面向对象系统中，使用原型模式来复制一个对象自身，从而克隆出多个与原型对象一模一样的对象。 在软件系统中，有些对象的创建过程较为复杂，]]></description>
+</item>
+<item>
+  <title>设计模式-建造者模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Thu, 14 Dec 2023 00:22:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 无论是在现实世界中还是在软件系统中，都存在一些复杂的对象，它们拥有多个组成部分，如汽车，它包括车轮、方向盘、发送机等各种部件。而对于]]></description>
+</item>
+<item>
+  <title>设计模式-抽象工厂模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Wed, 13 Dec 2023 01:37:56 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 在工厂方法模式中具体工厂负责生产具体的产品，每一个具体工厂对应一种具体产品，工厂方法也具有唯一性，一般情况下，一个具体工厂中只有一个]]></description>
+</item>
+<item>
   <title>设计模式-工厂方法模式</title>
   <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</link>
   <pubDate>Sun, 10 Dec 2023 23:14:49 &#43;0800</pubDate>
