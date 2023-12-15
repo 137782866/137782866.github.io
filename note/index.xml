@@ -6,7 +6,43 @@
     <description>Recent content in 笔记 on WindSun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 14 Dec 2023 01:09:25 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Dec 2023 18:02:56 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-装饰模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 15 Dec 2023 18:02:56 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 一般有两种方式可以实现给一个类或对象增加行为： 继承机制，使用继承机制是给现有类添加功能的一种有效途径，通过继承一个现有类可以使得子类</description>
+    </item>
+    
+    <item>
+      <title>设计模式-组合模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 15 Dec 2023 17:32:31 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 对于树形结构，当容器对象（如文件夹）的某一个方法被调用时，将遍历整个树形结构，寻找也包含这个方法的成员对象（可以是容器对象，也可以是</description>
+    </item>
+    
+    <item>
+      <title>设计模式-桥接模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 15 Dec 2023 16:28:40 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 设想如果要绘制矩形、圆形、椭圆、正方形，我们至少需要4个形状类，但是如果绘制的图形需要具有不同的颜色，如红色、绿色、蓝色等，此时至少</description>
+    </item>
+    
+    <item>
+      <title>设计模式-适配器模式</title>
+      <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 15 Dec 2023 15:38:58 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 在软件开发中采用类似于电源适配器的设计和编码技巧被称为适配器模式。 通常情况下，客户端可以通过目标类的接口访问它所提供的服务。有时，现</description>
+    </item>
+    
     <item>
       <title>设计模式-单例模式</title>
       <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
