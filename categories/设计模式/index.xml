@@ -3,7 +3,31 @@
     <title>设计模式 - 分类 - WindSun&#39;s Blog</title>
     <link>http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
     <description>设计模式 - 分类 - WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 Dec 2023 18:02:56 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 16 Dec 2023 20:07:12 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>设计模式-代理模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Sat, 16 Dec 2023 20:07:12 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用。代理对象可以在客户端和目标]]></description>
+</item>
+<item>
+  <title>设计模式-享元模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Sat, 16 Dec 2023 17:10:31 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 面向对象技术可以很好地解决一些灵活性或可扩展性问题，但在很多情况下需要在系统中增加类和对象的个数。当对象数量太多时，将导致运行代价过]]></description>
+</item>
+<item>
+  <title>设计模式-外观模式</title>
+  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Sat, 16 Dec 2023 16:22:12 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 引入外观角色之后，用户只需要直接与外观角色交互，用户与子系统之间的复杂关系由外观角色来实现，从而降低了系统的耦合度。 模式定义 外观模式]]></description>
+</item>
+<item>
   <title>设计模式-装饰模式</title>
   <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</link>
   <pubDate>Fri, 15 Dec 2023 18:02:56 &#43;0800</pubDate>
@@ -58,30 +82,6 @@
   <author>作者</author>
   <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
   <description><![CDATA[模式动机 无论是在现实世界中还是在软件系统中，都存在一些复杂的对象，它们拥有多个组成部分，如汽车，它包括车轮、方向盘、发送机等各种部件。而对于]]></description>
-</item>
-<item>
-  <title>设计模式-抽象工厂模式</title>
-  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
-  <pubDate>Wed, 13 Dec 2023 01:37:56 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
-  <description><![CDATA[模式动机 在工厂方法模式中具体工厂负责生产具体的产品，每一个具体工厂对应一种具体产品，工厂方法也具有唯一性，一般情况下，一个具体工厂中只有一个]]></description>
-</item>
-<item>
-  <title>设计模式-工厂方法模式</title>
-  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</link>
-  <pubDate>Sun, 10 Dec 2023 23:14:49 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</guid>
-  <description><![CDATA[简单工厂模式的不足 在简单工厂模式中，只提供了一个工厂类，该工厂类处于对产品类进行实例化的中心位置，它知道每一个产品对象的创建细节，并决定何时]]></description>
-</item>
-<item>
-  <title>设计模式-简单工厂模式</title>
-  <link>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
-  <pubDate>Sun, 10 Dec 2023 22:15:56 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/note/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
-  <description><![CDATA[模式动机 考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等），这些按钮都源自同一个基类，不]]></description>
 </item>
 </channel>
 </rss>
