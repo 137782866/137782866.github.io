@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux命令 on WindSun&#39;s Blog</title>
+    <link>http://blog.codepeak.cn/note-linuxcmd/</link>
+    <description>Recent content in Linux命令 on WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 18 Dec 2023 01:34:33 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note-linuxcmd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux命令-grep</title>
+      <link>http://blog.codepeak.cn/note-linuxcmd/linux%E5%91%BD%E4%BB%A4-grep/</link>
+      <pubDate>Mon, 18 Dec 2023 01:34:33 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note-linuxcmd/linux%E5%91%BD%E4%BB%A4-grep/</guid>
+      <description>关于grep grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来），是一个强大的文本搜索工具，能使用正则表达式搜索</description>
+    </item>
+    
+  </channel>
+</rss>
