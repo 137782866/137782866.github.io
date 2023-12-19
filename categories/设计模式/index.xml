@@ -3,7 +3,15 @@
     <title>设计模式 - 分类 - WindSun&#39;s Blog</title>
     <link>http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
     <description>设计模式 - 分类 - WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 17 Dec 2023 23:44:26 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Dec 2023 01:04:09 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>设计模式-解释器模式</title>
+  <link>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Wed, 20 Dec 2023 01:04:09 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[模式动机 如果在系统中某一特定类型的问题发生的频率很高，此时可以考虑将这些问题的实例表述为一个语言中的句子，因此可以构建一个解释器，该解释器通]]></description>
+</item>
+<item>
   <title>设计模式-命令模式</title>
   <link>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</link>
   <pubDate>Sun, 17 Dec 2023 23:44:26 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
   <author>作者</author>
   <guid>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
   <description><![CDATA[模式动机 在软件开发中采用类似于电源适配器的设计和编码技巧被称为适配器模式。 通常情况下，客户端可以通过目标类的接口访问它所提供的服务。有时，现]]></description>
-</item>
-<item>
-  <title>设计模式-单例模式</title>
-  <link>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
-  <pubDate>Thu, 14 Dec 2023 01:09:25 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
-  <description><![CDATA[模式动机 对于系统中的某些类来说，只有一个实例很重要，例如，一个系统中可以存在多个打印任务，但是只能有一个正在工作的任务；一个系统只能有一个窗]]></description>
 </item>
 </channel>
 </rss>

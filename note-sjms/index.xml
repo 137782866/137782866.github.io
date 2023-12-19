@@ -6,7 +6,16 @@
     <description>Recent content in 设计模式 on WindSun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 Dec 2023 23:44:26 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note-sjms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Dec 2023 01:04:09 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note-sjms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-解释器模式</title>
+      <link>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 20 Dec 2023 01:04:09 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>模式动机 如果在系统中某一特定类型的问题发生的频率很高，此时可以考虑将这些问题的实例表述为一个语言中的句子，因此可以构建一个解释器，该解释器通</description>
+    </item>
+    
     <item>
       <title>设计模式-命令模式</title>
       <link>http://blog.codepeak.cn/note-sjms/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</link>
