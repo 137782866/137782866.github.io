@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>数据结构 - 分类 - WindSun&#39;s Blog</title>
+    <link>http://blog.codepeak.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <description>数据结构 - 分类 - WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 30 Dec 2023 17:04:48 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+  <title>链表</title>
+  <link>http://blog.codepeak.cn/note/sjjg/%E9%93%BE%E8%A1%A8/</link>
+  <pubDate>Sat, 30 Dec 2023 17:04:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/sjjg/%E9%93%BE%E8%A1%A8/</guid>
+  <description><![CDATA[单链表 因为顺序表的内存空间连续，在插入和删除时，需要移动大量元素。某些应用场景下，需要频繁的插入或删除，这时候顺序表就比较消耗性能了。需要使]]></description>
+</item>
+<item>
+  <title>顺序表</title>
+  <link>http://blog.codepeak.cn/note/sjjg/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</link>
+  <pubDate>Thu, 28 Dec 2023 23:14:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/sjjg/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</guid>
+  <description><![CDATA[线性表 线性表（linear list）是数据结构的一种，一个线性表是n个具有相同特性的数据表项的有限序列。线性表中表项之间的关系是一对一的关系]]></description>
+</item>
+</channel>
+</rss>
