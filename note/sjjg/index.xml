@@ -6,7 +6,16 @@
     <description>Recent content in 数据结构 on WindSun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 30 Dec 2023 17:04:48 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/sjjg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jan 2024 22:21:52 +0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/note/sjjg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>静态链表</title>
+      <link>http://blog.codepeak.cn/note/sjjg/%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sun, 07 Jan 2024 22:21:52 +0800</pubDate>
+      
+      <guid>http://blog.codepeak.cn/note/sjjg/%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8/</guid>
+      <description>C语言中有指针，可以非常容易的操作内存中的地址和数据，比其他语言更方便灵活，实现链表比较灵活。有些高级语言是对象的引用机制，从某种角度也可以</description>
+    </item>
+    
     <item>
       <title>链表</title>
       <link>http://blog.codepeak.cn/note/sjjg/%E9%93%BE%E8%A1%A8/</link>

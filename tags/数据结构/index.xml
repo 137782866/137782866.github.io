@@ -3,7 +3,15 @@
     <title>数据结构 - 标签 - WindSun&#39;s Blog</title>
     <link>http://blog.codepeak.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
     <description>数据结构 - 标签 - WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 30 Dec 2023 17:04:48 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Jan 2024 22:21:52 &#43;0800</lastBuildDate><atom:link href="http://blog.codepeak.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+  <title>静态链表</title>
+  <link>http://blog.codepeak.cn/note/sjjg/%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8/</link>
+  <pubDate>Sun, 07 Jan 2024 22:21:52 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://blog.codepeak.cn/note/sjjg/%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8/</guid>
+  <description><![CDATA[C语言中有指针，可以非常容易的操作内存中的地址和数据，比其他语言更方便灵活，实现链表比较灵活。有些高级语言是对象的引用机制，从某种角度也可以]]></description>
+</item>
+<item>
   <title>链表</title>
   <link>http://blog.codepeak.cn/note/sjjg/%E9%93%BE%E8%A1%A8/</link>
   <pubDate>Sat, 30 Dec 2023 17:04:48 &#43;0800</pubDate>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>redis基础知识 - WindSun&#39;s Blog</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对" /><meta name="keywords" content='redis' /><meta itemprop="name" content="redis基础知识">
+<meta itemprop="description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对"><meta itemprop="datePublished" content="2024-01-15T02:14:52+08:00" />
+<meta itemprop="dateModified" content="2024-01-15T02:14:52+08:00" />
+<meta itemprop="wordCount" content="5247"><meta itemprop="image" content="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/WindSun.png"/>
+<meta itemprop="keywords" content="redis," /><meta property="og:title" content="redis基础知识" />
+<meta property="og:description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="og:image" content="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/WindSun.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-15T02:14:52+08:00" />
+<meta property="article:modified_time" content="2024-01-15T02:14:52+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/WindSun.png"/>
+
+<meta name="twitter:title" content="redis基础知识"/>
+<meta name="twitter:description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对"/>
+<meta name="application-name" content="WindSun&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="WindSun&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/%E5%8D%B0%E7%AB%A0.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><link rel="prev" href="http://blog.codepeak.cn/%E4%BF%AE%E6%94%B9typora%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%AD%97%E4%BD%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "redis基础知识",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/blog.codepeak.cn\/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/"
+    },"genre": "posts","keywords": "redis","wordcount":  5247 ,
+    "url": "http:\/\/blog.codepeak.cn\/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/","datePublished": "2024-01-15T02:14:52+08:00","dateModified": "2024-01-15T02:14:52+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "WindSun"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/%E5%8D%B0%E7%AB%A0.png" data-title="WindSun&#39;s Blog" data-alt="WindSun&#39;s Blog" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item"><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa fa-solid fa-archive fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item"><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa fa-solid fa-folder-tree fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa fa-solid fa-tags fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item has-children">
+                <a
+                  class="menu-link"
+                  
+                ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 笔记</a><i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sjms"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sjjg"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 数据结构</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sql"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/linuxcmd/"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> Linux命令</a>
+                      </li></ul></li><li class="menu-item"><a
+                  class="menu-link"
+                  href="/life/"
+                  
+                  
+                ><i class="fa fa-solid fa-camera-retro fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li class="menu-item"><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class="fa fa-link faa-horizontal animated-hover fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li class="menu-item"><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-info-circle fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/%E5%8D%B0%E7%AB%A0.png" data-title="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/%E5%8D%B0%E7%AB%A0.png" data-alt="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/%E5%8D%B0%E7%AB%A0.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa fa-solid fa-archive fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa fa-solid fa-folder-tree fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa fa-solid fa-tags fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><span class="nested-item">
+                    <a
+                      class="menu-link"
+                      
+                    ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 笔记</a><i class="dropdown-icon fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sjms"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sjjg"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 数据结构</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/sql"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/note/linuxcmd/"
+                          
+                          
+                        ><i class="fa fa-solid fa-book fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> Linux命令</a>
+                      </li></ul></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/life/"
+                  
+                  
+                ><i class="fa fa-solid fa-camera-retro fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class="fa fa-link faa-horizontal animated-hover fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-info-circle fa-fw fa-sm fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container sticky">
+    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" title="WindSun&#39;s Blog">主页</a></li><li class="breadcrumb-item"><a href="/posts/" title="文章">文章</a></li><li class="breadcrumb-item active" aria-current="page">redis基础知识</li>
+    </ol>
+  </nav><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>redis基础知识</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      WindSun</span></span>
+          <span class="post-category">收录于 <a href="/categories/redis/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> redis</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2024-01-15 02:14:52"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="更新于 2024-01-15 02:14:52"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="5247 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 5300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis键操作的命令">redis键操作的命令</a></li>
+    <li><a href="#字符串类型string">字符串类型（string）</a>
+      <ul>
+        <li><a href="#常用命令">常用命令</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#散列类型hash">散列类型（hash）</a>
+      <ul>
+        <li><a href="#常用命令-1">常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#列表类型list">列表类型（list）</a>
+      <ul>
+        <li><a href="#常用命令-2">常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#集合类型set">集合类型（set）</a>
+      <ul>
+        <li><a href="#常用命令-3">常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#有序集合类型sorted-set">有序集合类型（sorted set）</a>
+      <ul>
+        <li><a href="#常用命令-4">常用命令</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="redis键操作的命令">redis键操作的命令</h2>
+<p>redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对应的值可以是多种类型的数据结构，下面是一些对redis键操作的基本命令。</p>
+<ol>
+<li>获得某个键的值</li>
+</ol>
+<div class="highlight" id="id-1"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">KEYS pattern		//?单个字符 *任意字符 []括号间的任意字符带-时表示范围 \?转义</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>获得所有的键值</li>
+</ol>
+<div class="highlight" id="id-2"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">KEYS *</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>判断一个键是否存在</li>
+</ol>
+<div class="highlight" id="id-3"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EXISTS key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>删除键</li>
+</ol>
+<div class="highlight" id="id-4"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEL key [key ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>获得键值的数据类型</li>
+</ol>
+<div class="highlight" id="id-5"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TYPE key</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="字符串类型string">字符串类型（string）</h2>
+<p>字符串类型是Redis中最基本的类型，能存储任何形式的字符串，包括<strong>二进制</strong>。允许存储的数据的最大容量是512MB。字符串类型是其他4种数据类型的基础，其他数据类型从某种角度上只是组织字符串的形式不同。虽说是字符串，但是和C语言中的字符串还是有些区别的。</p>
+<h3 id="常用命令">常用命令</h3>
+<ol>
+<li>赋值</li>
+</ol>
+<div class="highlight" id="id-6"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SET key value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>取值</li>
+</ol>
+<div class="highlight" id="id-7"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>递增键值（当存储的整数时，可用此命令递增，返回递增后的值，不存在键时会默认为0，不是整数时会出错）</li>
+</ol>
+<div class="highlight" id="id-8"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">INCR key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>递减键值</li>
+</ol>
+<div class="highlight" id="id-9"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DECR key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>增加指定整数</li>
+</ol>
+<div class="highlight" id="id-10"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">INCRBY key num</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>减少指定整数</li>
+</ol>
+<div class="highlight" id="id-11"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DECRBY key num</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>增加指定浮点数</li>
+</ol>
+<div class="highlight" id="id-12"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">INCRBYFLOAT key num</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>向尾部追加值</li>
+</ol>
+<div class="highlight" id="id-13"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">APPEND key value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="9">
+<li>获取字符串长度</li>
+</ol>
+<div class="highlight" id="id-14"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">STRLEN key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="10">
+<li>同时获得/设置多个键值</li>
+</ol>
+<div class="highlight" id="id-15"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MGET key [key ...]
+</span></span><span class="line"><span class="cl">MSET key value [key value ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="11">
+<li>设置位的值操作（键值一个字节8位，当超过键值二进制位长度时，会自动将中间的二进制位设置为0，设置一个不存在的键的二进制的位的值时，会自动将前面的位赋值为0。利用位操作可以非常紧促的存储bool值，而且SETBIT和GETBIT的时间复杂度都是O(1)）</li>
+</ol>
+<div class="highlight" id="id-16"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SETBIT key offset value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BITOP operation destkey key [key ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="12">
+<li>获得位的值操作（当超过二进制位的长度时，默认为0）</li>
+</ol>
+<div class="highlight" id="id-17"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GETBIT key offset</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="13">
+<li>获得键值中二进制位的值是1的个数</li>
+</ol>
+<div class="highlight" id="id-18"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BITCOUNT key [start] [end]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="14">
+<li>对多个键值进行位运算（运算结果存储在destkey中）</li>
+</ol>
+<div class="highlight" id="id-19"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BITOP AND/OR/XOR/NOT destkey key [key ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="15">
+<li>指定键的第一个位值是0或1的位置（返回的结果的偏移量是从头开始算起的，与begin和end的起始字节无关，若不设置结束字节且键值的所有二进制位都是1，则当查询值为0的二进制偏移量时，返回的是键值长度的下一个字位的偏移量，因为redis会认为键值长度之后的二进制位都是0。）</li>
+</ol>
+<div class="highlight" id="id-20"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BITPOS key 0/1 			 // 指定键值第一个二进制为0/1的偏移量
+</span></span><span class="line"><span class="cl">BITPOS key 0/1 begin end // begin和end分别是查询查询指定键值begin字节到end字节之间出现的第一个值为0/1的二进制位的偏移量</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="注意事项">注意事项</h3>
+<p>Redis的底层是由C语言实现的，但是redis中的字符串和C语言的字符串还是有很多区别。</p>
+<p>C语言的字符串后面多了个<code>'\0'</code>，做为字符串终止符，长度为N的字符串，会用长度为N+1的字符数组来表示。有如下缺点：</p>
+<ol>
+<li>C语言字符串并没有记录自身长度。</li>
+<li>需要根据空字符&rsquo;\0&rsquo;判断字符串是否结束。</li>
+</ol>
+<p>引起的问题如下：</p>
+<ol>
+<li>获取字符串长度复杂度高。</li>
+<li>拼接字符串容易出现缓冲区溢出，要通过内存重分配来扩展底层字符数组空间大小内存重分配是个十分耗时的操作。</li>
+<li>不能存储二进制数据，如果数据本身就包含空字符串&rsquo;\0&rsquo;，而代码会认为是字符串终止；像图片、音频、视频、压缩文件这样的二进制数据是会包含空字符串&rsquo;\0&rsquo;的，所以数据会出现问题。</li>
+</ol>
+<p>Redis中的存储字符串并不是C语言那么简单，而是使用了SDS结构，并且可以存储包含了&rsquo;\0&rsquo;的二进制，简单的结构定义如下：</p>
+<div class="highlight" id="id-21"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">SDS</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">free</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p>引入了两个变量free和len属性来夺取字符串长度，时间复杂度为O(1)。</p>
+</li>
+<li>
+<p>采用了空间预分配和惰性空间释放。当对SDS进行空间扩展时，会分配额外未使用空间。如果SDS修改之后，SDS的长度(len属性的值)小于1MB，那么就会分配和len属性同样大的未使用空间，也就是free属性会和len属性相同，相当于将原数组长度二倍。如果SDS修改之后，SDS的长度(len属性的值)大于或等于1MB，那么就会分配固定的1MB未使用空间。当缩短操作时，想要删掉N个字符后，free就增加N，不做内存重分配操作，空间先给留着后面能继续用。这两种操作都是为了减少内存重分配操作。</p>
+</li>
+<li>
+<p>C字符串不能存储二进制数据的原因是只能根据 &lsquo;\0&rsquo; 来判断数据是否结束，不能保证其完整性，但因为 SDS 的 len 属性，无论你数据里有多少 &lsquo;\0&rsquo; 都没关系，我是根据 len 属性值来判断数据长度的，必定是完整的，所以 SDS 可以安全地存储二进制数据。</p>
+</li>
+<li>
+<p>SDS在字符串后面加了&rsquo;\0&rsquo;，保持和C字符串一样的特性，在一定的情况下可以直接用C语言的函数，避免了不必要的函数重写。</p>
+</li>
+</ol>
+<h2 id="散列类型hash">散列类型（hash）</h2>
+<p>redis本来就是采用字典结构以键值对的形式存储数据的，而散列类型的键对应的值也是一种字典结构，相当于字典结构下的字典结构了，其存储了字段 field 和字段值 value 的映射。字段值只能是字符串，不能是其他类型，可以最大包含 2的32次方-1个字段。一般用来表示一个对象中的各种属性值。比如：汽车:001-&gt;(颜色-&gt;白色;名字-&gt;奥迪;价格-&gt;100万)。对比关系数据库，redis更加灵活，在关系数据库中，需要建二位表，所有的记录都有相同的属性，无法单独为某条记录增减属性。redis散列类型不存在这个问题，每个键对应的字段可以自由增减而不影响其他键。</p>
+<h3 id="常用命令-1">常用命令</h3>
+<ol>
+<li>赋值（不区分插入和更新操作，当执行插入操作返回1，当执行更新操作返回0，当redis键不存在会自动创建，不能使用操作字符串键的命令操作散列键，会提示错误）</li>
+</ol>
+<div class="highlight" id="id-22"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HSET key field value	//给字段赋值
+</span></span><span class="line"><span class="cl">HMSET key field value [field value ...]	//同时设置多个字段值</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>取值</li>
+</ol>
+<div class="highlight" id="id-23"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HGET key field value	//获取字段的值
+</span></span><span class="line"><span class="cl">HMGET key field [field ...]	//同时获取多个字段的值</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>取所有字段和字段值</li>
+</ol>
+<div class="highlight" id="id-24"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HGETALL key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>判断字段是否存在（存在返回1，不存在返回0）</li>
+</ol>
+<div class="highlight" id="id-25"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HEXISTS key field</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>仅当字段不存在时赋值（如果字段已存在，不执行任何操作）</li>
+</ol>
+<div class="highlight" id="id-26"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HSETNX key field value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>字段值增加指定数字（散列没有HINCR自增命令，也没有HDECRBY命令）</li>
+</ol>
+<div class="highlight" id="id-27"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HINCRBY key field increment</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>删除字段（返回被删除字段个数）</li>
+</ol>
+<div class="highlight" id="id-28"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HDEL key field [field ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>只获取字段名或字段值</li>
+</ol>
+<div class="highlight" id="id-29"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HKEYS key
+</span></span><span class="line"><span class="cl">HVALS key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="9">
+<li>获得字段数量</li>
+</ol>
+<div class="highlight" id="id-30"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HLEN key</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="列表类型list">列表类型（list）</h2>
+<p>redis键对应的值的类型可以时列表list类型，列表类型可以存储一个有序的字符串列表，常用的操作是向列表两端添加元素，或者获得列表的某一个片段。</p>
+<p>列表内部使用双向链表实现，向列表两端添加元素的时间复杂度为O(1)，获取越进两端的元素越块。但是通过索引访问元素比较慢。一般用于特定场景下，可以快速的完成关系数据库难以完成的场景，可以作为队列或栈使用，一个列表类型的键值最多能容纳2的32次方-1个元素。</p>
+<h3 id="常用命令-2">常用命令</h3>
+<ol>
+<li>向列表两端增加元素</li>
+</ol>
+<div class="highlight" id="id-31"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LPUSH key value [value ...]	//向列表左端增加元素，返回增加元素后列表的长度
+</span></span><span class="line"><span class="cl">RPUSH key value [value ...] //向列表右端增加元素，返回增加元素后列表的长度</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>从列表两端弹出元素</li>
+</ol>
+<div class="highlight" id="id-32"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LPOP key	//从列表左端弹出元素，第一步将列表左端元素从列表移除，第二步返回被移除的元素值
+</span></span><span class="line"><span class="cl">RPOP key	//从列表右端弹出元素</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>获取列表中元素的个数</li>
+</ol>
+<div class="highlight" id="id-33"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LLEN key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>获得列表片段（返回索引从start到end之间的所有元素，索引从0开始，包含end的元素，当为负数时，表示用右边开始，-1表示右边第一个参数，显然 0 -1 可以获取列表中所有元素。当start索引位置比stop的索引位置靠后，则会返回空列表。当stop大于实际索引范围，则会返回到列表最右边元素）</li>
+</ol>
+<div class="highlight" id="id-34"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LRANGE key start stop</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>删除列表中指定的值（删除列表中前count个值为value的元素，返回实际删除元素的个数，count&gt;0从左边开始删除，count&lt;0从右边开始删除，count=0删除所有值为value的元素）</li>
+</ol>
+<div class="highlight" id="id-35"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LREM key count value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>获得指定索引元素值（可当数组使用，index是负数表示从右边开始计算，最右边是-1）</li>
+</ol>
+<div class="highlight" id="id-36"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LINDEX key index</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>设置指定索引元素值</li>
+</ol>
+<div class="highlight" id="id-37"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LSET key index value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>只保留列表指定片段（删除指定索引范围之外的所有元素，使用和LRANGE类似，LTRIM和LPUSH命令一起使用可用来限制类表中元素的数量）</li>
+</ol>
+<div class="highlight" id="id-38"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ITRIM key start end</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="9">
+<li>向列表中插入元素（在列表中从左到右查找值为pivot的元素，根据第二个参数是BEFORE还是AFTER决定将value插入到该元素前面还是后面）</li>
+</ol>
+<div class="highlight" id="id-39"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LINSERT key BEFORE|AFTER pivot value</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="10">
+<li>将元素从一个列表转到另一个列表（顾名思义先从src执行RPOP一个元素，LPUSH这个元素到dest中，整个过程是原子的，当src和dest相同时，会将队尾元素移动到队首）</li>
+</ol>
+<div class="highlight" id="id-40"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RPOPLPUSH src dest</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="集合类型set">集合类型（set）</h2>
+<p>集合中，每个元素都是不同的，而且没有顺序，一个集合类型的键值可以存储2的32次方-1个字符串，集合类型常用操作是向集合中加入或删除元素、判断某个元素是否存在等。集合使用值为空的hashtable实现，这些操作的时间复杂度都是O(1)，最方便的是多个集合之间还可以进行并集、交集、差集运算。</p>
+<h3 id="常用命令-3">常用命令</h3>
+<ol>
+<li>增加集合元素（向set中增加一个元素，如果元素不存在则创建，如果元素存在就忽略，返回成功加入元素的数量）</li>
+</ol>
+<div class="highlight" id="id-41"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SADD key member [member ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>删除集合元素</li>
+</ol>
+<div class="highlight" id="id-42"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SREM key member [member ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>获得集合中所有元素</li>
+</ol>
+<div class="highlight" id="id-43"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SMEMBERS key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>判断元素是否在集合中（时间复杂度O(1)，存在返回1，不存在返回0）</li>
+</ol>
+<div class="highlight" id="id-44"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SISMEMBER key member</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>集合运算（支持同时传入多个键）</li>
+</ol>
+<div class="highlight" id="id-45"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SDIFF key [key ...] //执行差集运算 A-B表示所有属于A且不属于B的元素构成的集合 {1,2,3} - {2,3,4} = {1}
+</span></span><span class="line"><span class="cl">SDIFFSTORE dest key [key ...] //执行差集运算，但将结果存储到dest中
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SINTER key [key ...] //执行交集运算 A∩B表示属于A且属于B的元素构成的集合 {1,2,3} ∩ {2,3,4} = {2,3}
+</span></span><span class="line"><span class="cl">SINTERSTORE dest [key ...] //执行交集运算，但将结果存储到dest中
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SUNION key [key ...] //执行并集运算 A∪表示所有属于A或属于B构成元素的集合 {1,2,3} ∪ {2,3,4} = {1,2,3,4}
+</span></span><span class="line"><span class="cl">SUNIONSTORE dest [key ...] //执行并集运算，但将结果存储到dest中</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>获得集合中元素的个数</li>
+</ol>
+<div class="highlight" id="id-46"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SCARD key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>随机获得集合中的元素（可以传递参数count获得多个元素，count为正数时，会最多获得count个不重复的元素，当count值大于集合中的元素个数，则返回元素中全部元素。count为负数时，会从集合中获得|count|个元素，元素可能相同。首先会从桶中随机选择一个非空桶，再从桶中所有元素随机选择一个元素，当桶中元素数量越少时，被选中的可能性越大）</li>
+</ol>
+<div class="highlight" id="id-47"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SRANDMEMBER key [count]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>从集合中弹出一个元素（由于集合是无序的，所以SPOP会从集合中选择一个元素弹出）</li>
+</ol>
+<div class="highlight" id="id-48"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SPOP key</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="有序集合类型sorted-set">有序集合类型（sorted set）</h2>
+<p>在集合的基础上，有序集合为集合中的每个元素都关联了一个分数，使得我们不仅可以完成插入，删除，和判断元素是否存在等操作，还能够获得分数最高（最低）的前N个元素、获得指定范围内的元素等与分数有关的操作，虽然集合中每个元素都是不同的，但是分数可以相同。有序集合类型是使用hash表和跳跃表实现的，所以即使读取中间部分的数据也很快。有序集合中可以更改分数调整元素的位置。有序集合是五种数据结构类型中最高级的类型。</p>
+<h3 id="常用命令-4">常用命令</h3>
+<ol>
+<li>增加元素（score对应元素的分数，如果元素已存在，会使用新的分数替换原有分数，分数不仅可以是整数，还可以是双精度浮点数，+inf/-inf表示正无穷和负无穷）</li>
+</ol>
+<div class="highlight" id="id-49"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZADD key score member [score member]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>获得元素分数</li>
+</ol>
+<div class="highlight" id="id-50"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZSCORE key member</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>获得排名在某个范围的元素列表（返回索引从start到stop之间的所有元素，包含两端元素，索引从0开始，负数-1代表最后一个元素，如果同时获得元素的分数的话，可以加上WITHSCORES，ZRANGE事件复杂度是O(log(n)+m)，n为有序集合基数，m为返回的元素的个数。如果两个元素分数相同，redis会按照ASCII字典顺序进行排列，如果中文，会使用UTF-8编码顺序排列）</li>
+</ol>
+<div class="highlight" id="id-51"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZRANGE key start stop [WITHSCORES]	//按照元素分数，从小到大顺序
+</span></span><span class="line"><span class="cl">ZREVRANGE key start stop [WITHSCORES]	//按照元素分数，从大到小顺序</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>获得指定分数范围的元素（返回分数在min到max之间的元素，如果希望分数范围不包括端点值，在分数前加上&quot;(&ldquo;符号，min和max还支持无穷大+inf/-inf表示正无穷和负无穷。获得元素列表基础上向后偏移offset个元素，并且只获取前count个元素。）</li>
+</ol>
+<div class="highlight" id="id-52"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]
+</span></span><span class="line"><span class="cl">ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>增加某个元素的分数（返回是更改后的分数）</li>
+</ol>
+<div class="highlight" id="id-53"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZINCRBY key increment menber</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>获得集合中元素数量</li>
+</ol>
+<div class="highlight" id="id-54"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZCARD key</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>获得指定分数范围内的元素个数（min和max的特性与ZRANGEBYSCORE一样）</li>
+</ol>
+<div class="highlight" id="id-55"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZCOUNT key min max</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>删除一个或多个元素（成功删除的元素个数）</li>
+</ol>
+<div class="highlight" id="id-56"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZREM key member [member ...]</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="9">
+<li>按照排名范围删除元素（元素分数从小到大）</li>
+</ol>
+<div class="highlight" id="id-57"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZREMRANGEBYRANK key start stop</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="10">
+<li>按照分数范围删除元素（min和max的特性与ZRANGEBYSCORE一样，返回删除元素的数量）</li>
+</ol>
+<div class="highlight" id="id-58"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZREMRANGEBYSCORE key min max</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="11">
+<li>获得元素的排名</li>
+</ol>
+<div class="highlight" id="id-59"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZRANK key member		//元素分数从小到大的顺序
+</span></span><span class="line"><span class="cl">ZREVRANK key member		//元素分数从大到小的顺序</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="12">
+<li>计算有序集合的交集/并集（计算多个有序集合的交集并将结果存在dest键中，返回dest键中的元素个数。dest中的元素个数是由AGGREGATE参数决定的，当为SUM时，dest键中元素的分数是每个集合中该元素分数的和，当为MIN时，dest键中元素分数是每个集合中该元素的最小值，当为MAX时，dest键中元素分数是每个集合中该元素的最大值。还能通过WEIGHTS参数设置每个集合的权重，每个集合在参与计算时元素的分数会被乘上该权重。）</li>
+</ol>
+<div class="highlight" id="id-60"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZINTERSTORE dest numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX] //交集
+</span></span><span class="line"><span class="cl">ZUNIONSTORE dest numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX] //并集</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-01-15 02:14:52">更新于 2024-01-15&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-title="redis基础知识" data-hashtags="redis"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-hashtag="redis"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fa-brands fa-get-pocket fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-title="redis基础知识"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://blog.codepeak.cn/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-title="redis基础知识"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/redis/' class="post-tag">redis</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/%E4%BF%AE%E6%94%B9typora%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%AD%97%E4%BD%93/" class="post-nav-item" rel="prev" title="修改Typora编辑器的字体"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>修改Typora编辑器的字体</a></div>
+</div>
+<div class="post-reward">
+    <div class="comment"></div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward">赞赏</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg" data-title="WindSun 支付宝" data-alt="WindSun 支付宝" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E8%AF%81%E4%BB%B6%E7%85%A7/%E5%BE%AE%E4%BF%A1.jpg" data-title="WindSun 微信" data-alt="WindSun 微信" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const i of ['style', 'data-title','data-alt','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div><div id="comments"><div id="gitalk" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk" rel="external nofollow noopener noreferrer">Gitalk</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.118.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18-lts.5"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="run-times ms-1">网站运行中……</span></span></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='总访客数'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='总访问量'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div><div class="footer-line beian"><span class="gov">陕ICP备</span><span class="icp footer-divider">2021003707</span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div><div class="fixed-button view-comments d-none" role="button" aria-label="查看评论"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><a href="https://github.com/137782866" title="在 GitHub 上查看"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--bg-progress: #000000;--bg-progress-dark: #ffffff;"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/lib/pace/themes/blue/pace-theme-minimal.css"><script src="/lib/gitalk/gitalk.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":true,"expired":false,"gitalk":{"admin":["137782866"],"clientID":"ff451c5433f373b505f4","clientSecret":"1c33625df9a0b89c9db9d4a24cc26e6354fbd7a1","id":"2024-01-15T02:14:52+08:00","owner":"137782866","repo":"MyGitalk","title":"redis基础知识"}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"\u003cfont face=\"华文隶书\"\u003eWindSun's Blog\u003c/font\u003e","typeit-header-title-mobile":"\u003cfont face=\"华文隶书\"\u003eWindSun's Blog\u003c/font\u003e"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"siteTime":"2023-01-01T12:00:00+08:00","typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
