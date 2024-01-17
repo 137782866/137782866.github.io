@@ -10,7 +10,7 @@
 <meta name="description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对" /><meta name="keywords" content='redis' /><meta itemprop="name" content="redis基础知识">
 <meta itemprop="description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对"><meta itemprop="datePublished" content="2024-01-15T02:14:52+08:00" />
 <meta itemprop="dateModified" content="2024-01-15T02:14:52+08:00" />
-<meta itemprop="wordCount" content="5247"><meta itemprop="image" content="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/WindSun.png"/>
+<meta itemprop="wordCount" content="7952"><meta itemprop="image" content="https://imagebed-1300052891.cos.ap-shanghai.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/WindSun.png"/>
 <meta itemprop="keywords" content="redis," /><meta property="og:title" content="redis基础知识" />
 <meta property="og:description" content="redis键操作的命令 redis是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的key-value键值对存储数据库。其键对" />
 <meta property="og:type" content="article" />
@@ -34,7 +34,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/blog.codepeak.cn\/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/"
-    },"genre": "posts","keywords": "redis","wordcount":  5247 ,
+    },"genre": "posts","keywords": "redis","wordcount":  7952 ,
     "url": "http:\/\/blog.codepeak.cn\/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/","datePublished": "2024-01-15T02:14:52+08:00","dateModified": "2024-01-15T02:14:52+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -274,7 +274,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       WindSun</span></span>
           <span class="post-category">收录于 <a href="/categories/redis/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> redis</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2024-01-15 02:14:52"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="更新于 2024-01-15 02:14:52"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="5247 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 5300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2024-01-15 02:14:52"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="更新于 2024-01-15 02:14:52"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2024-01-15">2024-01-15</time></span>&nbsp;<span title="7952 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 8000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 16 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -307,6 +307,18 @@
     <li><a href="#有序集合类型sorted-set">有序集合类型（sorted set）</a>
       <ul>
         <li><a href="#常用命令-4">常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#redis事务">Redis事务</a></li>
+    <li><a href="#watch命令">Watch命令</a></li>
+    <li><a href="#过期时间">过期时间</a></li>
+    <li><a href="#缓存策略">缓存策略</a></li>
+    <li><a href="#排序">排序</a>
+      <ul>
+        <li><a href="#by参数">BY参数</a></li>
+        <li><a href="#get参数">GET参数</a></li>
+        <li><a href="#store参数">STORE参数</a></li>
+        <li><a href="#性能优化">性能优化</a></li>
       </ul>
     </li>
   </ul>
@@ -1006,7 +1018,249 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZINTERSTORE dest numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX] //交集
 </span></span><span class="line"><span class="cl">ZUNIONSTORE dest numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX] //并集</span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="redis事务">Redis事务</h2>
+<p>事务是一组命令的集合，也是Redis最小的执行单位，一个事务中的命令要么都执行，要么都不执行。</p>
+<p>事务的首先由 MULTI 命令开始，告诉Redis后面的命令是一个事务，然后使用 EXEC 命令告诉Redis将等待执行的事务队列中的所有命令按照发送顺序依次执行，返回值就是这些命令的返回值组成的列表，顺序和命令顺序相同。除此之外，Redis保证了一个事务内的命令依次执行而不被其他命令插入。</p>
+<p>如果在命令 EXEC 之前客户端断线了，会清空事务队列，事务中的所有命令都不执行。但一旦发送了 EXEC 命令，所有的命令都会被执行，即使短线也没关系。事务也是在 EXEC 之后执行的所有命令的。</p>
+<p>事务的错误处理：</p>
+<ol>
+<li>语法错误。如果事务的多个命令中某个命令语法出错，只要有一个命令有语法错误，执行 EXEC 命令后 Redis 就会直接返回错误，连语法正确的命令也不会执行。</li>
+<li>运行错误。语法都是正确的，但是运行时才出现的错误，比如使用散列类型的命令操作集合类型的键，因为语法检查阶段无法发现，会被 Redis 接受并执行。即使一条命令运行时出现了错误，事务中的其他命令依然会继续执行。开发者必须在开发层面上规划好键名规范使用。</li>
+</ol>
+<p>Redis 事务没有关系数据库中的回滚（RollBack）功能。正因为如此 Redis 在事务上可以保持简洁和快速。</p>
+<h2 id="watch命令">Watch命令</h2>
+<p>watch命令可以监控一个或多个键，一旦有一个键被修改，之后的事务就不会执行。watch 不能保证其他客户端不修改这一值。执行 EXEC 命令后，会取消对所有键的监控。如果没执行 EXEC 但想取消对键的监控，可以使用 UNWATCH 命令来取消监控，保证其他事务的执行不受影响。</p>
+<p>比如：</p>
+<div class="highlight" id="id-61"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SET key 1
+</span></span><span class="line"><span class="cl">WATCH key
+</span></span><span class="line"><span class="cl">SET key 2
+</span></span><span class="line"><span class="cl">MULTI
+</span></span><span class="line"><span class="cl">set key 3
+</span></span><span class="line"><span class="cl">EXEC</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面在WATCH前，执行修改了key值，所以最后事务中的 set key 3 没有执行，EXEC 后返回空结果。</p>
+<h2 id="过期时间">过期时间</h2>
+<p>使用 EXPIRE 命令设置一个键的过期时间，到时间后会自动删除它。返回1时，表示设置成功。如果再次使用 EXPIRE 命令会重新设置键的过期时间。对其键值进行操作的命令均不会影响键的过期时间（INCT、LPUSH、HSET、ZREM）。</p>
+<div class="highlight" id="id-62"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EXPIRE key seconds</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 seconds 表示键的过期时间，单位是秒，表示在多少秒后自动删除该键。</p>
+<p>获得一个键的剩余被删除时间：</p>
+<div class="highlight" id="id-63"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TTL key</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当 key 不存在时，TTL 命令会返回 -2。当没有为键设置过期时间时，TTL 返回值为 -1.</p>
+<p>取消键的到期时间：</p>
+<div class="highlight" id="id-64"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PERSIST foo</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除此之外，使用 SET 或 GETSET 命令为键赋值时也会同时清除键的到期时间。</p>
+<p>如果想要更精准的过期时间，可以使用 PEXPIRE 命令，以毫秒为单位。</p>
+<p>注意：如果使用 WATCH 命令监测了一个拥有过期时间的键，该键时间到期自动删除，并不会被 WATCH 命令认为该键被改变。</p>
+<p>EXPIREAT 和 PEXPIREAT 使用 UNIX 时间作为第二个参数表示键的过期时刻。</p>
+<div class="highlight" id="id-65"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EXPIREAT key unixtimestampsec
+</span></span><span class="line"><span class="cl">PEXPIREAT key unixtimestampmsec</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="缓存策略">缓存策略</h2>
+<p>可以让 Redis按照一定的规则淘汰不需要的缓存键，具体方法是修改配置文件的 maxmemory 参数，限制 Redis 最大可用内存大小，单位是字节，当超过这个限制时，Redis会依据 maxmemory-policy 参数指定的策略来删除不需要的键直到 Redis 占用的内存小于指定内存。</p>
+<p>maxmemory-policy 支持的规则如下，其中 LRU 即最近最少使用的键在未来一段时间内不会被用到，当需要空间时，这些键是可以被删除的。</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volatile-lru</td>
+<td>使用LRU算法删除一个键（只对设置了过期时间的键）</td>
+</tr>
+<tr>
+<td>allkeys-lru</td>
+<td>使用LRU算法删除一个键</td>
+</tr>
+<tr>
+<td>volatile-random</td>
+<td>随机删除一个键（只对设置了过期时间的键）</td>
+</tr>
+<tr>
+<td>allkeys-random</td>
+<td>随机删除一个键</td>
+</tr>
+<tr>
+<td>volatile-ttl</td>
+<td>删除过期时间最近的一个键</td>
+</tr>
+<tr>
+<td>noeviction</td>
+<td>不删除键，只返回错误</td>
+</tr>
+</tbody>
+</table>
+<p>当设置为 allkeys-lru 时，一旦 Redis 占用的内存超过了限制值，就会不断的删除内存中最近最少使用的键，知道内存小于限制值。</p>
+<h2 id="排序">排序</h2>
+<p>Redis自带的有序集合常见的使用场景是大数据排序，如游戏的玩家排行榜等。很少会获得有序集合中的全部数据。同样 Redis 任务开发者在做完交集、并集后不需要直接获得全部结果，而是将结果存到新的键中以便后续处理，这解释为什么有序集合只有 ZINTERSTORE 和 ZUNIONSTORE 命令，而没有 ZINTER 和 ZUNION 命令。</p>
+<p>Redis 提供了 SORT 命令对键的值进行排序。可以使用的类型包括：列表类型、集合类型、有序集合类型的键。可以完成与关系数据库中的连接查询相似的任务。</p>
+<div class="highlight" id="id-66"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT key</span></span></code></pre></td></tr></table>
+</div>
+</div><p>普通排序是使用双精度浮点数进行排序的，如果要按字段顺序排列非数字元素，需要加 ALPLA 参数：</p>
+<div class="highlight" id="id-67"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT key ALPHA</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认从小到大排序，更改为从大到小排序：</p>
+<div class="highlight" id="id-68"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT key DESC</span></span></code></pre></td></tr></table>
+</div>
+</div><p>LIMIT 是指定范围结果参数：</p>
+<div class="highlight" id="id-69"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT key LIMIT m n</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="by参数">BY参数</h3>
+<p>很多情况下，我们想根据键值对应的某个属性进行排序，比如散列类型中的time属性，可以使用 BY 关键字。</p>
+<div class="highlight" id="id-70"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BY 参考键</span></span></code></pre></td></tr></table>
+</div>
+</div><p>参考键可以是字符串类型键或散列类型的的某个字段（键名-&gt;字段名）。如果提供了 BY 参数，SORT 命令将不再依据元素本身的值进行排序，而是对每个元素使用元素的<strong>值替换参考键</strong>中的第一个<code>*</code>并获得其值，然后依据该值对元素进行排序。</p>
+<p>比如:</p>
+<div class="highlight" id="id-71"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT tag:ruby:posts BY post:*-&gt;time</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将会读取 post:2、post:6、post:12、post:26 几个散列键中的 time 字段的值并依次决定 tag:ruby:posts 键中各个文章ID的顺序。</p>
+<p>处理散列类型以外，参考键还可以是字符串类型，比如：</p>
+<div class="highlight" id="id-72"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LPUSH sortbylist 2 1 3
+</span></span><span class="line"><span class="cl">SET itemscore:1 50
+</span></span><span class="line"><span class="cl">SET itemscore:2 100
+</span></span><span class="line"><span class="cl">SET itemscore:3 -10
+</span></span><span class="line"><span class="cl">SORT sortbylist BY itemscore:* DESC
+</span></span><span class="line"><span class="cl">&#34;2&#34;
+</span></span><span class="line"><span class="cl">&#34;1&#34;
+</span></span><span class="line"><span class="cl">&#34;3&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 BY 但是参考键名不包含 <code>*</code> 时，SORT 命令将不会执行排序操作，因为 Redis 认为无意义。但在不需要排序但需要借助 SORT 命令获得与元素相关联的数据时，常量键名很有用。</p>
+<p>如果几个元素的参考键值相同，则 SORT 命令会比较元素本身的值来决定元素的顺序。</p>
+<p>当某个元素的参考键不存在时，会默认参考键的值为 0，会大于一些参考键是负数值。</p>
+<p><code>*</code> 只能在 -&gt; 符号的前面才会认为是参考键，如果在后面会被当成字段名本身而不会作为占位符被元素的值替换。</p>
+<h3 id="get参数">GET参数</h3>
+<p>GET参数不影响排序，作用是使 SORT 命令返回的结果不再是元素自身的值，而是 GET 参数中指定的键值。</p>
+<p>GET参数的规则和 BY 参数一样，GET 参数也支持字符串类型和散列类型的键，并使用 <code>*</code> 作为占位符。</p>
+<p>例如：要实现排序后直接返回ID对应的文章标题：</p>
+<div class="highlight" id="id-73"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT tag:ruby:posts BY post:*-&gt;time DESC GET post:*-&gt;title</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一个 SORT 命令中可以有多个 GET 参数（但 BY 参数只能有一个）。</p>
+<div class="highlight" id="id-74"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT tag:ruby:posts BY post:*-&gt;time DESC GET post:*-&gt;title GET post:*-&gt;time</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果还需要返回文章ID，可以使用 GET #，用来返回元素本身。</p>
+<div class="highlight" id="id-75"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT tag:ruby:posts BY post:*-&gt;time DESC GET post:*-&gt;title GET post:*-&gt;time GET #</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="store参数">STORE参数</h3>
+<p>默认情况下，SORT 直接返回排序结果，如果希望保存排序结果，可以使用 STORE 参数。</p>
+<p>例如：将结果保存在 sort.result 键中：</p>
+<div class="highlight" id="id-76"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SORT tag:ruby:posts BY post:*-&gt;time DESC GET post:*-&gt;title GET post:*-&gt;time GET # sort.result</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存后的键的类型为列表类型，如果键已存在会覆盖它。加上 SOTRE 参数后 SORT 返回值为结果的个数。</p>
+<p>STORE 参数常用来结合 EXPIRE 命令缓存排序结果。</p>
+<h3 id="性能优化">性能优化</h3>
+<p>SORT 命令比较复杂，使用不好很容易性能瓶颈。时间复杂度是O(n+mlog(m))，n表示排序的列表的元素个数，m表示返回的个数。</p>
+<p>当n较大时，性能较低，而且在排序前会建立一个长度为 n 的容器来存储待排序元素，虽然是一个临时的过程，但同时进行较多的大数据量排序将会严重影响性能。</p>
+<p>注意以下几点：</p>
+<ol>
+<li>
+<p>尽可能减少待排序键中元素的数量（使N尽可能小）。</p>
+</li>
+<li>
+<p>使用LIMIT参数只获取需要的数据（使M尽可能小）。</p>
+</li>
+<li>
+<p>如果排序的数据量较大，可以使用 STORE 参数将结果缓存。</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
