@@ -1,0 +1,1071 @@
+# *********************************************************** hugo globle**************************************************************
+# 主机名（和路径）, 为根目录
+baseURL = "http://blog.codepeak.cn"
+# 网站名
+title = "WindSun's Blog"
+# 默认主题列表
+theme = ["FixIt"]
+# 默认文章内容语言 ["en", "zh-cn", "fr", "pl", ...]
+defaultContentLanguage = "zh-cn"
+# 网站语言, 仅在这里 CN 大写 ["en", "zh-CN", "fr", "pl", ...]
+languageCode = "zh-CN"
+# 语言名 ["English", "简体中文", "Français", "Polski", ...]
+languageName = "简体中文"
+# 是否包括中日韩文字 Chinese/Japanese/Korean
+hasCJKLanguage = true
+# 默认每页显示文章数量
+paginate = 12
+# 版权说明, 仅用于搜索引擎模式
+copyright = "个人博客版权说明"
+# 是否使用 robots.txt
+enableRobotsTXT = true
+# 是否使用 git commit log（需要使用仓库）
+enableGitInfo = false
+# 是否使用emoji
+enableEmoji = false
+
+# *********************************************************** menu *****************************************************************
+[menu]
+  [[menu.main]]
+    identifier = "archives"
+    #  父级菜单项的标识符 (identifier)
+    parent = ""
+    # 你可以在名称（允许 HTML 格式）之前添加其他信息，例如图标
+    pre = ""
+    # 你可以在名称（允许 HTML 格式）之后添加其他信息，例如图标
+    post = ""
+    name = "归档"
+    url = "/archives/"
+    # 当你将鼠标悬停在此菜单链接上时，将显示的标题
+    title = ""
+    weight = 1
+    #  向菜单项添加用户定义的内容
+    [menu.main.params]
+      # 添加 CSS 类到菜单项
+      class = ""
+      # 是否为草稿菜单，类似草稿页面
+      draft = false
+      # 添加 fontawesome 图标到菜单项
+      icon = "fa-solid fa-archive"
+      # 设置菜单项类型，可选值：["mobile", "desktop"]
+      type = ""
+
+  [[menu.main]]
+    identifier = "categories"
+    parent = ""
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+    weight = 2
+    [menu.main.params]
+      icon = "fa-solid fa-folder-tree"
+  [[menu.main]]
+    identifier = "tags"
+    parent = ""
+    pre = ""
+    post = ""
+    name = "标签"
+    url = "/tags/"
+    title = ""
+    weight = 3
+    [menu.main.params]
+      icon = "fa-solid fa-tags"
+  [[menu.main]]
+    identifier = "collections"
+    parent = ""
+    pre = ""
+    post = ""
+    name = "合集"
+    url = "/collections/"
+    title = ""
+    weight = 4
+    [menu.main.params]
+      icon = "fa-solid fa-layer-group"
+  #******************** 笔记 **********************/
+  [[menu.main]]
+    identifier = "notes"
+    parent = ""
+    pre = ""
+    post = ""
+    name = "笔记"
+    url = "/notes/"
+    title = "dfsdafasfasfsfsafds"
+    weight = 5
+    [menu.main.params]
+      icon = "fa-solid fa-book"
+  [[menu.main]]
+    identifier = "notes-sjms"
+    parent = "notes"
+    pre = ""
+    post = ""
+    name = "设计模式"
+    url = "/notes/设计模式"
+    title = ""
+    weight = 0
+    [menu.main.params]
+      icon = "fa-solid fa-book"
+  #******************** 生活 **********************/
+  [[menu.main]]
+    identifier = "lifes"
+    parent = ""
+    pre = ""
+    post = ""
+    name = "生活"
+    url = "/lifes/"
+    title = ""
+    weight = 7
+    [menu.main.params]
+      icon = "fa-solid fa-signature"
+  [[menu.main]]
+    identifier = "friends"
+    pre = ""
+    post = ""
+    name = "友链"
+    url = "/friends/"
+    title = ""
+    weight = 8
+    [menu.main.params]
+      icon = "fa-solid fa-users-viewfinder"
+  [[menu.main]]
+    identifier = "abouts"
+    pre = ""
+    post = ""
+    name = "关于"
+    url = "/abouts/"
+    title = ""
+    weight = 9
+    [menu.main.params]
+      icon = "fa-solid fa-id-card"
+# *********************************************************** markup *****************************************************************
+[markup]
+  # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    # https://github.com/hugo-fixit/FixIt/issues/43
+    codeFences = true
+    lineNos = true
+    lineNumbersInTable = true
+    # false 是必要的设置 (https://github.com/hugo-fixit/FixIt/issues/43)
+    noClasses = false
+    # 必要的配置
+    guessSyntax = true
+  # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.renderer]
+      # 是否在文档中直接使用 HTML 标签
+      unsafe = true
+  # 目录设置
+  [markup.tableOfContents]
+    ordered = false
+    startLevel = 2
+    endLevel = 6
+
+# *********************************************************** params *****************************************************************
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  collection = "collections"
+
+[params]
+  # FixIt 主题版本
+  version = "0.3.8" # e.g. "0.2.X", "0.2.15", "v0.2.15" etc.
+  # 网站描述 
+  description = "一名编程热爱者的个人博客"
+  # 网站关键字
+  keywords = ["编程", "WindSun"]
+  # 网站默认主题 ["light", "dark", "auto"]
+  defaultTheme = "auto"
+  # 只有在启用 GitInfo 为 true 时，才会公开 git repo 网址
+  gitRepo = ""
+  # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI
+  # ["sha256", "sha384", "sha512", "md5"]
+  fingerprint = ""
+  # 日期格式
+  dateFormat = "2006-01-02"
+  # 网站图片，用于 Open Graph 和 Twitter Cards
+  images = ["/images/logo.png"]
+  # 开启 PWA 支持
+  enablePWA = false
+  # 是否自动显示外链图标
+  externalIcon = false
+  # 默认情况下，FixIt 只会在主页的 HTML 头中注入主题元标记
+  # 您可以将其关闭，但如果您不这样做，我们将不胜感激，因为这是观察 FixIt 受欢迎程度上升的好方法
+  disableThemeInject = false
+
+  # 作者配置，每一篇文章前面前面显示的作者
+  [params.author]
+    name = "WindSun"
+    email = "137782866@qq.com"
+    link = ""
+    avatar = "/images/logo.png"
+
+  # 公共 Git 仓库信息，仅在 enableGitInfo 设为 true 时有效
+  [params.gitInfo]
+    # 公开 Git 仓库的 URL
+    repo = "https://github.com/137782866/137782866.github.io"
+    # 仓库分支
+    branch = "main"
+    # 相对于仓库根目录的内容目录路径
+    dir = "content"
+    # 用于报告文章问题的 issue 模板，可用模板参数：{title}, {URL}, {sourceURL}
+    issueTpl = "title=[BUG]%20{title}&body=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|URL|{URL}|%0A|Filename|{sourceURL}|"
+  [params.app]
+    # 当添加到 iOS 主屏幕或者 Android 启动器时的标题，覆盖默认标题。
+    name = ""
+    # 短名
+    shortName = ""
+    # 否隐藏网站图标资源链接
+    noFavicon = false
+    # 更现代的 SVG 网站图标，可替代旧的 .png 和 .ico 文件
+    svgFavicon = "/images/logo.png"
+    # Safari 图标颜色
+    iconColor = "#5bbad5"
+    # Windows v8-10 磁贴颜色
+    tileColor = "#da532c"
+    # Android 浏览器主题色
+    [params.app.themeColor]
+      light = "#f8f8f8"
+      dark = "#252627"
+
+
+  [params.search]
+    # 是否启用搜索
+    enable = true
+    # 搜索引擎的类型，可选值：algolia、fuse，默认：fuse
+    type = "fuse"
+    # 文章内容最长索引长度
+    contentLength = 4000
+    # 搜索框的占位提示语
+    placeholder = "输入关键字搜索..."
+    # 最大结果数目
+    maxResultLength = 10
+    # 结果内容片段长度
+    snippetLength = 30
+    # 索结果中高亮部分的 HTML 标签
+    highlightTag = "em"
+    # 是否在搜索索引中使用基于 baseURL 的绝对路径
+    absoluteURL = false
+    # Algolia 搜索配置
+    [params.search.algolia]
+      # Algolia 索引
+      index = ""
+      # Algolia App ID
+      appID = ""
+      # Algolia Search Key
+      searchKey = ""
+    # Fuse 搜索配置
+    [params.search.fuse]
+      # 是否区分大小写
+      isCaseSensitive = false
+      # 最小匹配字符长度，默认：2
+      minMatchCharLength = 2
+      # 是否查找所有匹配项
+      findAllMatches = false
+      # 位置，默认：0
+      location = 0
+      # 阈值，默认：0.3
+      threshold = 0.3
+      # 距离，默认：100
+      distance = 100
+      # 是否忽略位置
+      ignoreLocation = false
+      # 是否使用扩展搜索
+      useExtendedSearch = false
+      # 是否忽略字段规范化
+      ignoreFieldNorm = false
+  # 页面头部导航栏配置
+  [params.header]
+    # 桌面端导航栏模式，可选值：sticky、normal、auto, 默认：sticky
+    desktopMode = "sticky"
+    # 移动端导航栏模式，可选值：sticky、normal、auto, 默认：auto
+    mobileMode = "auto"
+    # 页面头部左上角导航栏标题配置
+    [params.header.title]
+      # LOGO 的 URL
+      logo = "/images/logo.png"
+      # 标题名称
+      name = "WindSun"
+      # 在名称之前添加其他信息
+      pre = ""
+      # 在名称之后添加其他信息
+      post = ""
+      # 是否为标题显示打字机动画
+      typeit = false
+    [params.header.subtitle]
+      # 副标题名称
+      name = "个人博客"
+      # 是否为标题显示打字机动画
+      typeit = true
+  # 面包屑导航配置（文章上面显示路径）
+  [params.breadcrumb]
+    # 是否启用面包屑导航
+    enable = true
+    # 是否固定面包屑导航
+    sticky = true
+    # 是否显示主页链接
+    showHome = true
+  # 页面底部信息配置
+  [params.footer]
+    # 是否启用
+    enable = true
+    # 是否显示版权信息
+    copyright = true
+    # 是否显示作者
+    author = true
+    # 网站创立年份
+    since = "2024"
+    # 是否显示网站内容总字数
+    wordCount = true
+    # 公网安备信息，仅在中国使用（支持 HTML 格式）
+    gov = "陕ICP备"
+    # ICP 备案信息，仅在中国使用（支持 HTML 格式）
+    icp = "2021003707号"
+    # 许可协议信息（支持 HTML 格式）
+    license = '<a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+    # 网站创立时间
+    [params.footer.siteTime]
+      enable = true
+      animate = true
+      icon = "fa-solid fa-heartbeat"
+      pre = "博客已运行"
+      value = "2023-01-01T12:00:00+08:00" # e.g. "2021-12-18T16:15:22+08:00"
+    # 页面底部行排序，可选值：["first", 0, 1, 2, 3, 4, 5, "last"]
+    [params.footer.order]
+      # Hugo 和主题信息
+      powered = 0
+      # 版权信息
+      copyright = 1
+      # 统计信息
+      statistics = 2
+      # 备案信息
+      beian = 3
+  # 归档页面配置
+  [params.archives]
+    # 归档页面每页显示文章数量，默认：20
+    paginate = 20
+    # 日期格式（月和日）
+    dateFormat = "01-02"
+  # 所有文章页面配置（现在是归档界面）
+  [params.section]
+    # 归档页面每页显示文章数量
+    paginate = 20
+    # 日期格式（月和日）
+    dateFormat = "01-02"
+    # RSS 文章数目
+    rss = 10
+    # 最近更新文章设置
+    [params.section.recentlyUpdated]
+      enable = false
+      rss = false
+      days = 30
+      maxCount = 10
+  # List（目录或标签）页面配置
+  [params.list]
+    # list 页面每页显示文章数量
+    paginate = 20
+    # 日期格式（月和日）
+    dateFormat = "01-02"
+    # RSS 文章数目
+    rss = 10
+  # 标签云配置
+  [params.tagcloud]
+    # 是否启用标签云
+    enable = true
+    # 最小字体大小，单位：px
+    min = 18
+    # 最大字体大小，单位：px
+    max = 54
+    # 每个标签的最大文章数
+    peakCount = 50
+    # 标签排序方式，可选值：["name", "count"]
+    orderby = "name"
+
+  # 主页个人信息配置
+  [params.home]
+    #  RSS 文章数目
+    rss = 10
+    # 主页个人信息
+    [params.home.profile]
+      enable = true
+      # Gravatar 邮箱，用于优先在主页显示的头像
+      gravatarEmail = "137782866@qq.com"
+      # 主页显示头像的 URL
+      avatarURL = "/images/avatar.png"
+      # 头像菜单链接的 identifier
+      avatarMenu = ""
+      # 主页显示的网站标题（支持 HTML 格式）
+      title = "博观而约取，厚积而薄发！"
+      # 主页显示的网站副标题
+      subtitle = "转载、引用的内容要注明出处，尊重他人知识产权！"
+      # 是否为副标题显示打字机动画
+      typeit = true
+      # 是否显示社交账号
+      social = true
+      #  免责声明（支持 HTML 格式）
+      disclaimer = ""
+      # GitHub Chart | https://ghchart.rshah.org/137782866
+      ghchart="https://ghchart.rshah.org/137782866"
+      # GitHub Chart Alt | WindSun's Github Chart
+      ghchartAlt="WindSun's Github Chart"    
+    # 主页文章列表
+    [params.home.posts]
+      enable = true
+      # 主页每页显示文章数量
+      paginate = 6
+  # 社交链接配置
+  [params.social]
+    GitHub = "137782866"
+    Email = "137782866@qq.com"
+    CSDN = ""
+    Linkedin = ""
+    Twitter = ""
+    Instagram = ""
+    Facebook = ""
+    Telegram = ""
+    Medium = ""
+    Gitlab = ""
+    Youtubelegacy = ""
+    Youtubecustom = ""
+    Youtubechannel = ""
+    Tumblr = ""
+    Quora = ""
+    Keybase = ""
+    Pinterest = ""
+    Reddit = ""
+    Codepen = ""
+    FreeCodeCamp = ""
+    Bitbucket = ""
+    Stackoverflow = ""
+    Weibo = ""
+    Odnoklassniki = ""
+    VK = ""
+    Flickr = ""
+    Xing = ""
+    Snapchat = ""
+    Soundcloud = ""
+    Spotify = ""
+    Bandcamp = ""
+    Paypal = ""
+    Fivehundredpx = ""
+    Mix = ""
+    Goodreads = ""
+    Lastfm = ""
+    Foursquare = ""
+    Hackernews = ""
+    Kickstarter = ""
+    Patreon = ""
+    Steam = ""
+    Twitch = ""
+    Strava = ""
+    Skype = ""
+    Whatsapp = ""
+    Zhihu = ""
+    Douban = ""
+    Angellist = ""
+    Slidershare = ""
+    Jsfiddle = ""
+    Deviantart = ""
+    Behance = ""
+    Dribbble = ""
+    Wordpress = ""
+    Vine = ""
+    Googlescholar = ""
+    Researchgate = ""
+    Mastodon = ""
+    Thingiverse = ""
+    Devto = ""
+    Gitea = ""
+    XMPP = ""
+    Matrix = ""
+    Bilibili = ""
+    ORCID = ""
+    Liberapay = ""
+    Ko-Fi = ""
+    BuyMeaCoffee = ""
+    Linktree = ""
+    QQ = ""
+    QQGroup = "" # https://qun.qq.com/join.html
+    Diaspora = ""
+    Discord = ""
+    DiscordInvite = ""
+    Lichess = ""
+    Pleroma = ""
+    Kaggle = ""
+    MediaWiki= ""
+    Plume = ""
+    HackTheBox = ""
+    RootMe = ""
+    Feishu = ""
+    TryHackMe = ""
+    Douyin = ""
+    TikTok = ""
+    Phone = ""
+    RSS = true
+  # 打字机动画配置
+  [params.typeit]
+    # 打字速度
+    speed = 100
+    # 光标速度
+    cursorSpeed = 1000
+    # 光标字符
+    cursorChar = "|"
+    # 动画持续时间
+    duration = -1
+    # 是否循环播放
+    loop = false
+  # Mermaid 配置
+  [params.mermaid]
+    # 取值详见 https://mermaid-js.github.io/mermaid/#/Setup?id=theme
+    themes = ["neutral", "dark"]
+  # PanguJS 配置（适用于中文写作用户）
+  [params.pangu]
+    # 是否启用 PanguJS
+    enable = false
+    # 选择器
+    selector = "article"
+  # 水印配置 详细参数见 https://github.com/Lruihao/watermark#readme
+  [params.watermark]
+    enable = false
+    # 水印内容（允许 HTML 格式）
+    content = ""
+    # 水印透明度
+    opacity = 0.1
+    # 水印父节点
+    appendTo = ".wrapper>main"
+    # 单水印宽度 单位：px
+    width = 150
+    # 单水印高度 单位：px
+    height = 20
+    # 水印行间距 单位：px
+    rowSpacing = 60
+    # 水印列间距 单位：px
+    colSpacing = 30
+    # 水印旋转角度 单位：deg
+    rotate = 15
+    # 水印字体大小，单位：rem
+    fontSize = 0.85
+    # 水印字体
+    fontFamily = "inherit"
+  # 不蒜子统计
+  [params.ibruce]
+    # 是否启用不蒜子计数器
+    enable = false
+    # 是否在文章中启用不蒜子计数器
+    enablePost = false
+  # 网站验证代码 | 用于 Google/Bing/Yandex/Pinterest/Baidu/360/Sogou
+  [params.verification]
+    google = ""
+    bing = ""
+    yandex = ""
+    pinterest = ""
+    baidu = ""
+    so = ""
+    sogou = ""
+  # 网站 SEO 配置
+  [params.seo]
+    # 网站默认图片
+    image = ""
+    # 网站缩略图 URL
+    thumbnailUrl = ""
+  # 网站分析配置
+  [params.analytics]
+    # 是否启用网站分析
+    enable = true
+    # Google Analytics 配置
+    [params.analytics.google]
+      # Google Analytics ID
+      id = ""
+      # 是否匿名化 IP
+      anonymizeIP = true
+    # Fathom Analytics
+    [params.analytics.fathom]
+      # Fathom Analytics ID
+      id = ""
+      # Fathom Analytics 服务器地址
+      server = ""
+  # Cookie 许可配置
+  [params.cookieconsent]
+    enable = true
+    # 用于 Cookie 许可横幅的文本字符串
+    [params.cookieconsent.content]
+      # Cookie 许可横幅的消息
+      message = ""
+      # Cookie 许可横幅的关闭按钮文本
+      dismiss = ""
+      # Cookie 许可横幅的链接文本
+      link = ""
+  # CDN 配置
+  [params.cdn]
+    # CDN 数据文件名称，默认不启用 ["jsdelivr.yml", "unpkg.yml", ...]
+    # 位于 "themes/FixIt/assets/data/cdn/" 目录
+    # 可以在你的项目下相同路径存放你自己的数据文件："assets/data/cdn/"
+    # data = "unpkg.yml"
+  # 兼容性设置
+  [params.compatibility]
+    # 是否使用 Polyfill.io 来兼容旧式浏览器
+    polyfill = false
+    # 是否使用 object-fit-images 来兼容旧式浏览器
+    objectFit = false
+  # 在左上角或者右上角显示 GitHub 开源链接
+  [params.githubCorner]
+    enable = true
+    permalink = "https://github.com/137782866"
+    title = "在GitHub上查看"
+    position = "right" # ["left", "right"]
+  # Gravatar 设置
+  [params.gravatar]
+    # 取决于作者的电子邮件，如果未设置作者的电子邮件，将使用本地头像
+    enable = false
+    # Gravatar 主机，默认：www.gravatar.com
+    host = "www.gravatar.com" # ["cn.gravatar.com", "gravatar.loli.net", ...]
+    style = "" # ["", "mp", "identicon", "monsterid", "wavatar", "retro", "blank", "robohash"]
+
+  # 返回顶部按钮配置
+  [params.backToTop]
+    # 是否启用返回顶部按钮
+    enable = true
+    # 是否显示滚动百分比
+    scrollpercent = true
+
+  # 阅读进度条
+  [params.readingProgress]
+    enable = true
+    # 阅读进度条开始位置，可用值：["left", "right"]
+    start = "left"
+    # 阅读进度条位置，可用值：["top", "bottom"]
+    position = "top"
+    # 是否反转阅读进度条
+    reversed = false
+    # 浅色主题颜色
+    light = "#2376b7"
+    # 深色主题颜色
+    dark = "#2376b7"
+    # 阅读进度条高度
+    height = "3px"
+
+  # 页面加载期间顶部的进度条，有关详细信息：https://github.com/CodeByZach/pace
+  [params.pace]
+    enable = true
+    # 进度条颜色
+    # ["black", "blue", "green", "orange", "pink", "purple", "red", "silver", "white", "yellow"]
+    color = "blue"
+    # 进度条主题
+    # ["barber-shop", "big-counter", "bounce", "center-atom", "center-circle", "center-radar", "center-simple",
+    # "corner-indicator", "fill-left", "flash", "flat-top", "loading-bar", "mac-osx", "material", "minimal"]
+    theme = "minimal"
+  # 缓存远程图像本地, 参考: https://github.com/hugo-fixit/FixIt/pull/362
+  [params.cacheRemoteImages]
+    enable = false
+    # 用本地图像URL替换远程图像URL
+    replace = false
+  # 定义自定义文件路径，在站点目录 `layouts/partials/custom` 中创建您的自定义文件，并取消注释下面需要的文件
+  [params.customFilePath]
+    # aside = "custom/aside.html"
+    # profile = "custom/profile.html"
+    # footer = "custom/footer.html"
+  
+  # 开发者选项
+  [params.dev]
+    # 是否启用开发者选项
+    enable = false
+    # 是否启用检查功能
+    c4u = false
+    # 请勿公开展示！
+    githubToken = ""
+    # 移动端开发者工具配置
+    [params.dev.mDevtools]
+      # 是否启用移动端开发者工具
+      enable = false
+      # 移动端开发者工具类型，可选 "vConsole", "eruda"
+      type = "vConsole"
+  # 文章页面配置
+  [params.page]
+    # 是否启用帖子作者的头像
+    authorAvatar = true
+    # 是否在主页隐藏一篇文章
+    hiddenFromHomePage = false
+    # 是否在搜索结果中隐藏一篇文章
+    hiddenFromSearch = false
+    # 是否从 RSS 订阅中隐藏页面
+    hiddenFromRss = false
+    # 是否使用 twemoji
+    twemoji = false
+    # 是否使用 lightgallery
+    # 如果设置为 "force"，内容中的图片将强制显示为图库
+    lightgallery = false
+    # 是否使用 ruby 扩展语法
+    ruby = true
+    # 是否使用 fraction 扩展语法
+    fraction = true
+    # 是否使用 fontawesome 扩展语法
+    fontawesome = true
+    # 许可协议信息（支持 HTML 格式）
+    license = '<a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>'
+    # 是否在文章页面显示原始 Markdown 文档链接
+    linkToMarkdown = false
+    # 是否显示查看文章源码的链接
+    linkToSource = false
+    # 是否显示编辑文章的链接
+    linkToEdit = false
+    # 是否显示报告文章问题的链接
+    linkToReport = false
+    # 是否在 RSS 中显示全文内容
+    rssFullText = false
+    # 页面样式 ["narrow", "normal", "wide", ...]
+    pageStyle = "normal"
+    #  强制使用 Gravatar 作为作者头像
+    gravatarForce = false
+    #  开启自动书签支持
+    # 如果为 true，则在关闭页面时保存阅读进度
+    autoBookmark = true
+    # 是否使用 字数统计
+    wordCount = true
+    # 是否使用 预计阅读
+    readingTime = true
+    # 文章结束标志
+    endFlag = ""
+    # 是否开启即时页面
+    instantPage = false
+    # 是否在侧边栏显示集合列表
+    collectionList = true
+    # 是否在文章末尾显示集合导航
+    collectionNavigation = true
+
+    # 转载配置
+    [params.page.repost]
+      enable = false
+      url = ""
+    # 目录配置
+    [params.page.toc]
+      # 是否使用目录
+      enable = true
+      # 是否保持使用文章前面的静态目录
+      keepStatic = false
+      # 是否使侧边目录自动折叠展开
+      auto = true
+      # 目录位置 ["left", "right"]
+      position = "right"
+    # 在文章开头显示提示信息，提醒读者文章内容可能过时
+    [params.page.expirationReminder]
+      enable = false
+      # 如果文章最后更新于这天数之前，显示提醒
+      reminder = 90
+      # 如果文章最后更新于这天数之前，显示警告
+      warning = 180
+      # 如果文章到期是否关闭评论
+      closeComment = false
+    [params.page.heading]
+      # 是否自动大写标题
+      capitalize = false
+      # 配合 `markup.tableOfContents.ordered` 参数使用
+      [params.page.heading.number]
+        # 是否启用自动标题编号
+        enable = false
+        [params.page.heading.number.format]
+          h1 = "{title}"
+          h2 = "{h2} {title}"
+          h3 = "{h2}.{h3} {title}"
+          h4 = "{h2}.{h3}.{h4} {title}"
+          h5 = "{h2}.{h3}.{h4}.{h5} {title}"
+          h6 = "{h2}.{h3}.{h4}.{h5}.{h6} {title}"
+    # 代码配置
+    [params.page.code]
+      # 是否显示代码块的复制按钮
+      copy = true
+      # 是否显示代码块的编辑按钮
+      edit = true
+      # 默认展开显示的代码行数
+      maxShownLines = 20
+    # KaTeX 数学公式 (https://katex.org)
+    [params.page.math]
+      enable = true
+      # 默认行内定界符是 $ ... $ 和 \( ... \)
+      inlineLeftDelimiter = ""
+      inlineRightDelimiter = ""
+      # 默认块定界符是 $$ ... $$, \[ ... \],  \begin{equation} ... \end{equation} 和一些其它的函数
+      blockLeftDelimiter = ""
+      blockRightDelimiter = ""
+      # KaTeX 插件 copy_tex
+      copyTex = true
+      # KaTeX 插件 mhchem
+      mhchem = true
+    # 配置 (https://docs.mapbox.com/mapbox-gl-js)
+    [params.page.mapbox]
+      # Mapbox GL JS 的 access token
+      accessToken = ""
+      # 浅色主题的地图样式
+      lightStyle = "mapbox://styles/mapbox/light-v9"
+      # 深色主题的地图样式
+      darkStyle = "mapbox://styles/mapbox/dark-v9"
+      # 是否添加 NavigationControl
+      navigation = true
+      # 是否添加 GeolocateControl
+      geolocate = true
+      # 是否添加 ScaleControl
+      scale = true
+      # 是否添加 FullscreenControl
+      fullscreen = true
+    # [试验性功能] 缓存图床图片到本地，详见：https://github.com/hugo-fixit/FixIt/pull/362
+    [params.page.cacheRemoteImages]
+      enable = false
+      # 用本地图片链接替换远程图片链接 (放置在 public/images/remote/)
+      replace = false
+    # 相关内容配置 (https://gohugo.io/content-management/related/)
+    [params.page.related]
+      enable = true
+      count = 5
+    # 赞赏设置
+    [params.page.reward]
+      enable = true
+      animation = true
+      # 相对于页脚的位置，可选值：["before", "after"]
+      position = "after"
+      # comment = "Buy me a coffee"
+      # 二维码图像新的显示模式, 参数值: ["static", "fixed"], 默认: `static`
+      mode = "static"
+      # 二维码图像URL
+      [params.page.reward.ways]
+        wechatpay = "/images/wechat.jpg"
+        alipay = "/images/alipay.jpg"
+        # paypal = "/images/paypal.png"
+        # bitcoin = "/images/bitcoin.png"
+    # 文章页面的分享信息设置
+    [params.page.share]
+      enable = true
+      Skype = true
+      Twitter = true
+      Facebook = true
+      Pocket = true
+      Weibo = true
+      Evernote = true
+      Baidu = false
+      Linkedin = false
+      Whatsapp = false
+      Pinterest = false
+      Tumblr = false
+      HackerNews = false
+      Reddit = false
+      VK = false
+      Buffer = false
+      Xing = false
+      Line = false
+      Instapaper = false
+      Flipboard = false
+      Myspace = false
+      Blogger = false
+      Odnoklassniki = false
+      Trello = false
+      Mix = false
+    
+    # 评论系统设置
+    [params.page.comment]
+      enable = true
+      # Artalk 评论系统设置 (https://artalk.js.org/)
+      [params.page.comment.artalk]
+        enable = false
+        server = "https://yourdomain"
+        site = "默认站点"
+        placeholder = ""
+        noComment = ""
+        sendBtn = ""
+        editorTravel = true
+        flatMode = "auto"
+        # 启用 lightgallery 支持
+        lightgallery = false
+        locale = ""
+        emoticons = ""
+        nestMax = 2
+        nestSort = "DATE_ASC" # ["DATE_ASC", "DATE_DESC", "VOTE_UP_DESC"]
+        vote = true
+        voteDown = false
+        uaBadge = true
+        listSort = true
+        imgUpload = true
+        preview = true
+        versionCheck = true
+      # Disqus 评论系统设置 (https://disqus.com)
+      [params.page.comment.disqus]
+        enable = false
+        # Disqus 的 shortname，用来在文章中启用 Disqus 评论系统
+        shortname = ""
+      # Gitalk 评论系统设置 (https://github.com/gitalk/gitalk)
+      [params.page.comment.gitalk]
+        enable = true
+        owner = "137782866"
+        repo = "MyGitalk"
+        clientId = "ff451c5433f373b505f4"
+        clientSecret = "1c33625df9a0b89c9db9d4a24cc26e6354fbd7a1"
+      # Valine 评论系统设置 (https://github.com/xCss/Valine)
+      [params.page.comment.valine]
+        enable = false
+        appId = "CzEmjFJHlFCf3XcUvvEvPwDP-gzGzoHsz"
+        appKey = "xCTlyhxw0KWahOoJ8MM1EsPi"
+        placeholder = ""
+        avatar = "mp"
+        meta = ""
+        requiredFields = ""
+        pageSize = 10
+        lang = "zh-CN"
+        visitor = true
+        recordIP = true
+        highlight = true
+        enableQQ = false
+        serverURLs = ""
+        #  emoji 数据文件名称，默认是 "google.yml"
+        # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
+        # 位于 "themes/FixIt/assets/lib/valine/emoji/" 目录
+        # 可以在你的项目下相同路径存放你自己的数据文件：
+        # "assets/lib/valine/emoji/"
+        emoji = ""
+        commentCount = true
+      [params.page.comment.waline]
+        enable = false
+        serverURL = ""
+        pageview = false
+        emoji = ["//unpkg.com/@waline/emojis@1.1.0/weibo"]
+        meta = ["nick", "mail", "link"]
+        requiredMeta = []
+        login = "enable"
+        wordLimit = 0
+        pageSize = 10
+        imageUploader = false
+        highlighter = false
+        comment = false
+        texRenderer = false
+        search = false
+        recaptchaV3Key = ""
+        turnstileKey = ""
+        reaction = false
+      # Facebook 评论系统设置 (https://developers.facebook.com/docs/plugins/comments)
+      [params.page.comment.facebook]
+        enable = false
+        width = "100%"
+        numPosts = 10
+        appId = ""
+        languageCode = "zh_CN"
+      # Telegram Comments 评论系统设置 (https://comments.app)
+      [params.page.comment.telegram]
+        enable = false
+        siteID = ""
+        limit = 5
+        height = ""
+        color = ""
+        colorful = true
+        dislikes = false
+        outlined = false
+      # Commento 评论系统设置 (https://commento.io)
+      [params.page.comment.commento]
+        enable = false
+      # Utterances 评论系统设置 (https://utteranc.es)
+      [params.page.comment.utterances]
+        enable = false
+        # owner/repo
+        repo = ""
+        issueTerm = "pathname"
+        label = ""
+        lightTheme = "github-light"
+        darkTheme = "github-dark"
+      # Twikoo 评论系统设置 (https://twikoo.js.org/)
+      [params.page.comment.twikoo]
+        enable = false
+        envId = ""
+        region = ""
+        path = ""
+        visitor = true
+        commentCount = true
+        # 启用 lightgallery 支持
+        lightgallery = false
+        # 启用 Katex 支持
+        katex = false
+      # Giscus 评论系统设置
+      [params.page.comment.giscus]
+        enable = false
+        repo = ""
+        repoId = ""
+        category = ""
+        categoryId = ""
+        mapping = ""
+        origin = "https://giscus.app" # Or set it to your self-hosted domain
+        strict = "0"
+        term = ""
+        reactionsEnabled = "1"
+        emitMetadata = "0"
+        inputPosition = "bottom" # ["top", "bottom"]
+        lightTheme = "light"
+        darkTheme = "dark"
+        lazyLoad = true
+    # 第三方库配置
+    [params.page.library]
+      [params.page.library.css]
+        # someCSS = "some.css"
+        # 位于 "assets/"
+        # 或者
+        # someCSS = "https://cdn.example.com/some.css"
+      [params.page.library.js]
+        # someJavascript = "some.js"
+        # 位于 "assets/"
+        # 或者
+        # someJavascript = "https://cdn.example.com/some.js"
+        # 小鱼游泳动画
+        flyfish = "/js/flyfish.js"
+    # 页面 SEO 配置
+    [params.page.seo]
+      # 图片 URL
+      images = []
+      # 出版者信息
+      [params.page.seo.publisher]
+        name = ""
+        logoUrl = ""
+
+# 输出格式配置
+[outputFormats]
+  # 用于输出 Markdown 格式文档的设置
+  [outputFormats.MarkDown]
+    mediaType = "text/markdown"
+    isPlainText = true
+    isHTML = false
+  # 用于输出 /archives/index.html 文件的设置
+  [outputFormats.archives]
+    path = "archives"
+    baseName = "index"
+    mediaType = "text/html"
+    isPlainText = false
+    isHTML = true
+    permalinkable = true
+  # 用于输出 /offline/index.html 文件的设置
+  [outputFormats.offline]
+    path = "offline"
+    baseName = "index"
+    mediaType = "text/html"
+    isPlainText = false
+    isHTML = true
+    permalinkable = true
+  # 用于输出 readme.md 文件的设置
+  [outputFormats.README]
+    baseName = "readme"
+    mediaType = "text/markdown"
+    isPlainText = true
+    isHTML = false
+  # 用于输出 baidu_urls.txt 文件的设置
+  [outputFormats.baidu_urls]
+    baseName = "baidu_urls"
+    mediaType = "text/plain"
+    isPlainText = true
+    isHTML = false
+
+# 用于 Hugo 输出文档的设置，可选值如下：
+[outputs]
+  home = ["HTML", "RSS", "JSON", "archives", "offline"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML", "RSS"]

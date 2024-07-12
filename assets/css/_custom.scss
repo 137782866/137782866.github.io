@@ -1,0 +1,326 @@
+// ==============================
+// Custom style
+// ==============================
+
+/******************************************************** 引入字体 *****************************************************************/
+@font-face {
+  font-family: "Rubik"; /* 名称自定义 */
+  src: url('/fonts/Rubik-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Intel One Mono"; /* 名称自定义 */
+  src: url('/fonts/IntelOneMono-Regular.woff2') format('woff2');
+}
+
+/******************************************************** 字体相关 *****************************************************************/
+$global-font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei UI, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+$code-font-family: Intel One Mono, Source Code Pro, Menlo, Consolas, Monaco, $global-font-family;
+$header-title-font-family: $global-font-family;
+$code-font-family: Intel One Mono, Source Code Pro, Menlo, Consolas, Monaco, $global-font-family;
+$code-font-size: 0.875rem;
+$global-font-size: 18px;
+$global-line-height: 1.8rem;
+
+html {
+  font-family: $global-font-family !important;
+  font-weight: $global-font-weight !important;
+  font-size: $global-font-size !important;
+  line-height: $global-line-height !important;
+}
+
+.highlight {
+  > .chroma {
+    .code-header {
+      font-family: $global-font-family !important;
+    }
+  }
+}
+
+.fixit-decryptor-container {
+  font-family: $global-font-family !important;
+}
+
+.typeit {
+  --ti-cursor-font-family: #{$global-font-family} !important;
+}
+
+.header-title {
+  font-family: $header-title-font-family !important;
+}
+
+code {
+  font-size: $code-font-size !important;
+  font-family: $code-font-family !important;
+}
+
+pre:not(.mermaid[data-processed='true']) {
+  font-size: $code-font-size !important;
+  font-family: $code-font-family !important;
+}
+
+.highlight,
+.gist {
+  font-size: $code-font-size !important;
+  font-family: $code-font-family !important;
+}
+
+.typeit {
+  .highlight {
+    font-family: $code-font-family !important;
+  }
+}
+
+/******************************************************* 全局背景颜色 ****************************************************************/
+// $global-background-color: #fafaf8;
+// $global-background-color-dark: #292a2e;
+
+// body {
+//   background-color: $global-background-color !important;
+
+//   &[data-theme='dark'] {
+//     background-color: $global-background-color-dark !important;
+//   }
+// }
+
+// .breadcrumb-container {
+//   background-color: $global-background-color !important;
+
+//   [data-theme='dark'] & {
+//     background-color: $global-background-color-dark !important;
+//   }
+// }
+
+// .search-dropdown {
+//   .dropdown-menu {
+//     background-color: $global-background-color !important;
+
+//     [data-theme='dark'] & {
+//       background-color: $global-background-color-dark !important;
+//     }
+//   }
+// }
+
+// .single {
+//   .content {
+//     kbd {
+//       background-color: $global-background-color !important;
+
+//       [data-theme='dark'] & {
+//         background-color: $global-background-color-dark !important;
+//       }
+//     }
+//   }
+// }
+
+// .collection-card {
+//   background-color: darken($global-background-color, 3%) !important;
+
+//   [data-theme='dark'] & {
+//     background-color: lighten($global-background-color-dark, 3%) !important;
+//   }
+// }
+
+// .collection-details {
+//   &.open {
+//     .collection-summary {
+//       background-color: darken($global-background-color, 4%) !important;
+
+//       [data-theme='dark'] & {
+//         background-color: lighten($global-background-color-dark, 4%) !important;
+//       }
+//     }
+//   }
+
+//   .collection-summary {
+//     background-color: darken($global-background-color, 3%) !important;
+
+//     [data-theme='dark'] & {
+//       background-color: lighten($global-background-color-dark, 3%) !important;
+//     }
+//   }
+
+//   .collection-content {
+//     background-color: darken($global-background-color, 2%) !important;
+
+//     [data-theme='dark'] & {
+//       background-color: lighten($global-background-color-dark, 2%) !important;
+//     }
+
+//     .collection-nav-simple {
+//       background-color: darken($global-background-color, 3%) !important;
+
+//       [data-theme='dark'] & {
+//         background-color: lighten($global-background-color-dark, 3%) !important;
+//       }
+
+//       a.collection-nav-item {
+//         &:hover {
+//           background-color: darken($global-background-color, 10%) !important;
+
+//           [data-theme='dark'] & {
+//             background-color: lighten($global-background-color-dark, 10%) !important;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .fixit-decryptor-container {
+//   .fixit-decryptor-input {
+//     background-color: $global-background-color !important;
+
+//     [data-theme='dark'] & {
+//       background-color: $global-background-color-dark !important;
+//     }
+//   }
+// }
+
+// .post-reward {
+//   .reward-input:checked~.reward-ways {
+//     // `fixed` mode only supports desktop
+//     &[data-mode='fixed'] {
+//       background-color: $global-background-color !important;
+
+//       [data-theme='dark'] & {
+//         background-color: $global-background-color-dark !important;
+//       }
+//     }
+//   }
+
+//   .reward-button {
+//     background-color: $global-background-color !important;
+
+//     [data-theme='dark'] & {
+//       background-color: $global-background-color-dark !important;
+//     }
+//   }
+// }
+
+/******************************************************** 代码背景相关 *****************************************************************/
+$code-background-color: #f6f8fa;
+$code-background-color-dark: #2d333b;
+$code-border-color: #DEE0E3;
+$code-border-color-dark: #292a2e;
+
+.search-dropdown {
+  .dropdown-menu {
+    .suggestions {
+      .suggestion {
+        &.cursor {
+          background: $code-background-color !important;
+
+          [data-theme='dark'] & {
+            background: $code-background-color-dark !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+#toc-static {
+  .toc-title {
+    background: $code-background-color !important;
+
+    [data-theme='dark'] & {
+      background: $code-background-color-dark !important;
+    }
+  }
+
+  &.open {
+    .toc-title {
+      background: $code-background-color !important;
+
+      [data-theme='dark'] & {
+        background: $code-background-color-dark !important;
+      }
+    }
+  }
+}
+
+.highlight {
+  > .chroma {
+    .code-header {
+      background-color: $code-background-color !important;
+
+      [data-theme='dark'] & {
+        color: $code-info-color-dark;
+        background-color: $code-background-color-dark !important;
+      }
+    }
+
+    &.open {
+      .code-header {
+        background-color: $code-background-color !important;
+
+        [data-theme='dark'] & {
+          background-color: $code-background-color-dark !important;
+        }
+      }
+    }
+  }
+}
+
+.gist {
+  .gist-meta {
+    background-color: $code-background-color !important;
+
+    [data-theme='dark'] & {
+      background-color: $code-background-color-dark !important;
+    }
+  }
+}
+
+//代码块增加边框
+.highlight {
+  > .chroma {
+    @include border-radius($global-border-radius);
+    border: 0.1em solid $code-border-color;
+    
+    [data-theme='dark'] & {
+      border: 0.1em solid $code-border-color-dark;
+    }
+  }
+}
+
+/******************************************************** 奶油效果相关 *****************************************************************/
+$blog-base-color: #e6e5f8 !default;
+
+#header-desktop {
+    body:not([data-theme='dark']) & {
+        background-image: linear-gradient(180deg, lighten($blog-base-color, 5%), $blog-base-color);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 3.5rem;
+        left: 0;
+        width: MAX(360px, 10%);
+        height: 110px;
+        pointer-events: none;
+        background-image: url(/images/drop.min.svg);
+        // 背景图水平翻转
+        transform: scaleX(-1);
+        background-size: contain;
+        background-position: top;
+        background-repeat: no-repeat;
+
+        [data-theme='dark'] & {
+        background-image: url(/images/drop-dark.min.svg);
+        }
+    }
+}
+
+.github-corner svg {
+  body:not([data-theme='dark']) & {
+    fill: darken($blog-base-color, 25%);
+  }
+}
+
+/******************************************************** 首页文章分割线 *****************************************************************/
+.summary {
+  border-bottom: 2px dashed $global-border-color !important;
+}
