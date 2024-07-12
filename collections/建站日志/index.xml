@@ -1,8 +1,0 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-  <channel>
-    <title>建站日志 - 合集 - WindSun&#39;s Blog</title>
-    <link>http://localhost:1313/collections/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/</link>
-    <description>建站日志 - 合集 | WindSun&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
-      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><atom:link href="http://localhost:1313/collections/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/" rel="self" type="application/rss+xml" /></channel>
-</rss>
