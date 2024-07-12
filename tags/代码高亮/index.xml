@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>代码高亮 - 标签 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/</link>
+    <description>代码高亮 - 标签 | WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" rel="self" type="application/rss+xml" /><item>
+  <title>代码高亮测试</title>
+  <link>http://localhost:1313/posts/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/posts/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item>
+</channel>
+</rss>

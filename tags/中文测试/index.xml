@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>中文测试 - 标签 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/tags/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+    <description>中文测试 - 标签 | WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+  <title>中文测试</title>
+  <link>http://localhost:1313/posts/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/posts/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初长成，养在深闺人未识。 天生丽质难]]></description>
+</item>
+</channel>
+</rss>
