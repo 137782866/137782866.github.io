@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>日文 - 分类 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/categories/%E6%97%A5%E6%96%87/</link>
+    <description>日文 - 分类 | WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E6%97%A5%E6%96%87/" rel="self" type="application/rss+xml" /><item>
+  <title>日文测试</title>
+  <link>http://localhost:1313/posts/%E6%97%A5%E6%96%87%E6%B5%8B%E8%AF%95/</link>
+  <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/posts/%E6%97%A5%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
+  <description><![CDATA[日本語の敬語体系は、一般に、大きく尊敬語・謙譲語・丁寧語に分類される。文化審議会国語分科会は、2007年2月に「敬語の指針」を答申し、これに]]></description>
+</item>
+</channel>
+</rss>

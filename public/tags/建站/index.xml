@@ -1,0 +1,205 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>建站 - 标签 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/</link>
+    <description>建站 - 标签 | WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><lastBuildDate>Wed, 03 Jul 2024 02:25:11 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/" rel="self" type="application/rss+xml" /><item>
+  <title>Markdown 语法</title>
+  <link>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/</link>
+  <pubDate>Wed, 03 Jul 2024 02:25:11 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/</guid>
+  <description><![CDATA[内容来自FixIt：Markdown 基本语法 | FixIt。本文只介绍Markdown基础部分语法，基本所有的Markdown编辑器都支持，关]]></description>
+</item>
+<item>
+  <title>Hugo文章格式</title>
+  <link>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</link>
+  <pubDate>Wed, 03 Jul 2024 02:03:51 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</guid>
+  <description><![CDATA[<p>所有的格式需要参考：<a href="https://fixit.lruihao.cn/zh-cn/documentation/content-management/" title="FixIt内容管理"target="_blank" rel="external nofollow noopener noreferrer">FixIt内容管理</a>文档，这里只列出一些常用的格式，便于简单的日常写作。</p>
+<h2 id="前置参数" class="heading-element"><span>前置参数</span>
+  <a href="#%e5%89%8d%e7%bd%ae%e5%8f%82%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Hugo 允许你在文章内容前面添加 <code>yaml</code>, <code>toml</code> 或者 <code>json</code> 格式的前置参数</p>
+<p>不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 <code>page</code> 部分不一致时才有必要这么做。参数如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">title: 文章标题
+</span></span><span class="line"><span class="cl">subtitle: 文章副标题
+</span></span><span class="line"><span class="cl">date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置
+</span></span><span class="line"><span class="cl">lastmod: 上次修改内容的日期时间
+</span></span><span class="line"><span class="cl">draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染
+</span></span><span class="line"><span class="cl">author: 文章作者配置，和主题配置中的params.author部分相同
+</span></span><span class="line"><span class="cl">authorAvatar: 是否启用文章作者头像
+</span></span><span class="line"><span class="cl">description: 文章内容的描述
+</span></span><span class="line"><span class="cl">keywords: 文章内容的关键词
+</span></span><span class="line"><span class="cl">license: 这篇文章特殊的许可
+</span></span><span class="line"><span class="cl">images: 页面图片，用于Open Graph和Twitter Cards
+</span></span><span class="line"><span class="cl">tags: 文章的标签
+</span></span><span class="line"><span class="cl">categories: 文章所属的类别
+</span></span><span class="line"><span class="cl">collections: 文章所属的合集
+</span></span><span class="line"><span class="cl">featuredImage: 文章的特色图片
+</span></span><span class="line"><span class="cl">featuredImagePreview: 用在主页预览的文章特色图片
+</span></span><span class="line"><span class="cl">hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上
+</span></span><span class="line"><span class="cl">hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中
+</span></span><span class="line"><span class="cl">hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中
+</span></span><span class="line"><span class="cl">hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中
+</span></span><span class="line"><span class="cl">twemoji: 如果设为true, 这篇文章会使用twemoji
+</span></span><span class="line"><span class="cl">lightgallery: 和主题配置中的params.page.lightgallery部分相同
+</span></span><span class="line"><span class="cl">ruby: 如果设为true, 这篇文章会使用上标注释扩展语法
+</span></span><span class="line"><span class="cl">fraction: 如果设为true, 这篇文章会使用分数扩展语法
+</span></span><span class="line"><span class="cl">fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法
+</span></span><span class="line"><span class="cl">linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接
+</span></span><span class="line"><span class="cl">linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接
+</span></span><span class="line"><span class="cl">linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接
+</span></span><span class="line"><span class="cl">linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接
+</span></span><span class="line"><span class="cl">rssFullText: 如果设为true, 在 RSS 中将会显示全文内容
+</span></span><span class="line"><span class="cl">pageStyle: 页面样式，详见 页面宽度
+</span></span><span class="line"><span class="cl">toc: 和主题配置中的params.page.toc部分相同
+</span></span><span class="line"><span class="cl">expirationReminder: 和主题配置中的params.page.expirationReminder部分相同
+</span></span><span class="line"><span class="cl">heading: 新增和主题配置中的params.page.heading部分相同
+</span></span><span class="line"><span class="cl">code: 和主题配置中的params.page.code部分相同
+</span></span><span class="line"><span class="cl">math: 和主题配置中的params.page.math部分相同
+</span></span><span class="line"><span class="cl">mapbox: 和主题配置中的params.page.mapbox部分相同
+</span></span><span class="line"><span class="cl">share: 和主题配置中的params.page.share部分相同
+</span></span><span class="line"><span class="cl">comment: 和主题配置中的params.page.comment部分相同
+</span></span><span class="line"><span class="cl">library: 和主题配置中的params.page.library部分相同
+</span></span><span class="line"><span class="cl">seo: 和主题配置中的params.page.seo部分相同
+</span></span><span class="line"><span class="cl">type: 页面渲染模板，详见页面模板
+</span></span><span class="line"><span class="cl">menu: 详见添加内容到菜单
+</span></span><span class="line"><span class="cl">password: 加密页面内容的密码，详见内容加密
+</span></span><span class="line"><span class="cl">message: 加密提示信息，详见内容加密
+</span></span><span class="line"><span class="cl">repost: 和主题配置中的params.page.repost部分相同
+</span></span><span class="line"><span class="cl">autoBookmark: 和主题配置中的params.page.autoBookmark部分相同
+</span></span><span class="line"><span class="cl">wordCount: 和主题配置中的params.page.wordCount部分相同
+</span></span><span class="line"><span class="cl">readingTime: 和主题配置中的params.page.readingTime部分相同
+</span></span><span class="line"><span class="cl">endFlag: 和主题配置中的params.page.endFlag部分相同
+</span></span><span class="line"><span class="cl">reward: 和主题配置中的params.page.reward部分相同
+</span></span><span class="line"><span class="cl">instantPage: 和主题配置中的params.page.instantPage部分相同</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例如，一个常用的前置参数为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;第一篇文章测试&#34;
+</span></span><span class="line"><span class="cl">date: 2024-07-01T12:00:00+08:00
+</span></span><span class="line"><span class="cl">lastmod: 2024-07-01T12:00:00+08:00
+</span></span><span class="line"><span class="cl">draft: false
+</span></span><span class="line"><span class="cl">tags: [&#34;标签1&#34;, &#34;标签2&#34;]
+</span></span><span class="line"><span class="cl">categories: [&#34;分类1&#34;, &#34;分类2&#34;]
+</span></span><span class="line"><span class="cl">collections: [&#34;合集1&#34;, &#34;合集2&#34;]
+</span></span><span class="line"><span class="cl">featuredImage: &#34;/image/xxx.png&#34;
+</span></span><span class="line"><span class="cl">featuredImagePreview: &#34;/image/xxx.png&#34;
+</span></span><span class="line"><span class="cl">author:
+</span></span><span class="line"><span class="cl">  name: &#34;&#34; # 文章作者
+</span></span><span class="line"><span class="cl">  link: &#34;&#34; # 文章作者的链接
+</span></span><span class="line"><span class="cl">  email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar
+</span></span><span class="line"><span class="cl">  avatar: &#34;&#34; # 文章作者的头像
+</span></span><span class="line"><span class="cl">---</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="内容摘要" class="heading-element"><span>内容摘要</span>
+  <a href="#%e5%86%85%e5%ae%b9%e6%91%98%e8%a6%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。</p>
+<p>你可以通过在网站配置中设置 <code>summaryLength</code> 来自定义摘要长度。</p>
+<p>如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 <code>hasCJKLanguage</code> 设置为 <code>true</code>。</p>
+<h3 id="手动拆分摘要" class="heading-element"><span>手动拆分摘要</span>
+  <a href="#%e6%89%8b%e5%8a%a8%e6%8b%86%e5%88%86%e6%91%98%e8%a6%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>可以添加 `</p>]]></description>
+</item>
+<item>
+  <title>FixIt主题优化</title>
+  <link>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</link>
+  <pubDate>Tue, 02 Jul 2024 13:56:13 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</guid>
+  <description><![CDATA[写在前面，因为每个人审美不同，我们完全可以对主题的细节进行修改，但是，不建议直接在主题上进行修改。因为Hugo允许在站点根目录下对应的文件夹]]></description>
+</item>
+<item>
+  <title>hugo安装部署</title>
+  <link>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+  <pubDate>Mon, 01 Jul 2024 12:00:00 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+  <description><![CDATA[所有的操作都是在Windows平台。 安装git 地址：Git - Downloads，下载 64-bit Git for Windows Setup 版本，然后安装即可。 安装时需要勾选必要的选项，]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Hugo文章格式 - WindSun&#39;s Blog</title><meta name="author" content="WindSun">
+<meta name="author-link" content="">
+<meta name="description" content="所有的格式需要参考：FixIt内容管理文档，这里只列出一些常用的格式，便于简单的日常写作。
+前置参数
+  
+    
+  
+Hugo 允许你在文章内容前面添加 yaml, toml 或者 json 格式的前置参数
+不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 page 部分不一致时才有必要这么做。参数如下：
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+
+
+title: 文章标题
+subtitle: 文章副标题
+date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置
+lastmod: 上次修改内容的日期时间
+draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染
+author: 文章作者配置，和主题配置中的params.author部分相同
+authorAvatar: 是否启用文章作者头像
+description: 文章内容的描述
+keywords: 文章内容的关键词
+license: 这篇文章特殊的许可
+images: 页面图片，用于Open Graph和Twitter Cards
+tags: 文章的标签
+categories: 文章所属的类别
+collections: 文章所属的合集
+featuredImage: 文章的特色图片
+featuredImagePreview: 用在主页预览的文章特色图片
+hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上
+hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中
+hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中
+hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中
+twemoji: 如果设为true, 这篇文章会使用twemoji
+lightgallery: 和主题配置中的params.page.lightgallery部分相同
+ruby: 如果设为true, 这篇文章会使用上标注释扩展语法
+fraction: 如果设为true, 这篇文章会使用分数扩展语法
+fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法
+linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接
+linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接
+linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接
+linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接
+rssFullText: 如果设为true, 在 RSS 中将会显示全文内容
+pageStyle: 页面样式，详见 页面宽度
+toc: 和主题配置中的params.page.toc部分相同
+expirationReminder: 和主题配置中的params.page.expirationReminder部分相同
+heading: 新增和主题配置中的params.page.heading部分相同
+code: 和主题配置中的params.page.code部分相同
+math: 和主题配置中的params.page.math部分相同
+mapbox: 和主题配置中的params.page.mapbox部分相同
+share: 和主题配置中的params.page.share部分相同
+comment: 和主题配置中的params.page.comment部分相同
+library: 和主题配置中的params.page.library部分相同
+seo: 和主题配置中的params.page.seo部分相同
+type: 页面渲染模板，详见页面模板
+menu: 详见添加内容到菜单
+password: 加密页面内容的密码，详见内容加密
+message: 加密提示信息，详见内容加密
+repost: 和主题配置中的params.page.repost部分相同
+autoBookmark: 和主题配置中的params.page.autoBookmark部分相同
+wordCount: 和主题配置中的params.page.wordCount部分相同
+readingTime: 和主题配置中的params.page.readingTime部分相同
+endFlag: 和主题配置中的params.page.endFlag部分相同
+reward: 和主题配置中的params.page.reward部分相同
+instantPage: 和主题配置中的params.page.instantPage部分相同
+
+例如，一个常用的前置参数为：
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+
+
+---
+title: &#34;第一篇文章测试&#34;
+date: 2024-07-01T12:00:00&#43;08:00
+lastmod: 2024-07-01T12:00:00&#43;08:00
+draft: false
+tags: [&#34;标签1&#34;, &#34;标签2&#34;]
+categories: [&#34;分类1&#34;, &#34;分类2&#34;]
+collections: [&#34;合集1&#34;, &#34;合集2&#34;]
+featuredImage: &#34;/image/xxx.png&#34;
+featuredImagePreview: &#34;/image/xxx.png&#34;
+author:
+  name: &#34;&#34; # 文章作者
+  link: &#34;&#34; # 文章作者的链接
+  email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar
+  avatar: &#34;&#34; # 文章作者的头像
+---
+
+内容摘要
+  
+    
+  
+FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。
+你可以通过在网站配置中设置 summaryLength 来自定义摘要长度。
+如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 hasCJKLanguage 设置为 true。
+手动拆分摘要
+  
+    
+  
+可以添加 `" /><meta name="keywords" content='建站' />
+  <meta itemprop="name" content="Hugo文章格式">
+  <meta itemprop="description" content="所有的格式需要参考：FixIt内容管理文档，这里只列出一些常用的格式，便于简单的日常写作。
+前置参数 Hugo 允许你在文章内容前面添加 yaml, toml 或者 json 格式的前置参数
+不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 page 部分不一致时才有必要这么做。参数如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 title: 文章标题 subtitle: 文章副标题 date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置 lastmod: 上次修改内容的日期时间 draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染 author: 文章作者配置，和主题配置中的params.author部分相同 authorAvatar: 是否启用文章作者头像 description: 文章内容的描述 keywords: 文章内容的关键词 license: 这篇文章特殊的许可 images: 页面图片，用于Open Graph和Twitter Cards tags: 文章的标签 categories: 文章所属的类别 collections: 文章所属的合集 featuredImage: 文章的特色图片 featuredImagePreview: 用在主页预览的文章特色图片 hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上 hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中 hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中 hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中 twemoji: 如果设为true, 这篇文章会使用twemoji lightgallery: 和主题配置中的params.page.lightgallery部分相同 ruby: 如果设为true, 这篇文章会使用上标注释扩展语法 fraction: 如果设为true, 这篇文章会使用分数扩展语法 fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法 linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接 linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接 linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接 linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接 rssFullText: 如果设为true, 在 RSS 中将会显示全文内容 pageStyle: 页面样式，详见 页面宽度 toc: 和主题配置中的params.page.toc部分相同 expirationReminder: 和主题配置中的params.page.expirationReminder部分相同 heading: 新增和主题配置中的params.page.heading部分相同 code: 和主题配置中的params.page.code部分相同 math: 和主题配置中的params.page.math部分相同 mapbox: 和主题配置中的params.page.mapbox部分相同 share: 和主题配置中的params.page.share部分相同 comment: 和主题配置中的params.page.comment部分相同 library: 和主题配置中的params.page.library部分相同 seo: 和主题配置中的params.page.seo部分相同 type: 页面渲染模板，详见页面模板 menu: 详见添加内容到菜单 password: 加密页面内容的密码，详见内容加密 message: 加密提示信息，详见内容加密 repost: 和主题配置中的params.page.repost部分相同 autoBookmark: 和主题配置中的params.page.autoBookmark部分相同 wordCount: 和主题配置中的params.page.wordCount部分相同 readingTime: 和主题配置中的params.page.readingTime部分相同 endFlag: 和主题配置中的params.page.endFlag部分相同 reward: 和主题配置中的params.page.reward部分相同 instantPage: 和主题配置中的params.page.instantPage部分相同 例如，一个常用的前置参数为：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 --- title: &#34;第一篇文章测试&#34; date: 2024-07-01T12:00:00&#43;08:00 lastmod: 2024-07-01T12:00:00&#43;08:00 draft: false tags: [&#34;标签1&#34;, &#34;标签2&#34;] categories: [&#34;分类1&#34;, &#34;分类2&#34;] collections: [&#34;合集1&#34;, &#34;合集2&#34;] featuredImage: &#34;/image/xxx.png&#34; featuredImagePreview: &#34;/image/xxx.png&#34; author: name: &#34;&#34; # 文章作者 link: &#34;&#34; # 文章作者的链接 email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar avatar: &#34;&#34; # 文章作者的头像 --- 内容摘要 FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。
+你可以通过在网站配置中设置 summaryLength 来自定义摘要长度。
+如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 hasCJKLanguage 设置为 true。
+手动拆分摘要 可以添加 `">
+  <meta itemprop="datePublished" content="2024-07-03T02:03:51+08:00">
+  <meta itemprop="dateModified" content="2024-07-03T02:03:51+08:00">
+  <meta itemprop="wordCount" content="5437">
+  <meta itemprop="image" content="http://localhost:1313/images/logo.png">
+  <meta itemprop="keywords" content="建站"><meta property="og:url" content="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/">
+  <meta property="og:site_name" content="WindSun&#39;s Blog">
+  <meta property="og:title" content="Hugo文章格式">
+  <meta property="og:description" content="所有的格式需要参考：FixIt内容管理文档，这里只列出一些常用的格式，便于简单的日常写作。
+前置参数 Hugo 允许你在文章内容前面添加 yaml, toml 或者 json 格式的前置参数
+不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 page 部分不一致时才有必要这么做。参数如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 title: 文章标题 subtitle: 文章副标题 date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置 lastmod: 上次修改内容的日期时间 draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染 author: 文章作者配置，和主题配置中的params.author部分相同 authorAvatar: 是否启用文章作者头像 description: 文章内容的描述 keywords: 文章内容的关键词 license: 这篇文章特殊的许可 images: 页面图片，用于Open Graph和Twitter Cards tags: 文章的标签 categories: 文章所属的类别 collections: 文章所属的合集 featuredImage: 文章的特色图片 featuredImagePreview: 用在主页预览的文章特色图片 hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上 hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中 hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中 hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中 twemoji: 如果设为true, 这篇文章会使用twemoji lightgallery: 和主题配置中的params.page.lightgallery部分相同 ruby: 如果设为true, 这篇文章会使用上标注释扩展语法 fraction: 如果设为true, 这篇文章会使用分数扩展语法 fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法 linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接 linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接 linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接 linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接 rssFullText: 如果设为true, 在 RSS 中将会显示全文内容 pageStyle: 页面样式，详见 页面宽度 toc: 和主题配置中的params.page.toc部分相同 expirationReminder: 和主题配置中的params.page.expirationReminder部分相同 heading: 新增和主题配置中的params.page.heading部分相同 code: 和主题配置中的params.page.code部分相同 math: 和主题配置中的params.page.math部分相同 mapbox: 和主题配置中的params.page.mapbox部分相同 share: 和主题配置中的params.page.share部分相同 comment: 和主题配置中的params.page.comment部分相同 library: 和主题配置中的params.page.library部分相同 seo: 和主题配置中的params.page.seo部分相同 type: 页面渲染模板，详见页面模板 menu: 详见添加内容到菜单 password: 加密页面内容的密码，详见内容加密 message: 加密提示信息，详见内容加密 repost: 和主题配置中的params.page.repost部分相同 autoBookmark: 和主题配置中的params.page.autoBookmark部分相同 wordCount: 和主题配置中的params.page.wordCount部分相同 readingTime: 和主题配置中的params.page.readingTime部分相同 endFlag: 和主题配置中的params.page.endFlag部分相同 reward: 和主题配置中的params.page.reward部分相同 instantPage: 和主题配置中的params.page.instantPage部分相同 例如，一个常用的前置参数为：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 --- title: &#34;第一篇文章测试&#34; date: 2024-07-01T12:00:00&#43;08:00 lastmod: 2024-07-01T12:00:00&#43;08:00 draft: false tags: [&#34;标签1&#34;, &#34;标签2&#34;] categories: [&#34;分类1&#34;, &#34;分类2&#34;] collections: [&#34;合集1&#34;, &#34;合集2&#34;] featuredImage: &#34;/image/xxx.png&#34; featuredImagePreview: &#34;/image/xxx.png&#34; author: name: &#34;&#34; # 文章作者 link: &#34;&#34; # 文章作者的链接 email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar avatar: &#34;&#34; # 文章作者的头像 --- 内容摘要 FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。
+你可以通过在网站配置中设置 summaryLength 来自定义摘要长度。
+如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 hasCJKLanguage 设置为 true。
+手动拆分摘要 可以添加 `">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="collections">
+    <meta property="article:published_time" content="2024-07-03T02:03:51+08:00">
+    <meta property="article:modified_time" content="2024-07-03T02:03:51+08:00">
+    <meta property="article:tag" content="建站">
+    <meta property="og:image" content="http://localhost:1313/images/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/logo.png">
+  <meta name="twitter:title" content="Hugo文章格式">
+  <meta name="twitter:description" content="所有的格式需要参考：FixIt内容管理文档，这里只列出一些常用的格式，便于简单的日常写作。
+前置参数 Hugo 允许你在文章内容前面添加 yaml, toml 或者 json 格式的前置参数
+不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 page 部分不一致时才有必要这么做。参数如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 title: 文章标题 subtitle: 文章副标题 date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置 lastmod: 上次修改内容的日期时间 draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染 author: 文章作者配置，和主题配置中的params.author部分相同 authorAvatar: 是否启用文章作者头像 description: 文章内容的描述 keywords: 文章内容的关键词 license: 这篇文章特殊的许可 images: 页面图片，用于Open Graph和Twitter Cards tags: 文章的标签 categories: 文章所属的类别 collections: 文章所属的合集 featuredImage: 文章的特色图片 featuredImagePreview: 用在主页预览的文章特色图片 hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上 hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中 hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中 hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中 twemoji: 如果设为true, 这篇文章会使用twemoji lightgallery: 和主题配置中的params.page.lightgallery部分相同 ruby: 如果设为true, 这篇文章会使用上标注释扩展语法 fraction: 如果设为true, 这篇文章会使用分数扩展语法 fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法 linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接 linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接 linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接 linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接 rssFullText: 如果设为true, 在 RSS 中将会显示全文内容 pageStyle: 页面样式，详见 页面宽度 toc: 和主题配置中的params.page.toc部分相同 expirationReminder: 和主题配置中的params.page.expirationReminder部分相同 heading: 新增和主题配置中的params.page.heading部分相同 code: 和主题配置中的params.page.code部分相同 math: 和主题配置中的params.page.math部分相同 mapbox: 和主题配置中的params.page.mapbox部分相同 share: 和主题配置中的params.page.share部分相同 comment: 和主题配置中的params.page.comment部分相同 library: 和主题配置中的params.page.library部分相同 seo: 和主题配置中的params.page.seo部分相同 type: 页面渲染模板，详见页面模板 menu: 详见添加内容到菜单 password: 加密页面内容的密码，详见内容加密 message: 加密提示信息，详见内容加密 repost: 和主题配置中的params.page.repost部分相同 autoBookmark: 和主题配置中的params.page.autoBookmark部分相同 wordCount: 和主题配置中的params.page.wordCount部分相同 readingTime: 和主题配置中的params.page.readingTime部分相同 endFlag: 和主题配置中的params.page.endFlag部分相同 reward: 和主题配置中的params.page.reward部分相同 instantPage: 和主题配置中的params.page.instantPage部分相同 例如，一个常用的前置参数为：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 --- title: &#34;第一篇文章测试&#34; date: 2024-07-01T12:00:00&#43;08:00 lastmod: 2024-07-01T12:00:00&#43;08:00 draft: false tags: [&#34;标签1&#34;, &#34;标签2&#34;] categories: [&#34;分类1&#34;, &#34;分类2&#34;] collections: [&#34;合集1&#34;, &#34;合集2&#34;] featuredImage: &#34;/image/xxx.png&#34; featuredImagePreview: &#34;/image/xxx.png&#34; author: name: &#34;&#34; # 文章作者 link: &#34;&#34; # 文章作者的链接 email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar avatar: &#34;&#34; # 文章作者的头像 --- 内容摘要 FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。
+你可以通过在网站配置中设置 summaryLength 来自定义摘要长度。
+如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 hasCJKLanguage 设置为 true。
+手动拆分摘要 可以添加 `">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" /><link rel="prev" href="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" /><link rel="next" href="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Hugo文章格式",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/collections\/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97\/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F\/"
+    },"genre": "collections","keywords": "建站","wordcount":  5437 ,
+    "url": "http:\/\/localhost:1313\/collections\/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97\/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F\/","datePublished": "2024-07-03T02:03:51+08:00","dateModified": "2024-07-03T02:03:51+08:00","license": "个人博客版权说明","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "WindSun"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/archives/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/collections/"
+                
+                
+              ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li class="menu-item has-children">
+              <a
+                class="menu-link"
+                href="/notes/"
+                title="dfsdafasfasfsfsafds"
+                
+              ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a><i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li></ul></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/lifes/"
+                
+                
+              ><i class="fa-solid fa-signature fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/abouts/"
+                
+                
+              ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="输入关键字搜索..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="输入关键字搜索..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/archives/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/collections/"
+                  
+                  
+                ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li
+              class="menu-item"
+            ><span class="nested-item">
+                  <a
+                    class="menu-link"
+                    href="/notes/"
+                    title="dfsdafasfasfsfsafds"
+                    
+                  ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a>
+                  <i class="dropdown-icon fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li></ul></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/lifes/"
+                  
+                  
+                ><i class="fa-solid fa-signature fa-fw fa-sm" aria-hidden="true"></i> 生活</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/abouts/"
+                  
+                  
+                ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container sticky">
+    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" title="WindSun&#39;s Blog">主页</a></li><li class="breadcrumb-item"><a href="/collections/" title="合集">合集</a></li><li class="breadcrumb-item"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/" title="Hugo建站日志">Hugo建站日志</a></li><li class="breadcrumb-item active" aria-current="page">Hugo文章格式</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"><div class="details collection-details open">
+      <div class="details-summary collection-summary">
+        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
+        <span class="collection-name" data-collections="合集">Hugo建站日志</span>
+        <span class="collection-count">4</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+      <div class="details-content collection-content">
+        <nav>
+          <ul class="collection-list">
+                <li class="collection-item"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" title="Hugo安装部署">Hugo安装部署</a></li>
+                <li class="collection-item"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="FixIt主题优化">FixIt主题优化</a></li><li class="collection-item"><span class="active" title="Hugo文章格式">Hugo文章格式</span></li>
+                <li class="collection-item"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/" title="Markdown 语法">Markdown 语法</a></li></ul>
+          <div class="collection-nav-simple"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="collection-nav-item" rel="prev" title="FixIt主题优化"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">3/4</span><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/" class="collection-nav-item" rel="next" title="Markdown 语法"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+        </nav>
+      </div>
+    </div></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Hugo文章格式</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="/images/logo.png" alt="WindSun" data-title="WindSun" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;WindSun</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%BB%BA%E7%AB%99/" class="post-category" title="分类 - 建站"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 建站</a> 和 <a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/" class="post-collection" title="合集 - Hugo建站日志"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Hugo建站日志</a></span></div><div class="post-meta-line"><span title="发布于 2024-07-03 02:03:51"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-03">2024-07-03</time></span>&nbsp;<span title="5437 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 5500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前置参数">前置参数</a></li>
+    <li><a href="#内容摘要">内容摘要</a>
+      <ul>
+        <li><a href="#手动拆分摘要">手动拆分摘要</a></li>
+      </ul>
+    </li>
+    <li><a href="#内容加密">内容加密</a>
+      <ul>
+        <li><a href="#全局加密">全局加密</a></li>
+        <li><a href="#部分加密">部分加密</a></li>
+      </ul>
+    </li>
+    <li><a href="#shortcodes">shortcodes</a>
+      <ul>
+        <li><a href="#highlight-显示代码">highlight （显示代码）</a></li>
+        <li><a href="#youtube嵌入视频">youtube（嵌入视频）</a></li>
+        <li><a href="#link链接功能">****link（链接功能）</a></li>
+        <li><a href="#image图片">image（图片）</a></li>
+        <li><a href="#admonition提示横幅">admonition（提示横幅）</a></li>
+        <li><a href="#music插入音乐">music（插入音乐）</a>
+          <ul>
+            <li><a href="#自定义音乐url">自定义音乐URL</a></li>
+            <li><a href="#音乐平台url自动识别">音乐平台URL自动识别</a></li>
+            <li><a href="#自定义音乐平台类型和id">自定义音乐平台、类型和ID</a></li>
+            <li><a href="#其他参数">其他参数</a></li>
+          </ul>
+        </li>
+        <li><a href="#bilibili嵌入视频">bilibili（嵌入视频）</a></li>
+        <li><a href="#douyin嵌入视频">douyin（嵌入视频）</a></li>
+        <li><a href="#typeit打字动画">typeit（打字动画）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>所有的格式需要参考：<a href="https://fixit.lruihao.cn/zh-cn/documentation/content-management/" title="FixIt内容管理"target="_blank" rel="external nofollow noopener noreferrer">FixIt内容管理</a>文档，这里只列出一些常用的格式，便于简单的日常写作。</p>
+<h2 id="前置参数" class="heading-element"><span>前置参数</span>
+  <a href="#%e5%89%8d%e7%bd%ae%e5%8f%82%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Hugo 允许你在文章内容前面添加 <code>yaml</code>, <code>toml</code> 或者 <code>json</code> 格式的前置参数</p>
+<p>不是所有的以下前置参数都必须在你的每篇文章中设置。 很多只有在文章的参数和你的主题配置中的 <code>page</code> 部分不一致时才有必要这么做。参数如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">title: 文章标题
+</span></span><span class="line"><span class="cl">subtitle: 文章副标题
+</span></span><span class="line"><span class="cl">date: 这篇文章创建的日期时间它通常是从文章的前置参数中的date字段获取的，但是也可以在主题配置中设置
+</span></span><span class="line"><span class="cl">lastmod: 上次修改内容的日期时间
+</span></span><span class="line"><span class="cl">draft: 如果设为true, 除非hugo命令使用了--buildDrafts/-D参数，这篇文章不会被渲染
+</span></span><span class="line"><span class="cl">author: 文章作者配置，和主题配置中的params.author部分相同
+</span></span><span class="line"><span class="cl">authorAvatar: 是否启用文章作者头像
+</span></span><span class="line"><span class="cl">description: 文章内容的描述
+</span></span><span class="line"><span class="cl">keywords: 文章内容的关键词
+</span></span><span class="line"><span class="cl">license: 这篇文章特殊的许可
+</span></span><span class="line"><span class="cl">images: 页面图片，用于Open Graph和Twitter Cards
+</span></span><span class="line"><span class="cl">tags: 文章的标签
+</span></span><span class="line"><span class="cl">categories: 文章所属的类别
+</span></span><span class="line"><span class="cl">collections: 文章所属的合集
+</span></span><span class="line"><span class="cl">featuredImage: 文章的特色图片
+</span></span><span class="line"><span class="cl">featuredImagePreview: 用在主页预览的文章特色图片
+</span></span><span class="line"><span class="cl">hiddenFromHomePage: 如果设为true, 这篇文章将不会显示在主页上
+</span></span><span class="line"><span class="cl">hiddenFromSearch: 如果设为true, 这篇文章将不会显示在搜索结果中
+</span></span><span class="line"><span class="cl">hiddenFromRss: 如果设为true, 这篇文章将不会显示在RSS中
+</span></span><span class="line"><span class="cl">hiddenFromRelated: 如果设为true, 这篇文章将不会显示在相关文章中
+</span></span><span class="line"><span class="cl">twemoji: 如果设为true, 这篇文章会使用twemoji
+</span></span><span class="line"><span class="cl">lightgallery: 和主题配置中的params.page.lightgallery部分相同
+</span></span><span class="line"><span class="cl">ruby: 如果设为true, 这篇文章会使用上标注释扩展语法
+</span></span><span class="line"><span class="cl">fraction: 如果设为true, 这篇文章会使用分数扩展语法
+</span></span><span class="line"><span class="cl">fontawesome: 如果设为true, 这篇文章会使用Font Awesome扩展语法
+</span></span><span class="line"><span class="cl">linkToMarkdown: 如果设为true, 内容的页脚将显示指向原始Markdown文件的链接
+</span></span><span class="line"><span class="cl">linkToSource: 如果设为true, 内容的页脚将显示指向源码的链接
+</span></span><span class="line"><span class="cl">linkToEdit: 如果设为true, 内容的页脚将显示指向编辑页面的链接
+</span></span><span class="line"><span class="cl">linkToReport: 如果设为true, 内容的页脚将显示指向报告问题的链接
+</span></span><span class="line"><span class="cl">rssFullText: 如果设为true, 在 RSS 中将会显示全文内容
+</span></span><span class="line"><span class="cl">pageStyle: 页面样式，详见 页面宽度
+</span></span><span class="line"><span class="cl">toc: 和主题配置中的params.page.toc部分相同
+</span></span><span class="line"><span class="cl">expirationReminder: 和主题配置中的params.page.expirationReminder部分相同
+</span></span><span class="line"><span class="cl">heading: 新增和主题配置中的params.page.heading部分相同
+</span></span><span class="line"><span class="cl">code: 和主题配置中的params.page.code部分相同
+</span></span><span class="line"><span class="cl">math: 和主题配置中的params.page.math部分相同
+</span></span><span class="line"><span class="cl">mapbox: 和主题配置中的params.page.mapbox部分相同
+</span></span><span class="line"><span class="cl">share: 和主题配置中的params.page.share部分相同
+</span></span><span class="line"><span class="cl">comment: 和主题配置中的params.page.comment部分相同
+</span></span><span class="line"><span class="cl">library: 和主题配置中的params.page.library部分相同
+</span></span><span class="line"><span class="cl">seo: 和主题配置中的params.page.seo部分相同
+</span></span><span class="line"><span class="cl">type: 页面渲染模板，详见页面模板
+</span></span><span class="line"><span class="cl">menu: 详见添加内容到菜单
+</span></span><span class="line"><span class="cl">password: 加密页面内容的密码，详见内容加密
+</span></span><span class="line"><span class="cl">message: 加密提示信息，详见内容加密
+</span></span><span class="line"><span class="cl">repost: 和主题配置中的params.page.repost部分相同
+</span></span><span class="line"><span class="cl">autoBookmark: 和主题配置中的params.page.autoBookmark部分相同
+</span></span><span class="line"><span class="cl">wordCount: 和主题配置中的params.page.wordCount部分相同
+</span></span><span class="line"><span class="cl">readingTime: 和主题配置中的params.page.readingTime部分相同
+</span></span><span class="line"><span class="cl">endFlag: 和主题配置中的params.page.endFlag部分相同
+</span></span><span class="line"><span class="cl">reward: 和主题配置中的params.page.reward部分相同
+</span></span><span class="line"><span class="cl">instantPage: 和主题配置中的params.page.instantPage部分相同</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例如，一个常用的前置参数为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;第一篇文章测试&#34;
+</span></span><span class="line"><span class="cl">date: 2024-07-01T12:00:00+08:00
+</span></span><span class="line"><span class="cl">lastmod: 2024-07-01T12:00:00+08:00
+</span></span><span class="line"><span class="cl">draft: false
+</span></span><span class="line"><span class="cl">tags: [&#34;标签1&#34;, &#34;标签2&#34;]
+</span></span><span class="line"><span class="cl">categories: [&#34;分类1&#34;, &#34;分类2&#34;]
+</span></span><span class="line"><span class="cl">collections: [&#34;合集1&#34;, &#34;合集2&#34;]
+</span></span><span class="line"><span class="cl">featuredImage: &#34;/image/xxx.png&#34;
+</span></span><span class="line"><span class="cl">featuredImagePreview: &#34;/image/xxx.png&#34;
+</span></span><span class="line"><span class="cl">author:
+</span></span><span class="line"><span class="cl">  name: &#34;&#34; # 文章作者
+</span></span><span class="line"><span class="cl">  link: &#34;&#34; # 文章作者的链接
+</span></span><span class="line"><span class="cl">  email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar
+</span></span><span class="line"><span class="cl">  avatar: &#34;&#34; # 文章作者的头像
+</span></span><span class="line"><span class="cl">---</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="内容摘要" class="heading-element"><span>内容摘要</span>
+  <a href="#%e5%86%85%e5%ae%b9%e6%91%98%e8%a6%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，Hugo自动将内容的前 70 个单词作为摘要。</p>
+<p>你可以通过在网站配置中设置 <code>summaryLength</code> 来自定义摘要长度。</p>
+<p>如果你要使用CJK中文/日语/韩语等语言创建内容，并且想使用 Hugo 的自动摘要拆分功能，请在网站配置中将 <code>hasCJKLanguage</code> 设置为 <code>true</code>。</p>
+<h3 id="手动拆分摘要" class="heading-element"><span>手动拆分摘要</span>
+  <a href="#%e6%89%8b%e5%8a%a8%e6%8b%86%e5%88%86%e6%91%98%e8%a6%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>可以添加 `</p>
+<p>` 摘要分割符来拆分文章生成摘要，摘要分隔符之前的内容将用作该文章的摘要。</p>
+<blockquote>
+<p>注：小心输入 <code>&lt;!--more--&gt;</code> ，全部为小写且没有空格。</p>
+</blockquote>
+<p>如果摘要不是文章开头的文字。可以在文章前置参数的 <code>summary</code> 变量中设置单独的摘要。</p>
+<p>如果希望将文章前置参数中的 <code>description</code> 变量的内容作为摘要，仍然需要在文章开头添加 <code>&lt;!--more--&gt;</code> 摘要分割符。但需要将摘要分隔符之前的内容保留为空。</p>
+<h2 id="内容加密" class="heading-element"><span>内容加密</span>
+  <a href="#%e5%86%85%e5%ae%b9%e5%8a%a0%e5%af%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 id="全局加密" class="heading-element"><span>全局加密</span>
+  <a href="#%e5%85%a8%e5%b1%80%e5%8a%a0%e5%af%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>FixIt 主题提供了两个 front matter 用于全文加密。</p>
+<p><code>password</code>: [必需] 加密页面内容的密码</p>
+<p><code>message</code>: [可选] 加密提示信息</p>
+<p>注意：</p>
+<ol>
+<li>每次输入正确密码后，会在用户本地缓存密码 hash 值，一天之内再次访问时，将自动解锁文章。</li>
+<li>文章最后提供有一个 “重新加密” 的按钮，点击即可立即忘记密码，并重新加密内容。</li>
+<li>加密文章已从搜索中隐藏。</li>
+<li>加密文章的 Markdown 输出已禁用。</li>
+</ol>
+<h3 id="部分加密" class="heading-element"><span>部分加密</span>
+  <a href="#%e9%83%a8%e5%88%86%e5%8a%a0%e5%af%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>你可以使用 <code>fixit-encryptor</code> shortcode 来加密部分内容。加密层级支持无限级嵌套。<code>fixit-encryptor</code> shortcode具有以下命名参数：</p>
+<p><code>password=&quot;&quot;</code> [必选]（第一个位置参数）部分加密内容的密码。</p>
+<p><code>message=&quot;&quot;</code>  [可选]（第二个位置参数）解密输入框的提示信息。</p>
+<p>实例1：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">fixit-encryptor</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-encryptor-shortcode&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">title</span><span class="o">=</span><span class="s">&#39;密码&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-input&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;🔑 密码是 1212&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-btn&#34;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fa-solid fa-unlock&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 进入<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-password</span><span class="o">=</span><span class="s">&#34;a01610228fe998f515a72dd730294d87&#34;</span> <span class="na">data-content</span><span class="o">=</span><span class="s">&#34;6L&amp;#43;Z602f9ed2a8d1e08d8f74f5303e9eb93637d47f82ab6f1c15871cf8dd0481YeM5piv5Yqg5a&amp;#43;G55qE5YaF5a65JmhlbGxpcDs=&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">fixit-encryptor</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>实例2：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">fixit-encryptor</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-encryptor-shortcode&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">title</span><span class="o">=</span><span class="s">&#39;密码&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-input&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;🔑 密码是 1212&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixit-decryptor-btn&#34;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fa-solid fa-unlock&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 进入<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-password</span><span class="o">=</span><span class="s">&#34;a01610228fe998f515a72dd730294d87&#34;</span> <span class="na">data-content</span><span class="o">=</span><span class="s">&#34;6L&amp;#43;Z602f9ed2a8d1e08d8f74f5303e9eb93637d47f82ab6f1c15871cf8dd0481YeM5piv5Yqg5a&amp;#43;G55qE5YaF5a65JmhlbGxpcDs=&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">fixit-encryptor</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="shortcodes" class="heading-element"><span>shortcodes</span>
+  <a href="#shortcodes" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Hugo提供了多个内置的Shortcodes, 以方便作者保持Markdown内容的整洁。虽然可以使用HTML，但是正是因为它即使不经过渲染也可以轻松阅读。应该尽可能避免使用 HTML以保持内容简洁。</p>
+<p>为了避免这种限制，Hugo创建了shortcodes。 shortcode是一个简单代码段，可以生成合理的 HTML 代码，并且符合 Markdown 的设计哲学。</p>
+<p>Hugo 内置了一些预定义的 shortcodes，这里列出几个常用的：</p>
+<h3 id="highlight-显示代码" class="heading-element"><span>highlight （显示代码）</span>
+  <a href="#highlight-%e6%98%be%e7%a4%ba%e4%bb%a3%e7%a0%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{ range .Pages }}
+</span></span><span class="line"><span class="cl">            {{ .Render &#34;summary&#34;}}
+</span></span><span class="line"><span class="cl">        {{ end }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{ range .Pages }}
+</span></span><span class="line"><span class="cl">            {{ .Render &#34;summary&#34;}}
+</span></span><span class="line"><span class="cl">        {{ end }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="youtube嵌入视频" class="heading-element"><span>youtube（嵌入视频）</span>
+  <a href="#youtube%e5%b5%8c%e5%85%a5%e8%a7%86%e9%a2%91" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/w7Ft2ymGmfc?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除此之外，FixIt扩展了一些shortcodes。</p>
+<h3 id="link链接功能" class="heading-element"><span>****link（链接功能）</span>
+  <a href="#link%e9%93%be%e6%8e%a5%e5%8a%9f%e8%83%bd" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>link是 Markdown 链接语法的替代。link 可以提供一些其它的功能并且可以在代码块中使用。支持 本地资源引用 的完整用法。</p>
+<p>其参数如下：</p>
+<ol>
+<li><code>href</code> [必需]（第一个位置参数）链接的目标。</li>
+<li><code>content</code> [可选]（第二个位置参数）链接的内容，默认值是 href 参数的值。支持 Markdown 或者 HTML 格式。</li>
+<li><code>title</code> [可选]（第三个位置参数）HTML <code>a</code> 标签 的 <code>title</code> 属性，当悬停在链接上会显示的提示。</li>
+<li><code>card</code> [可选]（第四个位置参数）是否显示为卡片式链接，默认值<code>false</code>。</li>
+<li><code>card-icon</code> [可选]（第五个位置参数） 卡片式链接的图标，支持图片链接和 Font Awesome 图标。设置为<code>true</code>，自动从链接获取缩略图。</li>
+<li><code>download</code> [可选] HTML<code>a</code>标签 的<code>download</code>属性。</li>
+<li><code>class</code> [可选] HTML <code>a</code> 标签 的 <code>class</code> 属性。</li>
+<li><code>rel</code> [可选] HTML <code>a</code> 标签 的 <code>rel</code> 补充属性。</li>
+<li><code>external-icon</code> [可选] 是否自动显示外链图标。</li>
+<li><code>noreferrer</code> [可选] <code>rel</code> 属性是否添加 <code>noreferrer</code>, 默认：<code>true</code>。</li>
+</ol>
+<p>实例1：一个简单的超链接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><a href="https://assemble.io"target="_blank" rel="external nofollow noopener noreferrer"></a>
+</span></span><span class="line"><span class="cl"><a href="mailto:contact@revolunet.com"target="_blank" rel="external nofollow noopener noreferrer"></a>
+</span></span><span class="line"><span class="cl"><a href="https://assemble.io"target="_blank" rel="external nofollow noopener noreferrer">Assemble</a></span></span></code></pre></td></tr></table>
+</div>
+</div><p>实例4：可下载的卡片链接效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><a href="/music/Wavelength.mp3" title="Download Wavelength.mp3" download="Wavelength.mp3">Wavelength.mp3<i class="fa-solid fa-download fa-fw ms-1 text-secondary" aria-hidden="true"></i></a>
+</span></span><span class="line"><span class="cl"><a href="/music/Wavelength.mp3" title="Download Wavelength.mp3" class="card-link" download="Wavelength.mp3"><span class="cl-backdrop" style="--cl-bg-url: url(/images/fixit.min.svg);"></span>
+    <span class="cl-content">
+      <span class="cl-text">
+        <span class="cl-title">Wavelength.mp3</span>
+        <span class="cl-meta">
+          <svg class="cl-icon-link" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M574 665.4c-3.1-3.1-8.2-3.1-11.3 0L446.5 781.6c-53.8 53.8-144.6 59.5-204 0-59.5-59.5-53.8-150.2 0-204l116.2-116.2c3.1-3.1 3.1-8.2 0-11.3l-39.8-39.8c-3.1-3.1-8.2-3.1-11.3 0L191.4 526.5c-84.6 84.6-84.6 221.5 0 306s221.5 84.6 306 0l116.2-116.2c3.1-3.1 3.1-8.2 0-11.3L574 665.4zM832.6 191.4c-84.6-84.6-221.5-84.6-306 0L410.3 307.6c-3.1 3.1-3.1 8.2 0 11.3l39.7 39.7c3.1 3.1 8.2 3.1 11.3 0l116.2-116.2c53.8-53.8 144.6-59.5 204 0 59.5 59.5 53.8 150.2 0 204L665.3 562.6c-3.1 3.1-3.1 8.2 0 11.3l39.8 39.8c3.1 3.1 8.2 3.1 11.3 0l116.2-116.2c84.5-84.6 84.5-221.5 0-306.1z" fill="#a9a9b3"></path><path d="M610.1 372.3c-3.1-3.1-8.2-3.1-11.3 0L372.3 598.7c-3.1 3.1-3.1 8.2 0 11.3l39.6 39.6c3.1 3.1 8.2 3.1 11.3 0l226.4-226.4c3.1-3.1 3.1-8.2 0-11.3l-39.5-39.6z" fill="#a9a9b3"></path></svg>
+          <span class="cl-url">/music/Wavelength.mp3</span>
+        </span>
+      </span><svg class="cl-shortcut-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><path d="M824.32 473.6c-15.36-2.56-25.6-15.36-25.6-30.72 0-112.64-71.68-217.6-179.2-250.88-148.48-46.08-289.28 38.4-332.8 166.4-2.56 10.24-12.8 17.92-23.04 20.48C143.36 401.92 51.2 509.44 51.2 637.44v2.56c0 115.2 97.28 204.8 209.92 204.8h524.8c102.4-2.56 184.32-84.48 184.32-186.88 2.56-89.6-61.44-163.84-145.92-184.32z m-273.92 225.28c-12.8 12.8-30.72 15.36-46.08 10.24H501.76c-5.12-2.56-10.24-5.12-15.36-10.24L366.08 578.56c-15.36-15.36-15.36-43.52 0-58.88 15.36-15.36 43.52-15.36 58.88 0l51.2 51.2V352.4608c0-23.04 17.92-40.96 40.96-40.96 23.04 0 40.96 17.92 40.96 40.96v218.4192l51.2-51.2c17.92-17.92 43.52-17.92 61.44 0 17.92 15.36 17.92 40.96 0 58.88l-120.32 120.32z" fill="#4FC089"></path></svg></span></a></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="image图片" class="heading-element"><span>image（图片）</span>
+  <a href="#image%e5%9b%be%e7%89%87" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>image用来插入图片，可以充分利用 <a href="https://github.com/sachinchoolur/lightgallery" title="lightgallery"target="_blank" rel="external nofollow noopener noreferrer">lightgallery</a>，支持 本地资源引用 的完整用法。</p>
+<p>其参数如下：</p>
+<ol>
+<li><code>src</code> [必需]（第一个位置参数）图片的 URL。</li>
+<li><code>alt</code> [可选]（第二个位置参数）图片无法显示时的替代文本，默认值是 src 参数的值。支持 Markdown 或者 HTML 格式。</li>
+<li><code>caption</code> [可选]（第三个位置参数）图片标题。支持 Markdown 或者 HTML 格式。</li>
+<li><code>title</code> [可选] 当悬停在图片上会显示的提示。</li>
+<li><code>class</code> [可选] HTML <code>figure</code> 标签的 <code>class</code> 属性。</li>
+<li><code>src_s</code> [可选] 图片缩略图的 URL, 用在画廊模式中，默认值是 src 参数的值。</li>
+<li><code>src_l</code> [可选] 高清图片的 URL, 用在画廊模式中，默认值是 src 参数的值。</li>
+<li><code>height</code> [可选] 图片的 <code>height</code> 属性。</li>
+<li><code>width</code> [可选] 图片的 <code>width</code> 属性。</li>
+<li><code>linked</code> [可选] 图片是否需要被链接，默认值是 <code>true</code>。</li>
+<li><code>rel</code> [可选] HTML <code>a</code> 标签 的 <code>rel</code> 补充属性，仅在 linked 属性设置成 <code>true</code> 时有效。</li>
+<li><code>loading</code> [可选] HTML <code>a</code> 标签 的 <code>loading</code> 补充属性，可选值：<code>eager</code>、<code>lazy</code>，默认值是 <code>lazy</code>。</li>
+</ol>
+<p>示例1：显示一张图片。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><figure><a class="lightgallery" href="/images/lighthouse-large.jpg" data-thumbnail="/images/lighthouse-small.jpg" data-sub-html="<h2>Lighthouse</h2>"><img loading="lazy" src="/images/lighthouse.jpg" alt="/images/lighthouse.jpg" srcset="/images/lighthouse-small.jpg, /images/lighthouse.jpg 1.5x, /images/lighthouse-large.jpg 2x" data-title="/images/lighthouse.jpg" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></a><figcaption class="image-caption">Lighthouse</figcaption>
+  </figure></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="admonition提示横幅" class="heading-element"><span>admonition（提示横幅）</span>
+  <a href="#admonition%e6%8f%90%e7%a4%ba%e6%a8%aa%e5%b9%85" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>支持12种帮助你在页面中插入提示的横幅，支持 Markdown 或者 HTML 格式。</p>
+<p>分别如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">admonition 注意
+</span></span><span class="line"><span class="cl">abstract 
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition  <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**摘要**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition info <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**信息**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition tip <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**技巧**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition success <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**成功**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition question <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**问题**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition warning <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**警告**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition failure <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**失败**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition danger <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**危险**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition bug <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**Bug**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition example <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**示例**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> admonition quote <span class="ni">&amp;gt;</span>}}
+</span></span><span class="line"><span class="cl">一个 <span class="gs">**引用**</span> 横幅
+</span></span><span class="line"><span class="cl">{{<span class="ni">&amp;lt;</span> /admonition <span class="ni">&amp;gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的相当于是自带的横幅，我们也可以自己定义横幅。</p>
+<p>其参数如下：</p>
+<ol>
+<li>
+<p><code>type</code> [必需]（第一个位置参数）<code>admonition</code> 横幅的类型，默认值是 <code>note</code>。</p>
+</li>
+<li>
+<p><code>title</code> [可选]（第二个位置参数）<code>admonition</code> 横幅的标题，默认值是 type 参数的值。（支持 markdown）。</p>
+</li>
+<li>
+<p><code>open</code> [可选]（第三个位置参数）横幅内容是否默认展开，默认值是 <code>true</code>。</p>
+</li>
+</ol>
+<p>示例1：一个简单的自定义横幅。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><div class="details admonition tip">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-lightbulb fa-fw" aria-hidden="true"></i>This is a tip<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">一个 <strong>技巧</strong> 横幅</div>
+    </div>
+  </div></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><div class="details admonition tip">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-lightbulb fa-fw" aria-hidden="true"></i>This is a tip<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">一个 <strong>技巧</strong> 横幅</div>
+    </div>
+  </div></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="music插入音乐" class="heading-element"><span>music（插入音乐）</span>
+  <a href="#music%e6%8f%92%e5%85%a5%e9%9f%b3%e4%b9%90" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>music提供了一个内嵌的响应式音乐播放器。</p>
+<h4 id="自定义音乐url" class="heading-element"><span>自定义音乐URL</span>
+  <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e9%9f%b3%e4%b9%90url" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>支持本地资源引用的完整用法。</p>
+<p>其参数如下：</p>
+<ol>
+<li><code>server</code> [必需] 音乐的链接。</li>
+<li><code>type</code> [可选] 音乐的名称。</li>
+<li><code>artist</code> [可选] 音乐的创作者。</li>
+<li><code>cover</code> [可选] 音乐的封面链接。</li>
+</ol>
+<p>示例1：使用自定义音乐的URL。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><meting-js url="/music/Wavelength.mp3" name="Wavelength" artist="oldmanyoung" cover="/images/Wavelength.jpg" theme="#448aff"></meting-js></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="音乐平台url自动识别" class="heading-element"><span>音乐平台URL自动识别</span>
+  <a href="#%e9%9f%b3%e4%b9%90%e5%b9%b3%e5%8f%b0url%e8%87%aa%e5%8a%a8%e8%af%86%e5%88%ab" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>有一个命名参数来使用音乐平台 URL 的自动识别：</p>
+<ol>
+<li>auto [必需]（第一个位置参数）用来自动识别的音乐平台 URL，支持 <code>netease</code>，<code>tencent</code> 和 <code>xiami</code> 平台。</li>
+</ol>
+<p>示例1：一个使用音乐平台 URL 的自动识别。</p>
+<meting-js auto="https://music.163.com/#/playlist?id=60198" theme="#448aff"></meting-js>
+<h4 id="自定义音乐平台类型和id" class="heading-element"><span>自定义音乐平台、类型和ID</span>
+  <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e9%9f%b3%e4%b9%90%e5%b9%b3%e5%8f%b0%e7%b1%bb%e5%9e%8b%e5%92%8cid" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>有以下命名参数来使用自定义音乐平台：</p>
+<ol>
+<li><code>server</code> [必需]（第一个位置参数）音乐平台 [<code>netease</code>, <code>tencent</code>, <code>kugou</code>, <code>xiami</code>, <code>baidu</code>]。</li>
+<li><code>type</code> [必需]（第二个位置参数）音乐类型 [<code>song</code>, <code>playlist</code>, <code>album</code>, <code>search</code>, <code>artist</code>]。</li>
+<li><code>id</code> [必需]（第三个位置参数）歌曲 ID，或者播放列表 ID，或者专辑 ID，或者搜索关键词，或者创作者 ID。</li>
+</ol>
+<p>示例1：使用自定义音乐平台。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><meting-js server="netease" type="song" id="1868553" theme="#448aff"></meting-js></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="其他参数" class="heading-element"><span>其他参数</span>
+  <a href="#%e5%85%b6%e4%bb%96%e5%8f%82%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>有一些可以应用于以上三种方式的其它命名参数：</p>
+<ol>
+<li><code>theme</code> [可选] 音乐播放器的主题色，默认值是 <code>#448aff</code>。</li>
+<li><code>fixed</code> [可选] 是否开启固定模式，默认值是 <code>false</code>。</li>
+<li><code>mini</code> [可选] 是否开启迷你模式，默认值是 <code>false</code>。</li>
+<li><code>autoplay</code> [可选] 是否自动播放音乐，默认值是 <code>false</code>。</li>
+<li><code>volume</code> [可选] 第一次打开播放器时的默认音量，会被保存在浏览器缓存中，默认值是 <code>0.7</code>。</li>
+<li><code>mutex</code> [可选] 是否自动暂停其它播放器，默认值是 <code>true</code>。</li>
+</ol>
+<p>还有一些只适用于音乐列表方式的其它命名参数：</p>
+<ol>
+<li><code>loop</code> [可选] [<code>all</code>, <code>one</code>, <code>none</code>] 音乐列表的循环模式，默认值是 <code>none</code>。</li>
+<li><code>order</code> [可选] [<code>list</code>, <code>random</code>] 音乐列表的播放顺序，默认值是 <code>list</code>。</li>
+<li><code>list-folded</code> [可选] 初次打开的时候音乐列表是否折叠，默认值是 <code>false</code>。</li>
+<li><code>list-max-height</code> [可选] 音乐列表的最大高度，默认值是 <code>340px</code>。</li>
+</ol>
+<h3 id="bilibili嵌入视频" class="heading-element"><span>bilibili（嵌入视频）</span>
+  <a href="#bilibili%e5%b5%8c%e5%85%a5%e8%a7%86%e9%a2%91" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>提供了一个内嵌的用来播放 bilibili 视频的响应式播放器。</p>
+<p>如果视频只有一个部分，则仅需要视频的 BV <code>id</code>。</p>
+<p>示例1：一个bilibili视频链接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">https://www.bilibili.com/video/BV1Sx411T7QQ</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><div class="bilibili">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1Sx411T7QQ&page=1&autoplay=false&poster=true&muted=false&danmaku=true&t=0" border="0" framespacing="0" allowfullscreen="true"></iframe>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果视频包含多个部分，则除了视频的 BV <code>id</code> 之外，还需要 <code>p</code>，默认值为 <code>1</code>。</p>
+<p>例如：一个带有p参数的视频链接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">https://www.bilibili.com/video/BV1TJ411C7An?p=3</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><div class="bilibili">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1TJ411C7An&page=3&autoplay=false&poster=true&muted=false&danmaku=true&t=0" border="0" framespacing="0" allowfullscreen="true"></iframe>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>详细参数</strong></p>
+<p>有以下命名参数：</p>
+<ol>
+<li><code>id</code> [必需]（第一个位置参数）视频的 BV <code>id</code>。</li>
+<li><code>p</code> [可选]（第二个位置参数）多 P 视频的集数。从 <code>1</code> 开始计数，默认值为 <code>1</code>。</li>
+<li><code>autoplay</code>  [可选] 是否自动播放，默认值为 <code>false</code>。</li>
+<li><code>poster</code> [可选] 是否展示封面，默认值为 <code>true</code>。</li>
+<li><code>muted</code> [可选] 是否静音，默认值为 false。</li>
+<li><code>danmaku</code> [可选] 是否开启弹幕，默认值为 <code>true</code>。</li>
+<li><code>t</code> [可选] 跳转到媒体的初始时间点，默认值为 <code>0</code>，单位：秒。</li>
+</ol>
+<h3 id="douyin嵌入视频" class="heading-element"><span>douyin（嵌入视频）</span>
+  <a href="#douyin%e5%b5%8c%e5%85%a5%e8%a7%86%e9%a2%91" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>提供了一个内嵌的用来播放抖音视频的响应式播放器</p>
+<p>视频 VideoID 可以通过 PC 端视频播放地址中获取。</p>
+<p>示例1：播放抖音视频。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">https://www.douyin.com/video/7370344193077644584</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><div class="douyin">
+  <iframe src="//open.douyin.com/player/video?vid=7370344193077644584&autoplay=0" border="0" framespacing="0" allowfullscreen="true"></iframe>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="typeit打字动画" class="heading-element"><span>typeit（打字动画）</span>
+  <a href="#typeit%e6%89%93%e5%ad%97%e5%8a%a8%e7%94%bb" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>typeit有以下命名参数：</p>
+<ol>
+<li><code>tag</code> [可选]，内容容器的 HTML 标签。</li>
+<li><code>code</code> [可选]，指定代码内容语言类型，可以实习语法高亮。</li>
+<li><code>code-link</code> [可选]，是否解析代码内容中的 Markdown 链接，默认：<code>false</code>。</li>
+<li><code>group</code> [可选]，内容分组，相同分组的内容将按顺序开始打字动画。</li>
+<li><code>loop</code> [可选]，内容是否会在打字动画完成后继续循环。</li>
+</ol>
+<p>注意：内容允许使用 <code>Markdown</code> 格式的简单内容，并且不包含富文本的块内容，例如图像等。</p>
+<p>实例1：打印简单的带超链接的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"><div class="typeit"><div ></div><template><pre>这一个带有基于 <a href="https://typeitjs.com/"target="_blank" rel="external nofollow noopener noreferrer">TypeIt</a> 的打字动画的段落！</pre></template>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p>实例2：打印代码内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"><div class="typeit"><div class="highlight"></div><template><pre><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorld</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Hello World&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></pre></template>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：默认情况下，所有打字动画都是同时开始的。 但有时可能需要按顺序开始一组 <code>typeit</code> 内容的打字动画。一组具有相同 <code>group</code> 参数值的 <code>typeit</code> 内容将按顺序开始打字动画。</p>
+<p>实例3：带有分组的顺序打字动画</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl"><div class="typeit" data-group="paragraph"><div ></div><template><pre>首先, 这个段落开始</pre></template>
+</div>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><div class="typeit" data-group="paragraph"><div ></div><template><pre>接着, 这个段落开始</pre></template>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：默认情况下，打字动画完成后将停止。若需要内容在打字动画完成后继续循环，可以使用 <code>loop</code> 参数。</p>
+<p>实例4：循环打字动画</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><div class="typeit" data-loop="true"><div ></div><template><pre>这个段落将会循环</pre></template>
+</div></span></span></code></pre></td></tr></table>
+</div>
+</div></div><hr class="awesome-hr" />
+    <h2 id="see-also">相关内容</h2>
+    <ul><li>
+          <a href="/posts/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Redis基础知识">Redis基础知识</a></li><li>
+          <a href="/posts/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/" title="English Test">English Test</a></li><li>
+          <a href="/posts/markdown%E6%B5%8B%E8%AF%95/" title="Markdown测试">Markdown测试</a></li><li>
+          <a href="/posts/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/" title="中文测试">中文测试</a></li><li>
+          <a href="/posts/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/" title="代码高亮测试">代码高亮测试</a></li></ul><div class="collection-card">
+      <div class="collection-title text-secondary">收录于 <a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> <span>合集・Hugo建站日志</span></span></a> 4</div>
+      <div class="collection-nav"><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/fixit%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="collection-nav-item" rel="prev" title="FixIt主题优化"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i><span>FixIt主题优化</span>
+          </a><a href="/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/" class="collection-nav-item" rel="next" title="Markdown 语法">
+            <span>Markdown 语法</span><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    </div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-07-03 02:03:51">更新于 2024-07-03&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" data-title="Hugo文章格式" data-hashtags="建站"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" data-hashtag="建站"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/"><i class="fa-brands fa-get-pocket fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" data-title="Hugo文章格式"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" data-title="Hugo文章格式"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Skype" data-sharer="skype" data-url="http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/" data-title="Hugo文章格式"><i class="fa-brands fa-skype fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E5%BB%BA%E7%AB%99/" class="post-tag" title="标签 - 建站">建站</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"></div>
+</div>
+<div class="post-reward">
+    <div class="comment"></div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>赞赏</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.jpg" alt="WindSun 支付宝" data-title="WindSun 支付宝" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="/images/wechat.jpg" alt="WindSun 微信" data-title="WindSun 微信" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div></article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.128.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-1" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">WindSun</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">博客已运行</span><span class="run-times ms-1">网站运行中……</span></span></div><div class="footer-line beian order-3"><span class="gov">陕ICP备</span><span class="icp footer-divider">2021003707号</span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><a href="https://github.com/137782866" title="在GitHub上查看"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true" width="56" height="56"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--progress-h: 3px;--bg-progress: #2376b7;--bg-progress-dark: #2376b7;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" href="/lib/aplayer/APlayer.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/aplayer/APlayer.min.css"></noscript><link rel="stylesheet" href="/lib/aplayer/dark.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/lib/pace/themes/blue/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/aplayer/APlayer.min.js" defer></script><script src="/lib/meting/Meting.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/crypto-js/core.min.js" defer></script><script src="/lib/crypto-js/enc-base64.min.js" defer></script><script src="/lib/crypto-js/md5.min.js" defer></script><script src="/lib/crypto-js/sha256.min.js" defer></script><script src="/js/fixit-decryptor.js" defer></script><script src="/lib/pace/pace.min.js" async defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"encryption":{"all":false,"shortcode":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"siteTime":"2023-01-01T12:00:00+08:00","typeit":{"cursorChar":"|","cursorSpeed":1000,"duration":-1,"loop":false,"speed":100},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
