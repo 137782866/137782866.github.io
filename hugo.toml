@@ -902,8 +902,8 @@ enableEmoji = false
         enable = true
         owner = "137782866"
         repo = "MyGitalk"
-        clientId = "ff451c5433f373b505f4"
-        clientSecret = "f9eafa7c8b310f0d3a1d5e0754fdf665480e897d"
+        clientId = "Ov23li2lTqmIZ60sVppR"
+        clientSecret = "c43bbb99b1bda17f9a2a1d5ad9ed8aaca2b5ec2c"
       # Valine 评论系统设置 (https://github.com/xCss/Valine)
       [params.page.comment.valine]
         enable = false
