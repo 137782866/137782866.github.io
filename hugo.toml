@@ -875,7 +875,7 @@ enableEmoji = false
         emitMetadata = "0"
         inputPosition = "bottom" # ["top", "bottom"]
         lightTheme = "light"
-        darkTheme = "dark"
+        darkTheme = "dark_dimmed"
         lazyLoad = true
     # 第三方库配置
     [params.page.library]
