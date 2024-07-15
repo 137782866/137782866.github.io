@@ -436,9 +436,6 @@ enableEmoji = false
     Youtubelegacy = ""
     Youtubecustom = ""
     Youtubechannel = ""
-    Tumblr = ""
-    Quora = ""
-    Keybase = ""
     Pinterest = ""
     Reddit = ""
     Codepen = ""
@@ -446,66 +443,30 @@ enableEmoji = false
     Bitbucket = ""
     Stackoverflow = ""
     Weibo = ""
-    Odnoklassniki = ""
-    VK = ""
-    Flickr = ""
-    Xing = ""
     Snapchat = ""
-    Soundcloud = ""
-    Spotify = ""
-    Bandcamp = ""
     Paypal = ""
-    Fivehundredpx = ""
-    Mix = ""
     Goodreads = ""
-    Lastfm = ""
-    Foursquare = ""
-    Hackernews = ""
-    Kickstarter = ""
-    Patreon = ""
     Steam = ""
     Twitch = ""
-    Strava = ""
     Skype = ""
     Whatsapp = ""
     Zhihu = ""
     Douban = ""
-    Angellist = ""
-    Slidershare = ""
-    Jsfiddle = ""
-    Deviantart = ""
-    Behance = ""
-    Dribbble = ""
-    Wordpress = ""
-    Vine = ""
     Googlescholar = ""
     Researchgate = ""
-    Mastodon = ""
-    Thingiverse = ""
-    Devto = ""
     Gitea = ""
-    XMPP = ""
     Matrix = ""
     Bilibili = ""
-    ORCID = ""
     Liberapay = ""
-    Ko-Fi = ""
     BuyMeaCoffee = ""
     Linktree = ""
     QQ = ""
     QQGroup = "" # https://qun.qq.com/join.html
-    Diaspora = ""
     Discord = ""
     DiscordInvite = ""
     Lichess = ""
-    Pleroma = ""
-    Kaggle = ""
     MediaWiki= ""
-    Plume = ""
-    HackTheBox = ""
-    RootMe = ""
     Feishu = ""
-    TryHackMe = ""
     Douyin = ""
     TikTok = ""
     Phone = ""
@@ -619,7 +580,7 @@ enableEmoji = false
   [params.githubCorner]
     enable = true
     permalink = "https://github.com/137782866"
-    title = "在GitHub上查看"
+    title = "查看GitHub"
     position = "right" # ["left", "right"]
   # Gravatar 设置
   [params.gravatar]
@@ -869,37 +830,9 @@ enableEmoji = false
     # 评论系统设置
     [params.page.comment]
       enable = true
-      # Artalk 评论系统设置 (https://artalk.js.org/)
-      [params.page.comment.artalk]
-        enable = false
-        server = "https://yourdomain"
-        site = "默认站点"
-        placeholder = ""
-        noComment = ""
-        sendBtn = ""
-        editorTravel = true
-        flatMode = "auto"
-        # 启用 lightgallery 支持
-        lightgallery = false
-        locale = ""
-        emoticons = ""
-        nestMax = 2
-        nestSort = "DATE_ASC" # ["DATE_ASC", "DATE_DESC", "VOTE_UP_DESC"]
-        vote = true
-        voteDown = false
-        uaBadge = true
-        listSort = true
-        imgUpload = true
-        preview = true
-        versionCheck = true
-      # Disqus 评论系统设置 (https://disqus.com)
-      [params.page.comment.disqus]
-        enable = false
-        # Disqus 的 shortname，用来在文章中启用 Disqus 评论系统
-        shortname = ""
       # Gitalk 评论系统设置 (https://github.com/gitalk/gitalk)
       [params.page.comment.gitalk]
-        enable = true
+        enable = false
         owner = "137782866"
         repo = "MyGitalk"
         clientId = "Ov23li2lTqmIZ60sVppR"
@@ -927,73 +860,14 @@ enableEmoji = false
         # "assets/lib/valine/emoji/"
         emoji = ""
         commentCount = true
-      [params.page.comment.waline]
-        enable = false
-        serverURL = ""
-        pageview = false
-        emoji = ["//unpkg.com/@waline/emojis@1.1.0/weibo"]
-        meta = ["nick", "mail", "link"]
-        requiredMeta = []
-        login = "enable"
-        wordLimit = 0
-        pageSize = 10
-        imageUploader = false
-        highlighter = false
-        comment = false
-        texRenderer = false
-        search = false
-        recaptchaV3Key = ""
-        turnstileKey = ""
-        reaction = false
-      # Facebook 评论系统设置 (https://developers.facebook.com/docs/plugins/comments)
-      [params.page.comment.facebook]
-        enable = false
-        width = "100%"
-        numPosts = 10
-        appId = ""
-        languageCode = "zh_CN"
-      # Telegram Comments 评论系统设置 (https://comments.app)
-      [params.page.comment.telegram]
-        enable = false
-        siteID = ""
-        limit = 5
-        height = ""
-        color = ""
-        colorful = true
-        dislikes = false
-        outlined = false
-      # Commento 评论系统设置 (https://commento.io)
-      [params.page.comment.commento]
-        enable = false
-      # Utterances 评论系统设置 (https://utteranc.es)
-      [params.page.comment.utterances]
-        enable = false
-        # owner/repo
-        repo = ""
-        issueTerm = "pathname"
-        label = ""
-        lightTheme = "github-light"
-        darkTheme = "github-dark"
-      # Twikoo 评论系统设置 (https://twikoo.js.org/)
-      [params.page.comment.twikoo]
-        enable = false
-        envId = ""
-        region = ""
-        path = ""
-        visitor = true
-        commentCount = true
-        # 启用 lightgallery 支持
-        lightgallery = false
-        # 启用 Katex 支持
-        katex = false
       # Giscus 评论系统设置
       [params.page.comment.giscus]
-        enable = false
-        repo = ""
-        repoId = ""
-        category = ""
-        categoryId = ""
-        mapping = ""
+        enable = true
+        repo = "137782866/MyGiscus"
+        repoId = "R_kgDOMWnNHg"
+        category = "General"
+        categoryId = "DIC_kwDOMWnNHs4CgzWd"
+        mapping = "pathname"
         origin = "https://giscus.app" # Or set it to your self-hosted domain
         strict = "0"
         term = ""
