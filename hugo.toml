@@ -789,10 +789,10 @@ enableEmoji = false
       enable = true
       animation = true
       # 相对于页脚的位置，可选值：["before", "after"]
-      position = "after"
+      position = "before"
       # comment = "Buy me a coffee"
       # 二维码图像新的显示模式, 参数值: ["static", "fixed"], 默认: `static`
-      mode = "static"
+      mode = "fixed"
       # 二维码图像URL
       [params.page.reward.ways]
         wechatpay = "/images/wechat.jpg"
