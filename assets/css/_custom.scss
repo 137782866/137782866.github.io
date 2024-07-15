@@ -324,3 +324,11 @@ $blog-base-color: #e6e5f8 !default;
 .summary {
   border-bottom: 2px dashed $global-border-color !important;
 }
+
+/******************************************************** ghchart *****************************************************************/
+.home {
+  .profile-ghchart {
+    width: MIN(663px, 100%);
+    aspect-ratio: 663/104;
+  }
+}
