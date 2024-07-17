@@ -328,16 +328,14 @@ $blog-base-color: #e6e5f8 !default;
 /******************************************************** ghchart *****************************************************************/
 .home {
   .profile-ghchart {
-    width: MIN(663px, 100%);
-    aspect-ratio: 663/104;
+    width: MIN(80%, 100%);
+    margin: 1em;
     padding: 0.6em 0.3em 0.3em 0.6em;
     @include border-radius($global-border-radius);
-    border: 0.1em solid $code-border-color;
-    box-shadow: 5px 5px 12px $global-border-color;
+    @include box-shadow(0 0 0 0.3618em rgba(0, 0, 0, 0.05));
 
     [data-theme='dark'] & {
-      border: 0.1em solid $code-border-color-dark;
-      box-shadow: 5px 5px 12px $global-border-color-dark;
+      @include box-shadow(0 0 0 0.3618em rgba(255, 255, 255, 0.05));
     }
   }
 }
