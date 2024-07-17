@@ -1,5 +1,5 @@
 ---
-title: "Hugo文章格式"
+title: "Hugo文章格式1"
 date: 2024-07-03T02:03:51+08:00
 lastmod: 2024-07-03T02:03:51+08:00
 draft: false

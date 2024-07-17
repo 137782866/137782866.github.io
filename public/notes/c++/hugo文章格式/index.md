@@ -1,16 +1,7 @@
----
-title: "Hugo文章格式1"
-date: 2024-07-03T02:03:51+08:00
-lastmod: 2024-07-03T02:03:51+08:00
-draft: false
-tags: ["建站"]
-categories: ["建站"]
-collections: ["Hugo建站日志"]
-featuredImage: ""
-featuredImagePreview: ""
----
+# Hugo文章格式1
 
-所有的格式需要参考：[FixIt内容管理](https://fixit.lruihao.cn/zh-cn/documentation/content-management/ "FixIt内容管理")文档，这里只列出一些常用的格式，便于简单的日常写作。
+
+所有的格式需要参考：[FixIt内容管理](https://fixit.lruihao.cn/zh-cn/documentation/content-management/ &#34;FixIt内容管理&#34;)文档，这里只列出一些常用的格式，便于简单的日常写作。
 
 ## 前置参数
 
@@ -78,20 +69,20 @@ instantPage: 和主题配置中的params.page.instantPage部分相同
 
 ```Markdown
 ---
-title: "第一篇文章测试"
-date: 2024-07-01T12:00:00+08:00
-lastmod: 2024-07-01T12:00:00+08:00
+title: &#34;第一篇文章测试&#34;
+date: 2024-07-01T12:00:00&#43;08:00
+lastmod: 2024-07-01T12:00:00&#43;08:00
 draft: false
-tags: ["标签1", "标签2"]
-categories: ["分类1", "分类2"]
-collections: ["合集1", "合集2"]
-featuredImage: "/image/xxx.png"
-featuredImagePreview: "/image/xxx.png"
+tags: [&#34;标签1&#34;, &#34;标签2&#34;]
+categories: [&#34;分类1&#34;, &#34;分类2&#34;]
+collections: [&#34;合集1&#34;, &#34;合集2&#34;]
+featuredImage: &#34;/image/xxx.png&#34;
+featuredImagePreview: &#34;/image/xxx.png&#34;
 author:
-  name: "" # 文章作者
-  link: "" # 文章作者的链接
-  email: "" # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar
-  avatar: "" # 文章作者的头像
+  name: &#34;&#34; # 文章作者
+  link: &#34;&#34; # 文章作者的链接
+  email: &#34;&#34; # 文章作者的邮箱，用于设置Gravatar头像，优先于avatar
+  avatar: &#34;&#34; # 文章作者的头像
 ---
 ```
 
@@ -105,13 +96,13 @@ FixIt使用内容摘要在主页中显示大致文章信息。默认情况下，
 
 ### 手动拆分摘要
 
-可以添加 `<!--more-->` 摘要分割符来拆分文章生成摘要，摘要分隔符之前的内容将用作该文章的摘要。
+可以添加 `&lt;!--more--&gt;` 摘要分割符来拆分文章生成摘要，摘要分隔符之前的内容将用作该文章的摘要。
 
-> 注：小心输入 `<!--more-->` ，全部为小写且没有空格。
+&gt; 注：小心输入 `&lt;!--more--&gt;` ，全部为小写且没有空格。
 
 如果摘要不是文章开头的文字。可以在文章前置参数的 `summary` 变量中设置单独的摘要。
 
-如果希望将文章前置参数中的 `description` 变量的内容作为摘要，仍然需要在文章开头添加 `<!--more-->` 摘要分割符。但需要将摘要分隔符之前的内容保留为空。
+如果希望将文章前置参数中的 `description` 变量的内容作为摘要，仍然需要在文章开头添加 `&lt;!--more--&gt;` 摘要分割符。但需要将摘要分隔符之前的内容保留为空。
 
 ## 内容加密
 
@@ -134,25 +125,13 @@ FixIt 主题提供了两个 front matter 用于全文加密。
 
 你可以使用 `fixit-encryptor` shortcode 来加密部分内容。加密层级支持无限级嵌套。`fixit-encryptor` shortcode具有以下命名参数：
 
-`password=""` \[必选]（第一个位置参数）部分加密内容的密码。
+`password=&#34;&#34;` \[必选]（第一个位置参数）部分加密内容的密码。
 
-`message=""`  \[可选]（第二个位置参数）解密输入框的提示信息。
+`message=&#34;&#34;`  \[可选]（第二个位置参数）解密输入框的提示信息。
 
 实例1：
 
-```Markdown
-{{% fixit-encryptor "1212" "密码是 1212" %}}
-这里是加密的内容...
-{{% /fixit-encryptor %}}
-```
-
-实例2：
-
-```Markdown
-{{% fixit-encryptor password="1212" message="密码是 1212" %}}
-这里是加密的内容...
-{{% /fixit-encryptor %}}
-```
+```Markdown```
 
 ## shortcodes
 
@@ -165,35 +144,35 @@ Hugo 内置了一些预定义的 shortcodes，这里列出几个常用的：
 ### highlight （显示代码）
 
 ```text
-{{< highlight html >}}
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
+{{&lt; highlight html &gt;}}
+&lt;section id=&#34;main&#34;&gt;
+    &lt;div&gt;
+        &lt;h1 id=&#34;title&#34;&gt;{{ .Title }}&lt;/h1&gt;
         {{ range .Pages }}
-            {{ .Render "summary"}}
+            {{ .Render &#34;summary&#34;}}
         {{ end }}
-    </div>
-</section>
-{{< /highlight >}}
+    &lt;/div&gt;
+&lt;/section&gt;
+{{&lt; /highlight &gt;}}
 ```
 
 显示效果：
 
 ```html
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
+&lt;section id=&#34;main&#34;&gt;
+    &lt;div&gt;
+        &lt;h1 id=&#34;title&#34;&gt;{{ .Title }}&lt;/h1&gt;
         {{ range .Pages }}
-            {{ .Render "summary"}}
+            {{ .Render &#34;summary&#34;}}
         {{ end }}
-    </div>
-</section>
+    &lt;/div&gt;
+&lt;/section&gt;
 ```
 
 ### youtube（嵌入视频）
 
 ```text
-{{< youtube w7Ft2ymGmfc >}}
+{{&lt; youtube w7Ft2ymGmfc &gt;}}
 ```
 
 除此之外，FixIt扩展了一些shortcodes。
@@ -218,21 +197,21 @@ link是 Markdown 链接语法的替代。link 可以提供一些其它的功能�
 实例1：一个简单的超链接。
 
 ```Markdown
-{{< link href="https://assemble.io" >}}
-{{< link href="mailto:contact@revolunet.com" >}}
-{{< link href="https://assemble.io" content=Assemble >}}
+{{&lt; link href=&#34;https://assemble.io&#34; &gt;}}
+{{&lt; link href=&#34;mailto:contact@revolunet.com&#34; &gt;}}
+{{&lt; link href=&#34;https://assemble.io&#34; content=Assemble &gt;}}
 ```
 
 实例4：可下载的卡片链接效果。
 
 ```Markdown
-{{< link href="/music/Wavelength.mp3" content="Wavelength.mp3" title="Download Wavelength.mp3" download="Wavelength.mp3" >}}
-{{< link href="/music/Wavelength.mp3" content="Wavelength.mp3" title="Download Wavelength.mp3" download="Wavelength.mp3" card=true >}}
+{{&lt; link href=&#34;/music/Wavelength.mp3&#34; content=&#34;Wavelength.mp3&#34; title=&#34;Download Wavelength.mp3&#34; download=&#34;Wavelength.mp3&#34; &gt;}}
+{{&lt; link href=&#34;/music/Wavelength.mp3&#34; content=&#34;Wavelength.mp3&#34; title=&#34;Download Wavelength.mp3&#34; download=&#34;Wavelength.mp3&#34; card=true &gt;}}
 ```
 
 ### image（图片）
 
-image用来插入图片，可以充分利用 [lightgallery](https://github.com/sachinchoolur/lightgallery "lightgallery")，支持 本地资源引用 的完整用法。
+image用来插入图片，可以充分利用 [lightgallery](https://github.com/sachinchoolur/lightgallery &#34;lightgallery&#34;)，支持 本地资源引用 的完整用法。
 
 其参数如下：
 
@@ -252,7 +231,7 @@ image用来插入图片，可以充分利用 [lightgallery](https://github.com/s
 示例1：显示一张图片。
 
 ```Markdown
-{{< image src="/images/lighthouse.jpg" caption="Lighthouse" src_s="/images/lighthouse-small.jpg" src_l="/images/lighthouse-large.jpg" >}}
+{{&lt; image src=&#34;/images/lighthouse.jpg&#34; caption=&#34;Lighthouse&#34; src_s=&#34;/images/lighthouse-small.jpg&#34; src_l=&#34;/images/lighthouse-large.jpg&#34; &gt;}}
 ```
 
 ### admonition（提示横幅）
@@ -264,73 +243,73 @@ image用来插入图片，可以充分利用 [lightgallery](https://github.com/s
 ```Markdown
 admonition 注意
 abstract 
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition  &gt;}}
+{{&amp;lt; admonition  &amp;gt;}}
 一个 **摘要** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition info &gt;}}
+{{&amp;lt; admonition info &amp;gt;}}
 一个 **信息** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition tip &gt;}}
+{{&amp;lt; admonition tip &amp;gt;}}
 一个 **技巧** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition success &gt;}}
+{{&amp;lt; admonition success &amp;gt;}}
 一个 **成功** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition question &gt;}}
+{{&amp;lt; admonition question &amp;gt;}}
 一个 **问题** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition warning &gt;}}
+{{&amp;lt; admonition warning &amp;gt;}}
 一个 **警告** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition failure &gt;}}
+{{&amp;lt; admonition failure &amp;gt;}}
 一个 **失败** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition danger &gt;}}
+{{&amp;lt; admonition danger &amp;gt;}}
 一个 **危险** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition bug &gt;}}
+{{&amp;lt; admonition bug &amp;gt;}}
 一个 **Bug** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition example &gt;}}
+{{&amp;lt; admonition example &amp;gt;}}
 一个 **示例** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 ```Markdown
-{{&lt; admonition quote &gt;}}
+{{&amp;lt; admonition quote &amp;gt;}}
 一个 **引用** 横幅
-{{&lt; /admonition &gt;}}
+{{&amp;lt; /admonition &amp;gt;}}
 ```
 
 上面的相当于是自带的横幅，我们也可以自己定义横幅。
@@ -346,16 +325,16 @@ abstract
 示例1：一个简单的自定义横幅。
 
 ```Markdown
-{{< admonition type=tip title="This is a tip" open=false >}}
+{{&lt; admonition type=tip title=&#34;This is a tip&#34; open=false &gt;}}
 一个 **技巧** 横幅
-{{< /admonition >}}
+{{&lt; /admonition &gt;}}
 
 ```
 
 ```Markdown
-{{< admonition tip "This is a tip" false >}}
+{{&lt; admonition tip &#34;This is a tip&#34; false &gt;}}
 一个 **技巧** 横幅
-{{< /admonition >}}
+{{&lt; /admonition &gt;}}
 ```
 
 ### music（插入音乐）
@@ -376,7 +355,7 @@ music提供了一个内嵌的响应式音乐播放器。
 示例1：使用自定义音乐的URL。
 
 ```Markdown
-{{< music url="/music/Wavelength.mp3" name=Wavelength artist=oldmanyoung cover="/images/Wavelength.jpg" >}}
+{{&lt; music url=&#34;/music/Wavelength.mp3&#34; name=Wavelength artist=oldmanyoung cover=&#34;/images/Wavelength.jpg&#34; &gt;}}
 ```
 
 #### 音乐平台URL自动识别
@@ -388,7 +367,7 @@ music提供了一个内嵌的响应式音乐播放器。
 示例1：一个使用音乐平台 URL 的自动识别。
 
 
-{{< music auto="https://music.163.com/#/playlist?id=60198" >}}
+{{&lt; music auto=&#34;https://music.163.com/#/playlist?id=60198&#34; &gt;}}
 
 #### 自定义音乐平台、类型和ID
 
@@ -401,7 +380,7 @@ music提供了一个内嵌的响应式音乐播放器。
 示例1：使用自定义音乐平台。
 
 ```Markdown
-{{< music server="netease" type="song" id="1868553" >}}
+{{&lt; music server=&#34;netease&#34; type=&#34;song&#34; id=&#34;1868553&#34; &gt;}}
 
 ```
 
@@ -436,7 +415,7 @@ https://www.bilibili.com/video/BV1Sx411T7QQ
 ```
 
 ```Markdown
-{{< bilibili id=BV1Sx411T7QQ >}}
+{{&lt; bilibili id=BV1Sx411T7QQ &gt;}}
 ```
 
 如果视频包含多个部分，则除了视频的 BV `id` 之外，还需要 `p`，默认值为 `1`。
@@ -448,7 +427,7 @@ https://www.bilibili.com/video/BV1TJ411C7An?p=3
 ```
 
 ```Markdown
-{{< bilibili id=BV1TJ411C7An p=3 >}}
+{{&lt; bilibili id=BV1TJ411C7An p=3 &gt;}}
 ```
 
 **详细参数**
@@ -476,7 +455,7 @@ https://www.douyin.com/video/7370344193077644584
 ```
 
 ```markdown
-{{< douyin id=7370344193077644584 >}}
+{{&lt; douyin id=7370344193077644584 &gt;}}
 ```
 
 ### typeit（打字动画）
@@ -494,21 +473,21 @@ typeit有以下命名参数：
 实例1：打印简单的带超链接的内容。
 
 ```text
-{{< typeit >}}
+{{&lt; typeit &gt;}}
 这一个带有基于 [TypeIt](https://typeitjs.com/) 的打字动画的段落！
-{{< /typeit >}}
+{{&lt; /typeit &gt;}}
 ```
 
 实例2：打印代码内容
 
 ```text
-{{< typeit code=java >}}
+{{&lt; typeit code=java &gt;}}
 public class HelloWorld {
     public static void main(String []args) {
-        System.out.println("Hello World");
+        System.out.println(&#34;Hello World&#34;);
     }
 }
-{{< /typeit >}}
+{{&lt; /typeit &gt;}}
 ```
 
 注意：默认情况下，所有打字动画都是同时开始的。 但有时可能需要按顺序开始一组 `typeit` 内容的打字动画。一组具有相同 `group` 参数值的 `typeit` 内容将按顺序开始打字动画。
@@ -516,13 +495,13 @@ public class HelloWorld {
 实例3：带有分组的顺序打字动画
 
 ```Markdown
-{{< typeit group=paragraph >}}
+{{&lt; typeit group=paragraph &gt;}}
 首先, 这个段落开始
-{{< /typeit >}}
+{{&lt; /typeit &gt;}}
 
-{{< typeit group=paragraph >}}
+{{&lt; typeit group=paragraph &gt;}}
 接着, 这个段落开始
-{{< /typeit >}}
+{{&lt; /typeit &gt;}}
 ```
 
 注意：默认情况下，打字动画完成后将停止。若需要内容在打字动画完成后继续循环，可以使用 `loop` 参数。
@@ -530,8 +509,15 @@ public class HelloWorld {
 实例4：循环打字动画
 
 ```markdown
-{{< typeit loop=true >}}
+{{&lt; typeit loop=true &gt;}}
 这个段落将会循环
-{{< /typeit >}}
+{{&lt; /typeit &gt;}}
 ```
+
+
+
+---
+
+> 作者: WindSun  
+> URL: http://localhost:1313/notes/c&#43;&#43;/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/  
 

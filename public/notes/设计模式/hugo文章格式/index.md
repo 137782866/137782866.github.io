@@ -1,4 +1,4 @@
-# Hugo文章格式
+# Hugo文章格式1
 
 
 所有的格式需要参考：[FixIt内容管理](https://fixit.lruihao.cn/zh-cn/documentation/content-management/ &#34;FixIt内容管理&#34;)文档，这里只列出一些常用的格式，便于简单的日常写作。

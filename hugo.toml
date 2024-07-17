@@ -100,7 +100,18 @@ enableEmoji = false
     parent = "notes"
     pre = ""
     post = ""
-    name = "设计模式"
+    name = "《设计模式》"
+    url = "/notes/设计模式"
+    title = ""
+    weight = 0
+    [menu.main.params]
+      icon = "fa-solid fa-book"
+  [[menu.main]]
+    identifier = "notes-sjms"
+    parent = "notes"
+    pre = ""
+    post = ""
+    name = "《设计模式》"
     url = "/notes/设计模式"
     title = ""
     weight = 0
@@ -405,7 +416,7 @@ enableEmoji = false
       # 主页显示的网站标题（支持 HTML 格式）
       title = "博观而约取，厚积而薄发！"
       # 主页显示的网站副标题
-      subtitle = "转载、引用的内容要注明出处，尊重他人知识产权！"
+      subtitle = "转载、引用请注明出处，尊重他人知识产权！"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号

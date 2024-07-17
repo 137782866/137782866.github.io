@@ -1,6 +1,8 @@
 // ==============================
 // Custom style
 // ==============================
+@import '_partials/_maps/code-type';
+@import '_variables.scss';
 
 /******************************************************** 引入字体 *****************************************************************/
 @font-face {
@@ -339,3 +341,13 @@ $blog-base-color: #e6e5f8 !default;
     }
   }
 }
+
+
+// .single {
+//   .content {
+//     > h1,
+//     > h2 {
+//       border-bottom: 3px solid $single-link-color !important;
+//     }
+//   }
+// }
