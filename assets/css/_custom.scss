@@ -330,5 +330,14 @@ $blog-base-color: #e6e5f8 !default;
   .profile-ghchart {
     width: MIN(663px, 100%);
     aspect-ratio: 663/104;
+    padding: 0.6em 0.3em 0.3em 0.6em;
+    @include border-radius($global-border-radius);
+    border: 0.1em solid $code-border-color;
+    box-shadow: 5px 5px 12px $global-border-color;
+
+    [data-theme='dark'] & {
+      border: 0.1em solid $code-border-color-dark;
+      box-shadow: 5px 5px 12px $global-border-color-dark;
+    }
   }
 }
