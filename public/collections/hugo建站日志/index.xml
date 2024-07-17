@@ -360,10 +360,10 @@
 </item>
 <item>
   <title>Hugo文章格式1</title>
-  <link>http://localhost:1313/notes/c&#43;&#43;/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</link>
+  <link>http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</link>
   <pubDate>Wed, 03 Jul 2024 02:03:51 &#43;0800</pubDate>
   <author>WindSun</author>
-  <guid>http://localhost:1313/notes/c&#43;&#43;/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</guid>
+  <guid>http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</guid>
   <description><![CDATA[<p>所有的格式需要参考：<a href="https://fixit.lruihao.cn/zh-cn/documentation/content-management/" title="FixIt内容管理"target="_blank" rel="external nofollow noopener noreferrer">FixIt内容管理</a>文档，这里只列出一些常用的格式，便于简单的日常写作。</p>
 <h2 id="前置参数" class="heading-element"><span>前置参数</span>
   <a href="#%e5%89%8d%e7%bd%ae%e5%8f%82%e6%95%b0" class="heading-mark">

@@ -100,21 +100,21 @@ enableEmoji = false
     parent = "notes"
     pre = ""
     post = ""
-    name = "《设计模式》"
+    name = "设计模式"
     url = "/notes/设计模式"
     title = ""
-    weight = 0
+    weight = 1
     [menu.main.params]
       icon = "fa-solid fa-book"
   [[menu.main]]
-    identifier = "notes-sjms"
+    identifier = "notes-sjk"
     parent = "notes"
     pre = ""
     post = ""
-    name = "《设计模式》"
-    url = "/notes/设计模式"
+    name = "数据库"
+    url = "/notes/数据库"
     title = ""
-    weight = 0
+    weight = 2
     [menu.main.params]
       icon = "fa-solid fa-book"
   #******************** 生活 **********************/
