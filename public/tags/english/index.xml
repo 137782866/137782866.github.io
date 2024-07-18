@@ -4,13 +4,13 @@
     <link>http://localhost:1313/tags/english/</link>
     <description>English - 标签 | WindSun&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
-      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>个人博客版权说明</copyright><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/english/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>转载、引用请注明出处，尊重他人知识产权！</copyright><lastBuildDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/english/" rel="self" type="application/rss+xml" /><item>
   <title>English Test</title>
   <link>http://localhost:1313/posts/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/</link>
   <pubDate>Wed, 30 Aug 2017 01:37:56 &#43;0800</pubDate>
   <author>WindSun</author>
   <guid>http://localhost:1313/posts/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/</guid>
-  <description><![CDATA[Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
+  <description><![CDATA[IntroductionThis tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
 We&rsquo;ll start with creating a new site with a very basic template.]]></description>
 </item>
 </channel>

@@ -99,14 +99,14 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
       </div>
     </div>
     <!-- 卡片 -->
-    <div class="collection-link">
+    <!-- <div class="collection-link">
       <span class="card-name">编程</span>
       <div class="link-content">
         <ul>
             <li> <a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">数据结构/算法可视化</a> </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- 卡片 -->
     <div class="collection-link">
       <span class="card-name">C++</span>
@@ -147,7 +147,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
       </div>
     </div>
     <!-- 卡片 -->
-    <div class="collection-link">
+    <!-- <div class="collection-link">
       <span class="card-name">游戏客户端开发</span>
       <div class="link-content">
         <ul>
@@ -157,7 +157,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://www.kodeco.com/gametech" target="_blank">kodeco博客</a> </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- 卡片 -->
     <div class="collection-link">
       <span class="card-name">开发工具</span>
@@ -185,7 +185,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
       </div>
     </div>
     <!-- 卡片 -->
-    <div class="collection-link">
+    <!-- <div class="collection-link">
       <span class="card-name">娱乐</span>
       <div class="link-content">
         <ul>
@@ -194,16 +194,16 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://bbs.nga.cn/thread.php?fid=459" target="_blank">NGA论坛-OW</a> </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- 卡片 -->
     <div class="collection-link">
-      <span class="card-name">软件分享</span>
+      <span class="card-name">绿色软件</span>
       <div class="link-content">
         <ul>
             <li> <a href="https://www.mpyit.com/" target="_blank">殁漂遥</a> </li>
             <li> <a href="https://www.mefcl.com//" target="_blank">mefcl</a> </li>
             <li> <a href="https://www.423down.com/" target="_blank">423down</a> </li>
-            <li> <a href="https://metshop.cn/Shop" target="_blank">蜜糖商店</a> </li>
+            <!-- <li> <a href="https://metshop.cn/Shop" target="_blank">蜜糖商店</a> </li> -->
         </ul>
       </div>
     </div>

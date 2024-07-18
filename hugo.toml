@@ -16,7 +16,7 @@ hasCJKLanguage = true
 # 默认每页显示文章数量
 paginate = 12
 # 版权说明, 仅用于搜索引擎模式
-copyright = "个人博客版权说明"
+copyright = "转载、引用请注明出处，尊重他人知识产权！"
 # 是否使用 robots.txt
 enableRobotsTXT = true
 # 是否使用 git commit log（需要使用仓库）
@@ -190,9 +190,9 @@ enableEmoji = false
   # FixIt 主题版本
   version = "0.3.8" # e.g. "0.2.X", "0.2.15", "v0.2.15" etc.
   # 网站描述 
-  description = "一名编程热爱者的个人博客"
+  description = "编程热爱者！"
   # 网站关键字
-  keywords = ["编程", "WindSun"]
+  keywords = ["编程", "技术", "游戏开发", "WindSun"]
   # 网站默认主题 ["light", "dark", "auto"]
   defaultTheme = "auto"
   # 只有在启用 GitInfo 为 true 时，才会公开 git repo 网址
@@ -348,7 +348,7 @@ enableEmoji = false
       animate = true
       icon = "fa-solid fa-heartbeat"
       pre = "博客已运行"
-      value = "2023-01-01T12:00:00+08:00" # e.g. "2021-12-18T16:15:22+08:00"
+      value = "2024-07-20T12:00:00+08:00" # e.g. "2021-12-18T16:15:22+08:00"
     # 页面底部行排序，可选值：["first", 0, 1, 2, 3, 4, 5, "last"]
     [params.footer.order]
       # Hugo 和主题信息
