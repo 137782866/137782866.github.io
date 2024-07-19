@@ -9,7 +9,7 @@ description: WindSun's friends
 ## 基本信息
 {{< admonition info "注意" true >}}
 
-Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦！
+Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
 
 {{< /admonition >}}
 ```yaml
@@ -83,7 +83,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
 </head>  
 <body>
   <div class="collection-links">
-    <!-- 卡片 -->
+    <!-- -------------------------------------AI------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">AI</span>
       <div class="link-content">
@@ -98,16 +98,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
-    <!-- <div class="collection-link">
-      <span class="card-name">编程</span>
-      <div class="link-content">
-        <ul>
-            <li> <a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">数据结构/算法可视化</a> </li>
-        </ul>
-      </div>
-    </div> -->
-    <!-- 卡片 -->
+    <!-- -------------------------------------C++------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">C++</span>
       <div class="link-content">
@@ -116,6 +107,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://zh.cppreference.com/w/cpp" target="_blank">cppreference.com（在线文档）</a> </li>
             <li> <a href="https://cpp.sh/" target="_blank">cpp.sh（在线编译C++）</a> </li>
             <li> <a href="https://www.onlinegdb.com/" target="_blank">onlinegdb.com（在线编译调试C++）</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/compile_cpp_online.php" target="_blank">tutorialspoint - 在线编译C++</a> </li>
             <li> <a href="https://cmake.org/cmake/help/latest/index.html" target="_blank">CMake（在线文档）</a> </li>
             <li> <a href="https://www.gnu.org/software/make/manual/make.html" target="_blank">Makefile（在线文档）</a> </li>
             <li> <a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/" target="_blank">GDB（在线文档）</a> </li>
@@ -123,7 +115,22 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
+    <!-- ------------------------------------- 编程相关 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">编程</span>
+      <div class="link-content">
+        <ul>
+            <li> <a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">数据结构/算法可视化</a> </li>
+            <li> <a href="https://zh-google-styleguide.readthedocs.io/en/latest/index.html" target="_blank">Google 开源项目代码风格指南</a> </li>
+            <li> <a href="https://msgpack.org/" target="_blank">msgpack官网</a> </li>
+            <li> <a href="https://protobuf.dev/reference/cpp/api-docs/#google.protobuf" target="_blank">ProtoBuf 官方API</a> </li>
+            <li> <a href="https://redis.io/docs/latest/" target="_blank">Redis 官方文档</a> </li>
+            <li> <a href="https://dev.epicgames.com/documentation/zh-cn/unreal-engine/" target="_blank">Unreal Engine 文档</a> </li>
+            <li> <a href="https://www.redblobgames.com/" target="_blank">Red Blob Games</a> </li>
+        </ul>
+      </div>
+    </div>
+    <!-- ------------------------------------- Linux ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">Linux</span>
       <div class="link-content">
@@ -134,31 +141,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
-    <div class="collection-link">
-      <span class="card-name">服务器开发</span>
-      <div class="link-content">
-        <ul>
-            <li> <a href="https://zh-google-styleguide.readthedocs.io/en/latest/index.html" target="_blank">Google 开源项目代码风格指南</a> </li>
-            <li> <a href="https://msgpack.org/" target="_blank">msgpack官网</a> </li>
-            <li> <a href="https://protobuf.dev/reference/cpp/api-docs/#google.protobuf" target="_blank">ProtoBuf 官方API</a> </li>
-            <li> <a href="https://redis.io/docs/latest/" target="_blank">Redis 官方文档</a> </li>
-        </ul>
-      </div>
-    </div>
-    <!-- 卡片 -->
-    <!-- <div class="collection-link">
-      <span class="card-name">游戏客户端开发</span>
-      <div class="link-content">
-        <ul>
-            <li> <a href="https://dev.epicgames.com/documentation/zh-cn/unreal-engine/" target="_blank">Unreal Engine 文档</a> </li>
-            <li> <a href="https://www.redblobgames.com/" target="_blank">Red Blob Games</a> </li>
-            <li> <a href="https://www.gamedev.net/tutorials/" target="_blank">gamedev论坛</a> </li>
-            <li> <a href="https://www.kodeco.com/gametech" target="_blank">kodeco博客</a> </li>
-        </ul>
-      </div>
-    </div> -->
-    <!-- 卡片 -->
+    <!-- ------------------------------------- 开发工具 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">开发工具</span>
       <div class="link-content">
@@ -167,26 +150,33 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://svnbook.red-bean.com/" target="_blank">SVN官网教程</a> </li>
             <li> <a href="https://vim.wxnacy.com/#docs/key-position" target="_blank">vim练级手册</a> </li>
             <li> <a href="https://vim.hizdm.cn/" target="_blank">vim插件网</a> </li>
-            <li> <a href="https://plantuml.com/zh/" target="_blank">PlantUML在线UML图</a> </li>
-            <li> <a href="https://www.processon.com/" target="_blank">ProcessOn在线画图</a> </li>
-            <li> <a href="https://www.snapmail.cc/" target="_blank">临时邮箱邮件测试</a> </li>
+            <li> <a href="https://getman.cn/" target="_blank">getman - 在线HTTP模拟</a> </li>
+            <li> <a href="https://www.bejson.com/jsoneditoronline/index.html" target="_blank">bejson - 在线Json编辑器</a> </li>
+            <li> <a href="https://www.jyshare.com/front-end/854/" target="_blank">在线正则表达式测试</a> </li>
+            <li> <a href="https://www.yeyulingfeng.com/tools/jinzhi/index.html" target="_blank">在线进制转换</a> </li>
+            <li> <a href="https://www.bejson.com/convert/unix/index.html" target="_blank">在线时间戳转换</a> </li>
+            <li> <a href="https://download.qt.io/" target="_blank">Qt Downloads</a> </li>
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
+    <!-- ------------------------------------- 实用工具 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">实用工具</span>
       <div class="link-content">
         <ul>
+            <li> <a href="https://plantuml.com/zh/" target="_blank">PlantUML在线UML图</a> </li>
+            <li> <a href="https://www.processon.com/" target="_blank">ProcessOn在线画图</a> </li>
+            <li> <a href="https://www.snapmail.cc/" target="_blank">临时邮箱邮件测试</a> </li>
             <li> <a href="https://github.com/barry-ran/QtScrcpy" target="_blank">QtScrcpy - 电脑操作手机投屏工具</a> </li>
             <li> <a href="https://cn.anlinksoft.com/" target="_blank">AnLink - 电脑操作手机投屏工具</a> </li>
             <li> <a href="https://ps.gaoding.com/" target="_blank">在线PS</a> </li>
+            <li> <a href="https://imgtool.net/imagecompress/" target="_blank">在线图片压缩</a> </li>
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
-    <!-- <div class="collection-link">
-      <span class="card-name">娱乐</span>
+    <!-- ------------------------------------- 游戏娱乐 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">游戏娱乐</span>
       <div class="link-content">
         <ul>
             <li> <a href="https://www.blizzard.com/zh-tw/" target="_blank">暴雪游戏亚服官网</a> </li>
@@ -194,8 +184,8 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://bbs.nga.cn/thread.php?fid=459" target="_blank">NGA论坛-OW</a> </li>
         </ul>
       </div>
-    </div> -->
-    <!-- 卡片 -->
+    </div>
+    <!-- ------------------------------------- 绿色软件 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">绿色软件</span>
       <div class="link-content">
@@ -203,11 +193,26 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
             <li> <a href="https://www.mpyit.com/" target="_blank">殁漂遥</a> </li>
             <li> <a href="https://www.mefcl.com//" target="_blank">mefcl</a> </li>
             <li> <a href="https://www.423down.com/" target="_blank">423down</a> </li>
-            <!-- <li> <a href="https://metshop.cn/Shop" target="_blank">蜜糖商店</a> </li> -->
         </ul>
       </div>
     </div>
-    <!-- 卡片 -->
+    <!-- ------------------------------------- 系统软件 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">系统软件</span>
+      <div class="link-content">
+        <ul>
+            <li> <a href="https://github.com/Chuyu-Team/Dism-Multi-language" target="_blank">DISM++</a> </li>
+            <li> <a href="https://www.ntlite.com/download/" target="_blank">NTLite</a> </li>
+            <li> <a href="https://www.winreducer.net/software.html" target="_blank">winreducer</a> </li>
+            <li> <a href="https://www.uupdump.cn/" target="_blank">UUP dump</a> </li>
+            <li> <a href="https://store.rg-adguard.net/" target="_blank">微软商店APPX包</a> </li>
+            <li> <a href="https://www.wepe.com.cn/" target="_blank">微PE工具箱</a> </li>
+            <li> <a href="https://www.firpe.cn/" target="_blank">FirPE</a> </li>
+            <li> <a href="https://otp.landian.vip/zh-cn/" target="_blank">Office Tool Plus</a> </li>
+        </ul>
+      </div>
+    </div>
+    <!-- ------------------------------------- 论坛 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">论坛</span>
       <div class="link-content">
@@ -239,6 +244,7 @@ Hi~，如果你想要交换链接，请按下面的格式在留言区留言哦�
       <div class="link-content">
         <ul>
             <li> <a href="https://anime.girigirilove.com/" target="_blank">anime动漫网</a> </li>
+            <li> <a href="https://metshop.cn/Shop" target="_blank">蜜糖商店</a> </li>
         </ul>
       </div>
     </div>
