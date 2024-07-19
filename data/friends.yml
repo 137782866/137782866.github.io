@@ -3,13 +3,23 @@
   url: https://lruihao.cn
   description: 不怕萬人阻擋，只怕自己投降
 
-- nickname: Ayouuuuu
-  avatar: https://cravatar.cn/avatar/467dd59b914fd9980108b9f7d143d320
-  url: https://ayou10031.com
-  description: Try again,do better.
-
 - nickname: Dogfight360
   avatar: https://www.dogfight360.com/blog/wp-content/uploads/2014/12/cropped-QQ%E5%9B%BE%E7%89%87201412071552001.jpg
-  url: https://www.dogfight360.com/blog/
+  url: https://www.dogfight360.com/blog
   description: 羽翼城个人博客
+
+- nickname: 小翎哥的博客
+  avatar: https://iling.me/assets/img/logo.jpg
+  url: https://iling.me/blog
+  description: 小翎哥的博客
+
+- nickname: 午后南杂
+  avatar: https://blog.recoluan.com/head.png
+  url: https://blog.recoluan.com
+  description: reco 的小小杂货铺
+
+- nickname: 谈笑风生间
+  avatar: https://makonike-blog.oss-cn-guangzhou.aliyuncs.com/blog/title/avatar1.png
+  url: https://anyview.fun
+  description: 谈笑风生间
 

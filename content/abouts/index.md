@@ -33,5 +33,5 @@ comment: false
 
 
 {{< admonition type=tip title="注意" open=true >}}
-为达到最佳阅读效果，本站推荐使用 Chrome/Firefox/Safari/Edge 浏览器进行访问，其他浏览器可能会出现样式无法支持问题！
+为达到最佳浏览效果，本站推荐使用 Chrome/Firefox/Safari/Edge 浏览器进行访问，其他浏览器可能无法完全支持！
 {{< /admonition >}}
