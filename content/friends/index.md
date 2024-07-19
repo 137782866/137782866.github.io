@@ -174,12 +174,29 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
         </ul>
       </div>
     </div>
+    <!-- ------------------------------------- 资讯 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">资讯</span>
+      <div class="link-content">
+        <ul>
+            <li> <a href="https://app.diandian.com/rank/ios/" target="_blank">点点数据</a> </li>
+            <li> <a href="https://www.taptap.cn/top/download" target="_blank">TapTap</a> </li>
+            <li> <a href="https://www.ign.com.cn/" target="_blank">IGN中国</a> </li>
+            <li> <a href="http://www.gamelook.com.cn/" target="_blank">游戏大观</a> </li>
+            <li> <a href="https://www.gamersky.com/pcgame/" target="_blank">游民星空</a> </li>
+            <li> <a href="https://www.ithome.com/" target="_blank">IT之家</a> </li>
+        </ul>
+      </div>
+    </div>
     <!-- ------------------------------------- 游戏娱乐 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">游戏娱乐</span>
       <div class="link-content">
         <ul>
             <li> <a href="https://www.blizzard.com/zh-tw/" target="_blank">暴雪游戏亚服官网</a> </li>
+            <li> <a href="https://store.steampowered.com/search/?filter=topsellers" target="_blank">Steam</a> </li>
+            <li> <a href="https://store.epicgames.com/zh-CN/" target="_blank">Epic Games</a> </li>
+            <li> <a href="https://www.ubisoft.com/en-us/games?platforms=PC" target="_blank">Ubisoft Games</a> </li>
             <li> <a href="https://www.d2core.com/" target="_blank">暗黑核</a> </li>
             <li> <a href="https://bbs.nga.cn/thread.php?fid=459" target="_blank">NGA论坛-OW</a> </li>
         </ul>
