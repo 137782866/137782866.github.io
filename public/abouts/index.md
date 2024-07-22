@@ -25,7 +25,7 @@
 
 
 {{&lt; admonition type=tip title=&#34;注意&#34; open=true &gt;}}
-为了达到最佳浏览效果，本站推荐使用 Chrome/Firefox/Safari/Edge 浏览器进行访问，其他浏览器可能无法支持！
+为达到最佳浏览效果，本站推荐使用 Chrome/Firefox/Safari/Edge 浏览器进行访问！
 {{&lt; /admonition &gt;}}
 
 ---

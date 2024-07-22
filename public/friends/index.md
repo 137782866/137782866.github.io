@@ -15,7 +15,7 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
   description: 博观而约取，厚积而薄发!
 ```
 
-## 链接收藏
+## 链接导航
 
 &lt;!DOCTYPE html&gt;  
 &lt;html&gt;  

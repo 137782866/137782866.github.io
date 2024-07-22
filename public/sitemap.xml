@@ -2,9 +2,12 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
+      <loc>http://localhost:1313/</loc><lastmod>2024-07-20T20:27:51&#43;08:00</lastmod></url><url>
+      <loc>http://localhost:1313/lifes/%E5%B7%A5%E4%BD%9C%E5%90%8E%E8%80%83%E9%A9%BE%E7%85%A7%E7%9A%84%E8%BE%9B%E8%8B%A6%E5%8E%86%E7%A8%8B/</loc><lastmod>2024-07-20T20:27:51&#43;08:00</lastmod></url><url>
+      <loc>http://localhost:1313/tags/%E7%94%9F%E6%B4%BB/</loc><lastmod>2024-07-20T20:27:51&#43;08:00</lastmod></url><url>
+      <loc>http://localhost:1313/categories/%E7%94%9F%E6%B4%BB/</loc><lastmod>2024-07-20T20:27:51&#43;08:00</lastmod></url><url>
       <loc>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/</loc><lastmod>2024-07-03T02:25:11&#43;08:00</lastmod></url><url>
       <loc>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/markdown-%E8%AF%AD%E6%B3%95/</loc><lastmod>2024-07-03T02:25:11&#43;08:00</lastmod></url><url>
-      <loc>http://localhost:1313/</loc><lastmod>2024-07-03T02:25:11&#43;08:00</lastmod></url><url>
       <loc>http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/</loc><lastmod>2024-07-03T02:25:11&#43;08:00</lastmod></url><url>
       <loc>http://localhost:1313/categories/%E5%BB%BA%E7%AB%99/</loc><lastmod>2024-07-03T02:25:11&#43;08:00</lastmod></url><url>
       <loc>http://localhost:1313/collections/hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/hugo%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F/</loc><lastmod>2024-07-03T02:03:51&#43;08:00</lastmod></url><url>
