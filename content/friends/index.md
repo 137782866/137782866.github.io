@@ -112,6 +112,7 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             <li> <a href="https://www.gnu.org/software/make/manual/make.html" target="_blank">Makefile（在线文档）</a> </li>
             <li> <a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/" target="_blank">GDB（在线文档）</a> </li>
             <li> <a href="https://thispointer.com/c11-tutorial/" target="_blank">C++教程</a> </li>
+            <li> <a href="https://cppguide.cn/" target="_blank">CppGuide社区</a> </li>
         </ul>
       </div>
     </div>
