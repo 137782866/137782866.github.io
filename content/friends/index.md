@@ -256,16 +256,51 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
 </head>  
 <body>
   <div class="collection-links">
-    <!-- 卡片 -->
+    <!-- ------------------------------------- 影视 ------------------------------------------------- -->
     <div class="collection-link">
       <span class="card-name">影视</span>
       <div class="link-content">
         <ul>
-            <li> <a href="https://anime.girigirilove.com/" target="_blank">anime动漫网</a> </li>
+            <li> <a href="https://anime.girigirilove.com/" target="_blank">Anime动漫网</a> </li>
+            <li> <a href="https://mikanani.me/" target="_blank">Mikan柑橘计划</a> </li>
             <li> <a href="https://metshop.cn/Shop" target="_blank">蜜糖商店</a> </li>
+            <li> <a href="https://vip.yeyulingfeng.com/" target="_blank">夜雨聆风VIP解析</a> </li>
+            <li> <a href="https://www.netflix.com/browse" target="_blank">Netflix</a> </li>
+            <li> <a href="https://www.youtube.com/" target="_blank">Youtube</a> </li>
+            <li> <a href="https://www.bilibili.com/" target="_blank">Bilibili</a> </li>
+            <li> <a href="https://v.qq.com/" target="_blank">腾讯视频</a> </li>
         </ul>
       </div>
     </div>
+    <!-- ------------------------------------- 网络 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">网络</span>
+      <div class="link-content">
+        <ul>
+            <li> <a href="https://glados.rocks/" target="_blank">GlaDOS</a> </li>
+            <li> <a href="https://rmuhsmo0.godog01.com/" target="_blank">SsrDog</a> </li>
+            <li> <a href="https://3jkkvi9afjjln2yjwnbc.wgetcloud.org/" target="_blank">WgetCloud</a> </li>
+        </ul>
+      </div>
+    </div>
+    <!-- ------------------------------------- 网盘 ------------------------------------------------- -->
+    <div class="collection-link">
+      <span class="card-name">网盘</span>
+      <div class="link-content">
+        <ul>
+            <li> <a href="https://cloud.189.cn/web/login.html" target="_blank">天翼云盘</a> </li>
+            <li> <a href="https://pan.baidu.com/" target="_blank">百度云盘</a> </li>
+            <li> <a href="https://www.weiyun.com/" target="_blank">腾讯微云</a> </li>
+            <li> <a href="https://pan.xunlei.com/" target="_blank">迅雷云盘</a> </li>
+            <li> <a href="https://www.aliyundrive.com/" target="_blank">阿里云盘</a> </li>
+            <li> <a href="https://www.jianguoyun.com/d/login" target="_blank">坚果云</a> </li>
+            <li> <a href="https://mypikpak.com/" target="_blank">Pikpak</a> </li>
+            <li> <a href="https://mega.io/zh-hans" target="_blank">Mege</a> </li>
+            <li> <a href="https://pan.quark.cn/" target="_blank">夸克云盘</a> </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </body>  
 </html>

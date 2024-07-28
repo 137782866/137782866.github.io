@@ -108,6 +108,7 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             &lt;li&gt; &lt;a href=&#34;https://www.gnu.org/software/make/manual/make.html&#34; target=&#34;_blank&#34;&gt;Makefile（在线文档）&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://sourceware.org/gdb/current/onlinedocs/gdb.html/&#34; target=&#34;_blank&#34;&gt;GDB（在线文档）&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://thispointer.com/c11-tutorial/&#34; target=&#34;_blank&#34;&gt;C&#43;&#43;教程&lt;/a&gt; &lt;/li&gt;
+            &lt;li&gt; &lt;a href=&#34;https://cppguide.cn/&#34; target=&#34;_blank&#34;&gt;CppGuide社区&lt;/a&gt; &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;

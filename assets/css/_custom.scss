@@ -1,7 +1,7 @@
 // ==============================
 // Custom style
 // ==============================
-@import '_partials/_maps/code-type';
+@import '_partials/_maps/_code-type.scss';
 @import '_variables.scss';
 
 /******************************************************** 引入字体 *****************************************************************/
@@ -20,9 +20,10 @@ $global-font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, PingFa
 $code-font-family: Intel One Mono, Source Code Pro, Menlo, Consolas, Monaco, $global-font-family;
 $header-title-font-family: $global-font-family;
 $code-font-family: Intel One Mono, Source Code Pro, Menlo, Consolas, Monaco, $global-font-family;
-$code-font-size: 0.875rem;
+$code-font-size: 16px;
+$code-line-height: 24px;
 $global-font-size: 18px;
-$global-line-height: 1.8rem;
+$global-line-height: 32px;
 
 html {
   font-family: $global-font-family !important;
@@ -35,8 +36,13 @@ html {
   > .chroma {
     .code-header {
       font-family: $global-font-family !important;
+      line-height: $code-line-height !important;
     }
   }
+}
+
+pre:not(.mermaid[data-processed='true']) {
+  line-height: $code-line-height !important;
 }
 
 .fixit-decryptor-container {
@@ -246,10 +252,20 @@ $code-border-color-dark: #292a2e;
   > .chroma {
     .code-header {
       background-color: $code-background-color !important;
-
+      color: $global-font-secondary-color !important;
       [data-theme='dark'] & {
-        color: $code-info-color-dark;
+        color: $global-font-secondary-color-dark !important;
         background-color: $code-background-color-dark !important;
+      }
+
+      .code-title::after {
+        padding-left: 0.2rem;
+        content: 'CODE' !important;
+      }
+      @each $type, $text in $code-type-map {
+        &.language-#{$type} .code-title::after {
+          content: $text !important;
+        }
       }
     }
 
@@ -351,3 +367,19 @@ $blog-base-color: #e6e5f8 !default;
 //     }
 //   }
 // }
+
+/******************************************************** cookies *****************************************************************/
+.cc-window.cc-floating
+{
+  max-width: 100% !important;
+}
+
+.cc-revoke, .cc-window
+{
+  position: static !important;
+}
+
+.cc-bottom
+{
+  bottom: 0rem !important;
+}
