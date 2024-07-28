@@ -372,12 +372,13 @@ $blog-base-color: #e6e5f8 !default;
 .cc-window.cc-floating
 {
   max-width: 100% !important;
+  width: 100% !important;
 }
 
-.cc-revoke, .cc-window
-{
-  position: static !important;
-}
+// .cc-revoke, .cc-window
+// {
+//   position: static !important;
+// }
 
 .cc-bottom
 {
