@@ -42,10 +42,10 @@
 
     {{- /* Meta */ -}}
     <div class="post-meta">
-      <div class="post-meta-line">
+      <!-- <div class="post-meta-line">
         {{- partial "single/post-author.html" . -}}
         {{- partial "single/post-included-in.html" . -}}
-      </div>
+      </div> -->
       {{- /* TODO add disclaimer or space between meta and content */ -}}
       <div class="post-meta-line">
         {{- with .PublishDate | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
@@ -54,15 +54,15 @@
             {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
           </span>&nbsp;
         {{- end -}}
-        {{- if ne .Lastmod.Unix .PublishDate.Unix }}
+        <!-- {{- if ne .Lastmod.Unix .PublishDate.Unix }}
           {{- with .Lastmod | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
             <span title="{{ dict "Date" ("2006-01-02 15:04:05" | $.Lastmod.Format) | T "single.updatedOnDate" }}">
               {{- dict "Class" "fa-regular fa-calendar-check fa-fw me-1" | partial "plugin/icon.html" -}}
               {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
             </span>&nbsp;
           {{- end -}}
-        {{- end -}}
-        {{- if $params.wordCount -}}
+        {{- end -}} -->
+        <!-- {{- if $params.wordCount -}}
           <span title="{{ T "single.wordCount" .WordCount }}">
             {{- dict "Class" "fa-solid fa-pencil-alt fa-fw me-1" | partial "plugin/icon.html" -}}
             {{- T "single.fuzzyWordCount" .FuzzyWordCount -}}
@@ -73,7 +73,7 @@
             {{- dict "Class" "fa-regular fa-clock fa-fw me-1" | partial "plugin/icon.html" -}}
             {{- T "single.readingTime" .ReadingTime -}}
           </span>&nbsp;
-        {{- end -}}
+        {{- end -}} -->
 
         {{- /* If the article expires, close the comment or not */ -}}
         {{- $expirationReminder := $params.expirationReminder | default dict -}}
@@ -185,8 +185,8 @@
       {{- end -}}
     </div>
 
-    {{- /* Related Content */ -}}
-    {{- partial "single/related.html" . -}}
+    <!-- {{- /* Related Content */ -}}
+    {{- partial "single/related.html" . -}} -->
 
     {{- /* Reward before Footer */ -}}
     {{- $reward := .Scratch.Get "reward" -}}
@@ -200,13 +200,13 @@
     {{- /* FixIt Decryptor */ -}}
     {{- partial "single/fixit-decryptor.html" . -}}
 
-    {{- /* Footer */ -}}
-    {{- partial "single/footer.html" . -}}
+    <!-- {{- /* Footer */ -}}
+    {{- partial "single/footer.html" . -}} -->
 
-    {{- /* Reward after Footer */ -}}
+    <!-- {{- /* Reward after Footer */ -}}
     {{- if eq $reward.position "after" -}}
       {{- partial "single/reward.html" . -}}
-    {{- end -}}
+    {{- end -}} -->
 
     {{- /* Comment */ -}}
     {{- partial "single/comment.html" . -}}
