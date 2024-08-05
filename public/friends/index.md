@@ -196,6 +196,7 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             &lt;li&gt; &lt;a href=&#34;https://www.ubisoft.com/en-us/games?platforms=PC&#34; target=&#34;_blank&#34;&gt;Ubisoft Games&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://www.d2core.com/&#34; target=&#34;_blank&#34;&gt;暗黑核&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://bbs.nga.cn/thread.php?fid=459&#34; target=&#34;_blank&#34;&gt;NGA论坛-OW&lt;/a&gt; &lt;/li&gt;
+            &lt;li&gt; &lt;a href=&#34;https://www.gamer520.com/&#34; target=&#34;_blank&#34;&gt;gamer520&lt;/a&gt; &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -207,6 +208,8 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             &lt;li&gt; &lt;a href=&#34;https://www.mpyit.com/&#34; target=&#34;_blank&#34;&gt;殁漂遥&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://www.mefcl.com//&#34; target=&#34;_blank&#34;&gt;mefcl&lt;/a&gt; &lt;/li&gt;
             &lt;li&gt; &lt;a href=&#34;https://www.423down.com/&#34; target=&#34;_blank&#34;&gt;423down&lt;/a&gt; &lt;/li&gt;
+            &lt;li&gt; &lt;a href=&#34;https://www.61ku.com/&#34; target=&#34;_blank&#34;&gt;松子软件&lt;/a&gt; &lt;/li&gt;
+            &lt;li&gt; &lt;a href=&#34;https://www.kuhehe.top/&#34; target=&#34;_blank&#34;&gt;酷小呵&lt;/a&gt; &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;

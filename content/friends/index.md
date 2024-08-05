@@ -200,6 +200,7 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             <li> <a href="https://www.ubisoft.com/en-us/games?platforms=PC" target="_blank">Ubisoft Games</a> </li>
             <li> <a href="https://www.d2core.com/" target="_blank">暗黑核</a> </li>
             <li> <a href="https://bbs.nga.cn/thread.php?fid=459" target="_blank">NGA论坛-OW</a> </li>
+            <li> <a href="https://www.gamer520.com/" target="_blank">gamer520</a> </li>
         </ul>
       </div>
     </div>
@@ -211,6 +212,8 @@ Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
             <li> <a href="https://www.mpyit.com/" target="_blank">殁漂遥</a> </li>
             <li> <a href="https://www.mefcl.com//" target="_blank">mefcl</a> </li>
             <li> <a href="https://www.423down.com/" target="_blank">423down</a> </li>
+            <li> <a href="https://www.61ku.com/" target="_blank">松子软件</a> </li>
+            <li> <a href="https://www.kuhehe.top/" target="_blank">酷小呵</a> </li>
         </ul>
       </div>
     </div>
