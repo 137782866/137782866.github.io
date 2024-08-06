@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Linux环境编程 - 分类 - WindSun&#39;s Blog</title>
+    <link>http://localhost:1313/categories/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/</link>
+    <description>Linux环境编程 - 分类 | WindSun&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>137782866@qq.com (WindSun)</managingEditor>
+      <webMaster>137782866@qq.com (WindSun)</webMaster><copyright>转载、引用请注明出处，尊重他人知识产权！</copyright><lastBuildDate>Mon, 05 Aug 2024 11:46:14 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+  <title>进程的资源限制</title>
+  <link>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6/</link>
+  <pubDate>Mon, 05 Aug 2024 11:46:14 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6/</guid>
+  <description><![CDATA[每个进程都有一组资源限制，其中一些可以用getrlimit和setrlimit函数获取和修改。 getrlimit和setrlimit函数是U]]></description>
+</item>
+<item>
+  <title>进程的环境表和环境变量</title>
+  <link>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E8%A1%A8%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+  <pubDate>Mon, 05 Aug 2024 11:43:40 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E8%A1%A8%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+  <description><![CDATA[环境表 每个程序都有一张环境表。定义了一个全局变量environ的环境指针，指针数组为环境表，指向的字符串为环境变量。 每个字符串都由\0结尾，]]></description>
+</item>
+<item>
+  <title>main函数的参数和返回值</title>
+  <link>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/main%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC/</link>
+  <pubDate>Mon, 05 Aug 2024 11:39:49 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/main%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC/</guid>
+  <description><![CDATA[main函数参数 平时我们在学习C语言时，经常看到main函数的定义都没带参数，甚至也没有返回值，程序也能正常运行： 1 void main(); 这是因为我们学习中大]]></description>
+</item>
+<item>
+  <title>C程序的空间布局</title>
+  <link>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/c%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%A9%BA%E9%97%B4%E5%B8%83%E5%B1%80/</link>
+  <pubDate>Mon, 05 Aug 2024 11:38:51 &#43;0800</pubDate>
+  <author>WindSun</author>
+  <guid>http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/c%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%A9%BA%E9%97%B4%E5%B8%83%E5%B1%80/</guid>
+  <description><![CDATA[C程序的空间布局由以下部分组成： 正文段 由CPU执行的机器指令部分。 正文段是可共享的，所以即使频繁运行多个程序（如：文本编辑器、C编译器、Sh]]></description>
+</item>
+</channel>
+</rss>

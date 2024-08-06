@@ -9,7 +9,7 @@ description: WindSun's friends
 ## 基本信息
 {{< admonition info "注意" true >}}
 
-Hi~，如果想要交换链接，请按下面的格式在留言区留言哦！
+Hi~，如果你想交换链接，请按下面的格式在留言区留言哦！
 
 {{< /admonition >}}
 ```yaml

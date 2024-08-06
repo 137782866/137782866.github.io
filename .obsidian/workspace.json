@@ -1,0 +1,154 @@
+{
+  "main": {
+    "id": "75d1255d86cf5939",
+    "type": "split",
+    "children": [
+      {
+        "id": "c53dbc94a0088f2d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a2039bd68c92435e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/notes/Linux环境编程/C程序的空间布局.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "54f39e3ea67e57b6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a2afe5d3aaa57cec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2a662f57b967b7d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "dfdc12515a4aeafb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2f5d4b0b2e523610",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "152e8e782f5b4fc1",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce09d99a3d3d6581",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b8685f2ef40eae67",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "content/notes/Linux环境编程/C程序的空间布局.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "75444c6998934f68",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "content/notes/Linux环境编程/C程序的空间布局.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d66576fcd67c5077",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8268de7950c9a9a6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "content/notes/Linux环境编程/C程序的空间布局.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "a2039bd68c92435e",
+  "lastOpenFiles": [
+    "content/notes/数据库/Hugo文章格式.md",
+    "content/notes/设计模式/Hugo文章格式.md"
+  ]
+}

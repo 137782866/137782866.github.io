@@ -117,6 +117,17 @@ enableEmoji = false
     weight = 2
     [menu.main.params]
       icon = "fa-solid fa-book"
+  [[menu.main]]
+    identifier = "notes-ple"
+    parent = "notes"
+    pre = ""
+    post = ""
+    name = "Linux环境编程"
+    url = "/notes/Linux环境编程"
+    title = ""
+    weight = 3
+    [menu.main.params]
+      icon = "fa-solid fa-book"
   #******************** 生活 **********************/
   [[menu.main]]
     identifier = "lifes"

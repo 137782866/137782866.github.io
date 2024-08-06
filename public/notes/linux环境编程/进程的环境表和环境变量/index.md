@@ -1,0 +1,121 @@
+# 进程的环境表和环境变量
+
+
+## 环境表
+
+每个程序都有一张环境表。定义了一个全局变量environ的环境指针，指针数组为环境表，指向的字符串为环境变量。
+
+每个字符串都由`\0`结尾，同时环境表数组的最后一个元素指向NULL。
+
+比如环境变量中，如果包含5个字符串，那么看起来将会如图所示：
+
+![](/image/image_qS6hR21qRG.png)
+
+其实，在历史上很多系统支持main带三个参数，其中第三个参数就是环境表地址：
+
+```c
+int main(int argc, char* argv[], char* envp[]);
+```
+
+因为ISO C规定main函数只能有两个参数，第三个参数和全局变量environ相比没什么优势，所以规定取消第三个参数。
+
+看如下程序，打印出全局environ环境表的各项值：
+
+```c
+#include &lt;stdio.h&gt;
+int main(int argc, char *argv[])
+{
+    extern char** environ;
+    for (int i = 0; environ[i] != NULL; &#43;&#43;i)
+        printf(&#34;%s\n&#34;, environ[i]);
+    return 0;
+}
+
+```
+
+运行结果如下：
+
+```
+$ ./a.out 
+SHELL=/bin/bash
+COLORTERM=truecolor
+TERM_PROGRAM_VERSION=1.90.0
+HISTSIZE=1000
+HISTTIMEFORMAT=%F %T 
+PWD=/home/codepeak/coding
+LOGNAME=codepeak
+XDG_SESSION_TYPE=tty
+VSCODE_GIT_ASKPASS_NODE=/home/codepeak/.vscode-server/cli/servers/Stable-89de5a8d4d6205e5b11647eb6a74844ca23d2573/server/node
+MOTD_SHOWN=pam
+HOME=/home/codepeak
+LANG=en_US.UTF-8
+...
+```
+
+通常我们使用特定的一组函数来访问和操作环境变量，并不是直接使用environ全局变量。
+
+## 环境变量操作
+
+- **getenv**
+
+  获取环境变量值。
+  ```c
+  #include &lt;stdlib.h&gt;
+  char* getenv(const char* name);
+  ```
+  返回值：指向与name关联的指针，未找到返回NULL。
+
+  注：比如：name=value，返回的是value。
+- **putenv**
+
+  取形式为`name=value`的字符串，将其放入环境表中。
+
+  如果name已经存在，则先删除其原来的定义。
+  ```c
+  #include &lt;stdlib.h&gt;
+  int putenv(char* str);
+  ```
+  返回值：成功返回0，出错返回非0。
+
+  注意：每次修改环境变量是，系统不会为该环境变量分配新的内存，而是将字符串变量的地址保存在环境中，如果将栈上的字符串传给putenv，将会发生错误。
+- **setenv**
+
+  将name的值设置为value。
+
+  如果环境中name已存在：
+
+  当rewrite为0，name不设置为最新的value，也不出错。
+
+  当rewirte非0，则会先删除现有的定义。
+  ```c
+  #include &lt;stdlib.h&gt;
+  int setenv(const char* name, const char* value, int rewrite);
+  ```
+  返回值：成功返回0，出错返回-1。
+
+  注意：每次调用setenv时，系统都会为该环境变量分配新的内存空间。
+- **unsetenv**
+
+  删除name的定义，即使不存在这种定义也不算出错。
+  ```c
+  #include &lt;stdlib.h&gt;
+  int unsetenv(const char* name);
+  ```
+  返回值：成功返回0，出错返回-1。
+- **clearenv**
+
+  删除当前进程的所有环境变量及其对应的值，并将全局指针`environ`设置为`NULL`，从而撤消整个环境表。
+  ```c
+  #include &lt;stdlib.h&gt;
+  int clearenv();
+  ```
+  返回值：成功返回0，错误返回非0。
+
+  注意：clearenv函数仅影响当前进程的环境变量，不会影响父进程的环境变量。
+
+
+---
+
+> 作者: WindSun  
+> URL: http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E8%A1%A8%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/  
+

@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "dark.min.css",
-	"sourceRoot": "D:/我的坚果云/我的坚果云/WindSunBlog",
+	"sourceRoot": "D:/我的坚果云/WindSunBlog",
 	"sources": [
 		"themes/FixIt/assets/lib/aplayer/dark.scss"
 	],

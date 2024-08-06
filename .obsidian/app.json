@@ -1,0 +1,6 @@
+{
+  "newLinkFormat": "relative",
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./image/",
+  "showUnsupportedFiles": false
+}
