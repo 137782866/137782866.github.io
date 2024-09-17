@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>数据库系统概论 - WindSun&#39;s Blog</title><meta name="author" content="WindSun">
+<meta name="author-link" content="">
+<meta name="description" content="数据库系统介绍 数据库系统（Database System，简称DBS）是由数据库及其管理软件组成的系统，它是为适应数据处理的需要而发展起来的一" /><meta name="keywords" content='编程, 技术, 游戏开发, WindSun' />
+  <meta itemprop="name" content="数据库系统概论">
+  <meta itemprop="description" content="数据库系统介绍 数据库系统（Database System，简称DBS）是由数据库及其管理软件组成的系统，它是为适应数据处理的需要而发展起来的一">
+  <meta itemprop="datePublished" content="2024-09-17T10:04:51+08:00">
+  <meta itemprop="dateModified" content="2024-09-17T10:04:51+08:00">
+  <meta itemprop="wordCount" content="4631">
+  <meta itemprop="image" content="http://localhost:1313/images/logo.png"><meta property="og:url" content="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">
+  <meta property="og:site_name" content="WindSun&#39;s Blog">
+  <meta property="og:title" content="数据库系统概论">
+  <meta property="og:description" content="数据库系统介绍 数据库系统（Database System，简称DBS）是由数据库及其管理软件组成的系统，它是为适应数据处理的需要而发展起来的一">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2024-09-17T10:04:51+08:00">
+    <meta property="article:modified_time" content="2024-09-17T10:04:51+08:00">
+    <meta property="og:image" content="http://localhost:1313/images/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/logo.png">
+  <meta name="twitter:title" content="数据库系统概论">
+  <meta name="twitter:description" content="数据库系统介绍 数据库系统（Database System，简称DBS）是由数据库及其管理软件组成的系统，它是为适应数据处理的需要而发展起来的一">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" /><link rel="prev" href="http://localhost:1313/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6/" /><link rel="next" href="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/ubuntu%E5%AE%89%E8%A3%85mariadb/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "数据库系统概论",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/notes\/%E6%95%B0%E6%8D%AE%E5%BA%93\/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA\/"
+    },"genre": "notes","wordcount":  4631 ,
+    "url": "http:\/\/localhost:1313\/notes\/%E6%95%B0%E6%8D%AE%E5%BA%93\/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA\/","datePublished": "2024-09-17T10:04:51+08:00","dateModified": "2024-09-17T10:04:51+08:00","license": "转载、引用请注明出处，尊重他人知识产权！","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "WindSun"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/archives/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/collections/"
+                
+                
+              ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li class="menu-item has-children">
+              <a
+                class="menu-link"
+                href="/notes/"
+                title="dfsdafasfasfsfsafds"
+                
+              ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a><i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> Linux环境编程</a>
+                      </li></ul></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/abouts/"
+                
+                
+              ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="输入关键字搜索..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="输入关键字搜索..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/archives/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/collections/"
+                  
+                  
+                ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li
+              class="menu-item"
+            ><span class="nested-item">
+                  <a
+                    class="menu-link"
+                    href="/notes/"
+                    title="dfsdafasfasfsfsafds"
+                    
+                  ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a>
+                  <i class="dropdown-icon fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> Linux环境编程</a>
+                      </li></ul></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/abouts/"
+                  
+                  
+                ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container sticky">
+    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" title="WindSun&#39;s Blog">主页</a></li><li class="breadcrumb-item"><a href="/notes/" title="笔记">笔记</a></li><li class="breadcrumb-item"><a href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a></li><li class="breadcrumb-item active" aria-current="page">数据库系统概论</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>数据库系统概论</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="/images/logo.png" alt="WindSun" data-title="WindSun" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;WindSun</span></span></div><div class="post-meta-line"><span title="发布于 2024-09-17 10:04:51"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-17">2024-09-17</time></span>&nbsp;<span title="4631 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 4700 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 10 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据库系统介绍">数据库系统介绍</a></li>
+    <li><a href="#系统模式">系统模式</a>
+      <ul>
+        <li><a href="#三级模式结构">三级模式结构</a></li>
+        <li><a href="#二级映射功能">二级映射功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#关系模型">关系模型</a>
+      <ul>
+        <li><a href="#数据结构">数据结构</a></li>
+        <li><a href="#关系键">关系键</a></li>
+        <li><a href="#完整性约束">完整性约束</a></li>
+        <li><a href="#关系操作">关系操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#关系代数">关系代数</a>
+      <ul>
+        <li><a href="#传统的集合运算符">传统的集合运算符</a></li>
+        <li><a href="#专门的集合运算符">专门的集合运算符</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="数据库系统介绍" class="heading-element"><span>数据库系统介绍</span>
+  <a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%b3%bb%e7%bb%9f%e4%bb%8b%e7%bb%8d" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>数据库系统（Database System，简称DBS）是由数据库及其管理软件组成的系统，它是为适应数据处理的需要而发展起来的一种较为理想的数据处理系统。</p>
+<p>数据库系统通常由数据库、数据库管理系统（DBMS）、应用程序、数据库管理员（DBA）和用户组成。其中，数据库是长期存储在计算机内的、有组织、可共享的数据集合；数据库管理系统是数据库系统的核心软件，负责科学地组织和存储数据，高效地获取和维护数据。</p>
+<p>数据库是【按照数据结构来组织、存储和管理数据的仓库】。是一个长期存储在计算机内的、有组织的、可共享的、统一管理的大量数据的集合。</p>
+<p>数据对于公司来说是最宝贵的财富之一，而程序员的工作就是对数据的管理，包括运算、流转、存储、展示等，数据库的最重要的功能就是【存储数据】，绝大部分的数据需要进行持久化，长期保存，而数据库就可以很好的帮助我们完成这个工作。</p>
+<h2 id="系统模式" class="heading-element"><span>系统模式</span>
+  <a href="#%e7%b3%bb%e7%bb%9f%e6%a8%a1%e5%bc%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>数据库系统的模式是指数据库中全体数据的逻辑结构和特征的描述。在数据库设计中，模式是一个核心概念，它涉及到数据的组织、存储和访问。</p>
+<h3 id="三级模式结构" class="heading-element"><span>三级模式结构</span>
+  <a href="#%e4%b8%89%e7%ba%a7%e6%a8%a1%e5%bc%8f%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>数据库系统的三级模式结构由：外模式、模式、内模式的三级构成，是数据库的三层抽象级别，如下图所示：</p>
+<p><img loading="lazy" src="/image/image_TekHbccwpq.png" alt="/image/image_TekHbccwpq.png" srcset="/image/image_TekHbccwpq.png?size=small, /image/image_TekHbccwpq.png?size=medium 1.5x, /image/image_TekHbccwpq.png?size=large 2x" data-title="/image/image_TekHbccwpq.png" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<ol>
+<li><strong>模式（Schema）</strong>：
+<ul>
+<li>也称逻辑模式或概念模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。</li>
+<li>位于数据库系统模式结构的中间层，及不涉及数据的物理存储，也不涉及应用程序开发的工具和设计语言等。</li>
+<li>模式实际上是数据库数据在逻辑级上的视图。一个数据库只有一个模式。</li>
+<li>定义模式时不仅要定义数据的逻辑结构，例如：数据记录由哪些数据项构成，数据项的名字、类型、取值范围等，而且要定义数据之间的联系，以及与数据有关的安全性、完整性要求。</li>
+</ul>
+</li>
+<li><strong>外模式（External Schema）</strong>：
+<ul>
+<li>也称用户模式或子模式，是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述。</li>
+<li>是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示。</li>
+<li>外模式通常是模式的子集。一个数据库可以有多个外模式。</li>
+<li>应用程序都是和外模式打交道的。外模式是保证数据库安全性的一个有力措施。</li>
+</ul>
+</li>
+<li><strong>内模式（Internal Schema）</strong>：
+<ul>
+<li>也称存储模式，是数据物理结构和存储方式的描述，是数据在数据库内部的表示方式。</li>
+<li>一个数据库只有一个内模式。</li>
+<li>描述记录的存储方式、索引的组织方式、数据是否压缩、是否加密等。例如：数据的存储是按照某属性值的升（降）序存储，或按照属性值聚簇（duster）存储，索引按照什么方式组织，是B+树索引还是hash索引，数据是否压缩存储，是否加密，数据的存储记录结构有何规定，如定长结构或变长结构，一个记录不能跨物理页存储等。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二级映射功能" class="heading-element"><span>二级映射功能</span>
+  <a href="#%e4%ba%8c%e7%ba%a7%e6%98%a0%e5%b0%84%e5%8a%9f%e8%83%bd" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>数据库系统的三级模式是数据的三个抽象级别，把数据的具体组织留给数据库管理系统管理，而用户只能逻辑地、抽象地处理数据，不必关心数据在计算机中的具体存储方式。为了能够在内部三个抽象层次的联系和转换，数据库管理系统在这三级模式之间提供了两层映像：</p>
+<ul>
+<li>
+<p><strong>外模式/模式映像</strong>：通过外模式与模式之间的映像把描述局部逻辑的外模式与描述全局逻辑结构的模式联系起来。</p>
+<p>当模式改变时（例如增加新的关系、新的属性、改变属性的数据类型等)，由数据库管理员对各个外模式/模式的映像作相应改变，可以使外模式保持不变。应用程序是依据数据的外模式编写的，从而应用程序不必修改，保证了数据与程序的逻辑独立性，简称数据的逻辑独立性。</p>
+</li>
+<li>
+<p><strong>模式/内模式映像</strong>：通过模式与内模式之间的映像把描述全局逻辑的模式与描述物理结构的模式联系起来。</p>
+<p>当数据库的存储结构改变时（例如选用了另一种存储引擎），由数据库管理员对模式/内模式映像作相应改变，可以使模式保持不变，从而应用程序也不必改变。保证了数据与程序的物理独立性，简称数据的物理独立性。</p>
+</li>
+</ul>
+<p>在数据库的三级模式结构中：</p>
+<ul>
+<li>模式即全局逻辑结构是数据库的中心与关键，它独立于数据库的其他层次。因此设计数据库模式结构时应首先确定数据库的逻辑模式。</li>
+<li>内模式依赖于它的全局逻辑结构，但独立于数据库的用户视图，即外模式，也独立于具体的存储设备。</li>
+<li>数据库的外模式面向具体的应用程序，它定义在逻辑模式之上，但独立于存储模式和存储设备。当应用需求发生较大变化，相应的外模式不能满足其视图要求时，该外模式就得做相应改动，所以设计外模式时应充分考虑到应用的扩充性。特定的应用程序是在外模式描述的数据结构上编制的，它依赖于特定的外模式，与数据库的模式和存储结构独立。不同的应用程序有时可以共用同一个外模式。</li>
+</ul>
+<p>数据库的二级映像保证了数据库外模式的稳定性，从而从底层保证了应用程序的稳定性，除非应用需求本身发生变化，否则应用程序一般不需要修改。</p>
+<h2 id="关系模型" class="heading-element"><span>关系模型</span>
+  <a href="#%e5%85%b3%e7%b3%bb%e6%a8%a1%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>在数据库中，关系模型（Relational Model）是最常用的数据模型之一。它基于集合论和谓词逻辑，并通过关系（通常称为表）来组织和表示数据。关系模型由IBM的研究员E. F. Codd在1970年代初期提出，并成为了关系型数据库管理系统（RDBMS）的理论基础。以下是关系模型的一些主要特点：</p>
+<h3 id="数据结构" class="heading-element"><span>数据结构</span>
+  <a href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>关系模型数据结构的术语主要有如下：</p>
+<ol>
+<li><strong>关系（Relation）</strong>：
+<ul>
+<li>定义：一个关系对应着一个二维表，二维表就是关系名。比如：员工表。</li>
+<li>描述：关系是数据的集合，通常表示为一个二维表。表中的每一行代表一个元组，每一列代表一个属性。</li>
+</ul>
+</li>
+<li><strong>元组（Tuple）</strong>：
+<ul>
+<li>定义：在二维表中的一行，称为一个元组。</li>
+<li>描述：元组是关系中的一行数据，由多个属性值组成，每个属性值对应于关系中的一个属性。</li>
+</ul>
+</li>
+<li><strong>属性（Attribute）</strong>：
+<ul>
+<li>定义：在二维表中的列，称为属性。</li>
+<li>描述：属性是关系中的一个列，具有名称和数据类型。属性的个数称为关系的元或度。</li>
+</ul>
+</li>
+<li><strong>码（码键）（Key）</strong>：
+<ul>
+<li>定义：如果在一个关系中存在唯一标识一个实体的一个属性或属性集称为实体的键（也成为码键）。</li>
+<li>描述：键是关系中的一个或多个属性的组合，用于唯一标识关系中的元组。</li>
+</ul>
+</li>
+<li><strong>值域（Domain）</strong>：
+<ul>
+<li>定义：属性值的取值范围为值域。</li>
+<li>描述：每个属性都有一个值域，即该属性所有可能取值的集合。比如：人的年轻一般在（1~120）岁之间，大学生年龄属性的域是（15~45）岁，性别的域是（男，女）。</li>
+</ul>
+</li>
+<li><strong>分量</strong>：
+<ul>
+<li>定义：每一行对应的列的属性值，即元组中的一个属性值。</li>
+<li>描述：分量是元组中的一个具体值，对应于关系中的一个属性和一个元组。</li>
+</ul>
+</li>
+<li><strong>关系模式（Relation Schema）</strong>：
+<ul>
+<li>定义：在二维表中的行定义，即对关系的描述称为关系模式。</li>
+<li>描述：关系模式描述了关系的结构，包括关系的名称、属性的名称和数据类型等。比如：关系名（属性1，属性2，属性3，&hellip;）。例如：学生表可描述为：学生（学号，姓名，年龄，性别，年纪，班级）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="关系键" class="heading-element"><span>关系键</span>
+  <a href="#%e5%85%b3%e7%b3%bb%e9%94%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>每个关系都有一个或多个属性，这些属性的组合可以唯一标识关系中的每个元组，并且满足候选键的不可再分解。这样的属性组合被称为<strong>候选键</strong>（Candidate Key）。</li>
+<li>在一个关系中，通常选择一个候选键作为<strong>主键</strong>（Primary Key），用于唯一标识关系中的每一行。</li>
+<li>关系之间可以通过<strong>外键</strong>（Foreign Key）建立联系，外键是另一个关系的主键。</li>
+</ul>
+<h3 id="完整性约束" class="heading-element"><span>完整性约束</span>
+  <a href="#%e5%ae%8c%e6%95%b4%e6%80%a7%e7%ba%a6%e6%9d%9f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><strong>实体完整性</strong>：主键不能包含空值（NULL）。</li>
+<li><strong>参照完整性</strong>：外键的值必须是对应关系中已存在的主键的值，或者为空（如果外键列允许空值）。</li>
+<li><strong>用户定义的完整性</strong>：用户可以定义其他类型的完整性约束，如检查约束（Check Constraints），用于确保数据满足特定的条件。</li>
+</ul>
+<h3 id="关系操作" class="heading-element"><span>关系操作</span>
+  <a href="#%e5%85%b3%e7%b3%bb%e6%93%8d%e4%bd%9c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>关系模型支持一组标准的操作。</p>
+<p>比如：选择（Selection）、投影（Projection）、并集（Union）、交集（Intersection）、差集（Difference）、笛卡尔积（Cartesian Product）等。这些操作可以用SQL（结构化查询语言）来表达和执行。</p>
+<h2 id="关系代数" class="heading-element"><span>关系代数</span>
+  <a href="#%e5%85%b3%e7%b3%bb%e4%bb%a3%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>关系代数是一种抽象的查询语言，用于描述和操作关系型数据库中的数据。是数据库的关系模型中重要的部分。</p>
+<p>任何一种运算都是将一定的运算符作用于一定的运算对象上，得到预期的运算结果。所以运算对象、运算符、运算结果是运算的三大要素。关系代数的运算对象是关系，运算结果也是关系。关系代数用到的运算符包括两类：传统的集合运算符和专门的关系运算符。</p>
+<h3 id="传统的集合运算符" class="heading-element"><span>传统的集合运算符</span>
+  <a href="#%e4%bc%a0%e7%bb%9f%e7%9a%84%e9%9b%86%e5%90%88%e8%bf%90%e7%ae%97%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>传统的集合运算是二目运算，包括并、差、交、笛卡儿积4种运算。</p>
+<ol>
+<li><strong>并（Union）</strong>
+<ul>
+<li>定义：关系R与关系S的并记作R ∪ S，结果关系是由属于R或属于S的元组组成，但结果关系要消除重复元组。</li>
+<li>符号：∪（并运算符）。</li>
+<li>示例：R ∪ S 表示合并两个关系R和S的元组，并消除重复的元组。</li>
+</ul>
+</li>
+<li><strong>差（Difference）</strong>
+<ul>
+<li>定义：从一个关系中删除在另一个关系中出现的元组，结果仍然是一个关系。</li>
+<li>符号：-（差运算符）。</li>
+<li>示例：R - S 表示从关系R中删除所有在关系S中出现的元组。属于R，不属于S的元组。</li>
+</ul>
+</li>
+<li><strong>交（Intersection）</strong>
+<ul>
+<li>定义：两个关系中共同存在的元组集合。</li>
+<li>符号：∩（交运算符）</li>
+<li>示例：R和S的交可以表示为T = R ∩ S。其中，T是一个新的关系，包含了R和S中共有的元组。</li>
+</ul>
+</li>
+<li><strong>笛卡尔积（Cartesian Product）</strong>
+<ul>
+<li>定义：将两个关系的元组（行）进行组合，结果的属性集合是两个关系的属性集合的并集。</li>
+<li>符号：×（笛卡尔积运算符）。</li>
+<li>示例：如果关系A有n个元组，关系B有m个元组，那么它们的笛卡尔积将有n*m个元组。</li>
+</ul>
+</li>
+</ol>
+<h3 id="专门的集合运算符" class="heading-element"><span>专门的集合运算符</span>
+  <a href="#%e4%b8%93%e9%97%a8%e7%9a%84%e9%9b%86%e5%90%88%e8%bf%90%e7%ae%97%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>专门的关系运算包括选择、投影、连接、除运算等。</p>
+<ol>
+<li><strong>选择（Selection）</strong>
+<ul>
+<li>定义：从关系中选择满足特定条件的元组，结果仍然是一个关系。</li>
+<li>符号：σ（选择运算符），后跟条件表达式。</li>
+<li>示例：σAGE&gt;21 ∧ SEX=&lsquo;男&rsquo;（S）表示从关系S中选择年龄大于21且性别为男的元组。</li>
+</ul>
+</li>
+<li><strong>投影（Projection）</strong>
+<ul>
+<li>定义：从关系中选择特定的属性列，结果仍然是一个关系。</li>
+<li>符号：Π（投影运算符），后跟属性名列表。</li>
+<li>示例：ΠSNO, SNAME（S） 表示从关系S中选择学号（SNO）和姓名（SNAME）两列。</li>
+</ul>
+</li>
+<li><strong>连接（Join）</strong>
+<ul>
+<li>定义：将两个关系的元组进行匹配，结果的属性集合是两个关系的属性集合的并集。</li>
+<li>符号：⨝（连接运算符）。</li>
+<li>类型：
+<ul>
+<li>
+<p>等值连接：等值连接是基于明确指定的一个或多个等值条件来连接两个表。这些条件不必涉及所有共有属性，也不会自动合并列。</p>
+<p>例如：</p>
+<p><code>SELECT * FROM Employees JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;</code>其中，<code>DepartmentID</code>作为<code>Emp.DeptID</code>和<code>Dept.DeptID</code>两次出现，分别代表来自<code>Employees</code>表和<code>Departments</code>表的<code>DepartmentID</code>。</p>
+</li>
+<li>
+<p>自然连接：自然连接是一种特殊的等值连接，它要求两个关系表中进行比较的必须是相同的属性列（即列名和数据类型相同），无须添加连接条件，并且在结果中消除重复的属性列。</p>
+<p>例如：</p>
+<p><code>SELECT * FROM Employees NATURAL JOIN Departments;</code>其中，结果会自动基于<code>DepartmentID</code>进行连接，因为它是两个表中的共有属性，并且只会在结果中显示一次。</p>
+</li>
+</ul>
+</li>
+<li>示例：R ⨝ S 表示根据某些条件（如等值条件）将关系R和S的元组进行匹配。</li>
+</ul>
+</li>
+<li><strong>除（Division）</strong>
+<ul>
+<li>
+<p>定义：给定关系<strong>R</strong>（X, Y）和<strong>S</strong>（Y, Z），其中X, Y, Z为属性组，R/S的结果是一个新的关系<strong>P</strong>(X)，它包含R中满足以下条件的X属性值的所有元组：对于X中的每一个值x，<strong>R</strong>中属性Y值为x的元组的集合（即x的像集Y(x)）必须包含关系<strong>S</strong>在Y属性上的所有值。</p>
+</li>
+<li>
+<p>符号：/（除运算符）</p>
+</li>
+<li>
+<p>示例：</p>
+<p>集合R：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a1</td>
+<td>b1</td>
+<td>c2</td>
+</tr>
+<tr>
+<td>a2</td>
+<td>b3</td>
+<td>c7</td>
+</tr>
+<tr>
+<td>a3</td>
+<td>b4</td>
+<td>c6</td>
+</tr>
+<tr>
+<td>a1</td>
+<td>b2</td>
+<td>c3</td>
+</tr>
+<tr>
+<td>a4</td>
+<td>b6</td>
+<td>c6</td>
+</tr>
+<tr>
+<td>a2</td>
+<td>b2</td>
+<td>c3</td>
+</tr>
+<tr>
+<td>a1</td>
+<td>b2</td>
+<td>c1</td>
+</tr>
+</tbody>
+</table>
+<p>集合S：</p>
+<table>
+<thead>
+<tr>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b1</td>
+<td>c2</td>
+<td>d1</td>
+</tr>
+<tr>
+<td>b2</td>
+<td>c1</td>
+<td>d1</td>
+</tr>
+<tr>
+<td>b2</td>
+<td>c3</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+<p>R / S：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a1</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ol>
+</div><div class="post-reward">
+    <div class="comment"></div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>赞赏</label>
+    <div class="reward-ways" data-mode="fixed"><div><img loading="lazy" src="/images/alipay.jpg" alt="WindSun 支付宝" data-title="WindSun 支付宝" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="/images/wechat.jpg" alt="WindSun 微信" data-title="WindSun 微信" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-09-17 10:04:51">更新于 2024-09-17&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-title="数据库系统概论"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><i class="fa-brands fa-get-pocket fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-title="数据库系统概论"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-title="数据库系统概论"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Skype" data-sharer="skype" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-title="数据库系统概论"><i class="fa-brands fa-skype fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.128.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-1" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">WindSun</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">博客已运行</span><span class="run-times ms-1">网站运行中……</span></span></div><div class="footer-line beian order-3"><span class="gov">陕ICP备</span><span class="icp footer-divider">2021003707号</span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><a href="https://github.com/137782866" title="查看GitHub"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true" width="56" height="56"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--progress-h: 3px;--bg-progress: #2376b7;--bg-progress-dark: #2376b7;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/lib/pace/themes/blue/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pace/pace.min.js" async defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"siteTime":"2024-07-20T12:00:00+08:00","typeit":{"cursorChar":"|","cursorSpeed":1000,"duration":-1,"loop":false,"speed":100},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

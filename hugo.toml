@@ -130,17 +130,6 @@ enableEmoji = false
       icon = "fa-solid fa-book"
   #******************** 生活 **********************/
   [[menu.main]]
-    identifier = "lifes"
-    parent = ""
-    pre = ""
-    post = ""
-    name = "生活"
-    url = "/lifes/"
-    title = ""
-    weight = 7
-    [menu.main.params]
-      icon = "fa-solid fa-signature"
-  [[menu.main]]
     identifier = "friends"
     pre = ""
     post = ""
@@ -804,7 +793,7 @@ enableEmoji = false
       replace = false
     # 相关内容配置 (https://gohugo.io/content-management/related/)
     [params.page.related]
-      enable = true
+      enable = false
       count = 5
     # 赞赏设置
     [params.page.reward]

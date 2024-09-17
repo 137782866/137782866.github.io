@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>MySQL数据类型 - WindSun&#39;s Blog</title><meta name="author" content="WindSun">
+<meta name="author-link" content="">
+<meta name="description" content="数据类型在数据库中非常重要，对数据类型的选择将会影响数据库的性能，除此之外，在数据库中使用了不是非常合适的数据类型可能会对后期维护造成麻烦。" /><meta name="keywords" content='编程, 技术, 游戏开发, WindSun' />
+  <meta itemprop="name" content="MySQL数据类型">
+  <meta itemprop="description" content="数据类型在数据库中非常重要，对数据类型的选择将会影响数据库的性能，除此之外，在数据库中使用了不是非常合适的数据类型可能会对后期维护造成麻烦。">
+  <meta itemprop="datePublished" content="2024-09-17T10:14:29+08:00">
+  <meta itemprop="dateModified" content="2024-09-17T10:14:29+08:00">
+  <meta itemprop="wordCount" content="9780">
+  <meta itemprop="image" content="http://localhost:1313/images/logo.png"><meta property="og:url" content="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/">
+  <meta property="og:site_name" content="WindSun&#39;s Blog">
+  <meta property="og:title" content="MySQL数据类型">
+  <meta property="og:description" content="数据类型在数据库中非常重要，对数据类型的选择将会影响数据库的性能，除此之外，在数据库中使用了不是非常合适的数据类型可能会对后期维护造成麻烦。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2024-09-17T10:14:29+08:00">
+    <meta property="article:modified_time" content="2024-09-17T10:14:29+08:00">
+    <meta property="og:image" content="http://localhost:1313/images/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/logo.png">
+  <meta name="twitter:title" content="MySQL数据类型">
+  <meta name="twitter:description" content="数据类型在数据库中非常重要，对数据类型的选择将会影响数据库的性能，除此之外，在数据库中使用了不是非常合适的数据类型可能会对后期维护造成麻烦。">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/" /><link rel="prev" href="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/ubuntu%E5%AE%89%E8%A3%85mariadb/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "MySQL数据类型",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/notes\/%E6%95%B0%E6%8D%AE%E5%BA%93\/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy\/"
+    },"genre": "notes","wordcount":  9780 ,
+    "url": "http:\/\/localhost:1313\/notes\/%E6%95%B0%E6%8D%AE%E5%BA%93\/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy\/","datePublished": "2024-09-17T10:14:29+08:00","dateModified": "2024-09-17T10:14:29+08:00","license": "转载、引用请注明出处，尊重他人知识产权！","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "WindSun"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/archives/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/collections/"
+                
+                
+              ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li class="menu-item has-children">
+              <a
+                class="menu-link"
+                href="/notes/"
+                title="dfsdafasfasfsfsafds"
+                
+              ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a><i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> Linux环境编程</a>
+                      </li></ul></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/abouts/"
+                
+                
+              ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="输入关键字搜索..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="WindSun&#39;s Blog"><img loading="lazy" src="/images/logo.png" alt="WindSun&#39;s Blog" data-title="WindSun&#39;s Blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">WindSun</span></a><span class="typeit header-subtitle"><template>个人博客</template></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="输入关键字搜索..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/archives/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/collections/"
+                  
+                  
+                ><i class="fa-solid fa-layer-group fa-fw fa-sm" aria-hidden="true"></i> 合集</a></li><li
+              class="menu-item"
+            ><span class="nested-item">
+                  <a
+                    class="menu-link"
+                    href="/notes/"
+                    title="dfsdafasfasfsfsafds"
+                    
+                  ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 笔记</a>
+                  <i class="dropdown-icon fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <ul class="sub-menu">
+                  <li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 设计模式</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> 数据库</a>
+                      </li><li
+                        class="menu-item"
+                      >
+                        <a
+                          class="menu-link"
+                          href="/notes/linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B"
+                          
+                          
+                        ><i class="fa-solid fa-book fa-fw fa-sm" aria-hidden="true"></i> Linux环境编程</a>
+                      </li></ul></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class="fa-solid fa-users-viewfinder fa-fw fa-sm" aria-hidden="true"></i> 友链</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/abouts/"
+                  
+                  
+                ><i class="fa-solid fa-id-card fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container sticky">
+    <ol class="breadcrumb"><li class="breadcrumb-item"><a href="/" title="WindSun&#39;s Blog">主页</a></li><li class="breadcrumb-item"><a href="/notes/" title="笔记">笔记</a></li><li class="breadcrumb-item"><a href="/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a></li><li class="breadcrumb-item active" aria-current="page">MySQL数据类型</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>MySQL数据类型</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="/images/logo.png" alt="WindSun" data-title="WindSun" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;WindSun</span></span></div><div class="post-meta-line"><span title="发布于 2024-09-17 10:14:29"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-17">2024-09-17</time></span>&nbsp;<span title="9780 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 9800 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 20 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#类型属性">类型属性</a>
+      <ul>
+        <li><a href="#unsigned-属性">UNSIGNED 属性</a></li>
+        <li><a href="#zerofill-属性">ZEROFILL 属性</a></li>
+        <li><a href="#sql_mode-设置">SQL_MODE 设置</a></li>
+      </ul>
+    </li>
+    <li><a href="#数字类型">数字类型</a>
+      <ul>
+        <li><a href="#整形">整形</a></li>
+        <li><a href="#浮点型">浮点型</a></li>
+        <li><a href="#高精度类型">高精度类型</a></li>
+        <li><a href="#位类型">位类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符类型">字符类型</a>
+      <ul>
+        <li><a href="#字符集">字符集</a></li>
+        <li><a href="#排序规则">排序规则</a></li>
+        <li><a href="#char和varchar">CHAR和VARCHAR</a></li>
+        <li><a href="#binary-和-varbinary">BINARY 和 VARBINARY</a></li>
+        <li><a href="#blob-和-text">BLOB 和 TEXT</a></li>
+        <li><a href="#enum-和-set">ENUM 和 SET</a></li>
+      </ul>
+    </li>
+    <li><a href="#日期和时间类型">日期和时间类型</a>
+      <ul>
+        <li><a href="#datetime-和-date">DATETIME 和 DATE</a></li>
+        <li><a href="#timestamp">TIMESTAMP</a></li>
+        <li><a href="#year-和-time">YEAR 和 TIME</a></li>
+        <li><a href="#与日期和时间相关的函数">与日期和时间相关的函数</a></li>
+        <li><a href="#时间加减函数">时间加减函数</a></li>
+        <li><a href="#date_fromat-函数">DATE_FROMAT 函数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>数据类型在数据库中非常重要，对数据类型的选择将会影响数据库的性能，除此之外，在数据库中使用了不是非常合适的数据类型可能会对后期维护造成麻烦。在选择数据类型时，必须格外谨慎，因为在生产环境下更改数据库是非常危险的操作。</p>
+<h2 id="类型属性" class="heading-element"><span>类型属性</span>
+  <a href="#%e7%b1%bb%e5%9e%8b%e5%b1%9e%e6%80%a7" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>有两个属性对选择数据类型有很大关系：<code>UNSIGNED</code> 和 <code>ZEROFILL</code>。</p>
+<h3 id="unsigned-属性" class="heading-element"><span>UNSIGNED 属性</span>
+  <a href="#unsigned-%e5%b1%9e%e6%80%a7" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>UNSIGNED 属性就是将数字类型无符号化，和 C/C++ 中的 unsigned 含义相同。看起来很不错，因为很多时候对于主键是自增长类型，用户都希望主键是非负数，但在实际使用中，可能会有一些负面影响，如下：</p>
+<p>在 MySQL 数据库中，对于 UNSIGNED 数的操作，其返回值都是 UNSIGHED 的。如果表 t 中有两个属性 a 为 1，b 为 2 都是UNSIGNED 的，那么：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT a - b FROM t</span></span></code></pre></td></tr></table>
+</div>
+</div><p>的结果是什么？</p>
+<p>在 Mac 上会报错：BITINT UNSIGNED 超出范围，在 Linux 上得到结果为 4294967295。这并不是 MySQL 的 bug，而是在 C 语言中同样会出现这样的问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">unsigned int a = 1;
+</span></span><span class="line"><span class="cl">unsinged int b = 2;
+</span></span><span class="line"><span class="cl">printf(&#34;a - b: %d, %x\n&#34;, a-b, a-b); //输出：a - b: -1, ffffffff
+</span></span><span class="line"><span class="cl">printf(&#34;a - b: %u, %x\n&#34;, a-b, a-b); //输出：4294967295, ffffffff</span></span></code></pre></td></tr></table>
+</div>
+</div><p>0xFFFFFFFF 就是无符号整型的最大值，但对于有符号整型来说，第一位代表符号，如果为 1，就是负数，取反 +1 就得到了负数值 -1。这也是计算机组成原理方面的知识。</p>
+<p>怎么获取 -1 这个值？只要对 SQL_MODE 这个参数进行设置即可。即：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SET sql_mode=&#39;NO_UNSIGNED_SUBTRACTION&#39;;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>尽量不要使用 UNSIGNED，因为可能会带来意想不到的效果，同时对于 INT 存放不了的结果，UNSIGNED 也存放不了，还不如在设计阶段就将数据类型提升为 BIGINT 类型。</p>
+<h3 id="zerofill-属性" class="heading-element"><span>ZEROFILL 属性</span>
+  <a href="#zerofill-%e5%b1%9e%e6%80%a7" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>ZEROFILL 更像是一个显示属性，初学者对数据库中数字类型后面的长度值很迷茫，可以通过如下建表语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">CREATE TABLE `T` (
+</span></span><span class="line"><span class="cl">  `a` int(10) unsigned DEFAULT NULL,
+</span></span><span class="line"><span class="cl">  `b` int(10) unsigned DEFAULT null
+</span></span><span class="line"><span class="cl">) ENGINE=InnoDB DEFAULT CHARSET=latin1</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的 int(10) 代表什么，整型不是只有 4 个字节吗？其实如果没有 ZEROFILL 这个属性，括号内的数字毫无意义。如果插入 a：1，b：2。但是在对列添加 ZEROFILL 属性后，显示结果就有所不同了，例如如下修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; ALTER TABLE t CHANGE COLUMN a a int(4) UNSIGNED ZEROFILL;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对 a 列进行了修改，为其添加了 ZEROFILL 属性，并且将默认的 int(10) 修改为了 int(4)，设置查找操作，返回结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT a, b From t;
+</span></span><span class="line"><span class="cl">**************************
+</span></span><span class="line"><span class="cl">a: 0001
+</span></span><span class="line"><span class="cl">b: 2</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这就是 ZEROFILL 属性的作用，如果宽度小于设定的宽度，自行填充 0。但这只是显示的效果，实际存储还是 1，可以用函数 HEX 证明：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT a,HEX(a) FROM t;
+</span></span><span class="line"><span class="cl">a: 0001
+</span></span><span class="line"><span class="cl">hex(a) 1</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到在数据库内部存储的还是 1，0001 只是设置了 ZEROFILL 属性后的一种格式化输出而已。如果真存 0001 那么加减乘除该怎么操作呢？</p>
+<h3 id="sql_mode-设置" class="heading-element"><span>SQL_MODE 设置</span>
+  <a href="#sql_mode-%e8%ae%be%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>SQL_MODE 可能是比较容易让开发人员忽视的一个变量，默认为空。SQL_MODE 是一种比较冒险的设置，因此这种设置下可以允许一些非法操作，比如将 NULL 插入 NOT NULL 的字段中，也可以插入一些非法日期，如“2012-12-32”。因此在开发环境中需要将这个值设置为严格模式，这样在出现问题时候，就可以在开发阶段发现，如果在生产环境下，发现这类问题，代价将非常大。</p>
+<p>SQL_MODE 的设置可以在 my.cnf 和 my.ini 中进行，也可以在客户端工具中新型，并且可以分别进行全局的设置或当前会话的设置，下面的命令可以用来查看当前 SQL_MODE 的设置情况。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT @@global.sql_mode\G;
+</span></span><span class="line"><span class="cl">***************************
+</span></span><span class="line"><span class="cl">@@global.sql_mode:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT @@session.sql_mode\G;
+</span></span><span class="line"><span class="cl">***************************
+</span></span><span class="line"><span class="cl">@@session.sql_mode: NO_UNSIGNED_SUBTRACTION</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到此 MySQL 当前全局的 SQL_MODE 设置为空，而当前会话的设置为 NO_UNSIGNED_SUBTRACTION。通过以下语句可以将当前的 SQL_MODE 设置为严格模式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SET GLOBAL sql_mode=`strict_trans_tables`;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>SQL_MODE 可以设置的选项如下：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STRICT_TRANS_TABLES</td>
+<td>在该模式下，如果一个值不能插入到一个事务表中，中断当前操作不影响非事务表。</td>
+</tr>
+<tr>
+<td>ALLOW_INVALID_DATES</td>
+<td>不完全对日期的合法性进行检查，只检查月份是 1~12，日期是 1~31 之间。仅对 DATA 和 DATATIME 类型有效。而对 TIMESTAMP 无效。</td>
+</tr>
+<tr>
+<td>ANSI_QUOTES</td>
+<td>启用 ANSI_QUOTES 后，不能用双引号来引用字符串，因为它被解释为识别符。</td>
+</tr>
+<tr>
+<td>ERROR_FOR_DIVISION_BY_ZERO</td>
+<td>在 INSERT 或 UPDATE 过程中，如果数据被 0 除或 mode 0，则产生错误，如果未给出该模式，数据被零除返回 NULL。</td>
+</tr>
+<tr>
+<td>HIGH_NOT_PERCEDENCE NOT</td>
+<td>操作符的优先顺序是表达式，例如 NOT a BETWEEN b AND c，被解释为 NOT (a BETWEEN b AND c)。</td>
+</tr>
+<tr>
+<td>IGNORE_SPACE</td>
+<td>函数名和括号“(”之间有空格。除了增加一些烦恼，这个选项没有任何好处。</td>
+</tr>
+<tr>
+<td>NO_AUTO_CREATE_USER</td>
+<td>禁止 GRANT 创建密码为空的用户。</td>
+</tr>
+<tr>
+<td>NO_AUTO_VALUE_NO_ZERO</td>
+<td>该选项影响列为自增长的插入。默认设置下，插入 0 代表生成下一个自增长值，如果用户希望插入的值为 0，而该列又是自增长的，这个选项就有用了。</td>
+</tr>
+<tr>
+<td>NO_BACKSLASH_ESCAPES</td>
+<td>反斜杠“\”作为普通字符而非转义符。</td>
+</tr>
+<tr>
+<td>NO_DIR_IN_CREATE</td>
+<td>在创建表时忽视所有 INDEX DIRECTORY 和 DATA DIRECTORY 选项。</td>
+</tr>
+<tr>
+<td>NO_ENGINE_SUBSTITUTION</td>
+<td>如果需要的存储引擎被禁用或未编译，那么抛出错误。</td>
+</tr>
+<tr>
+<td>NO_UNSIGNED_SUBTRACTION</td>
+<td>启用这个后两个 UNSIGNED 类型相减返回 SIGNED 类型。</td>
+</tr>
+<tr>
+<td>NO_ZERO_DATA</td>
+<td>在非严格模式下，可以插入“0000-00-00”的非法日期，MySQL 仅抛出错误而非警告。</td>
+</tr>
+<tr>
+<td>NO_ZERO_IN_DATA</td>
+<td>在严格模式下，不允许日期和月份为零。如“2011-00-01”这样格式不允许。</td>
+</tr>
+<tr>
+<td>ONLY_FULL_GROUP_BY</td>
+<td>对于 GROUP BY 聚合操作，如果在 SELECT 中的列没有在 group by 中出现，那么语句不合法。</td>
+</tr>
+<tr>
+<td>PAD_CHAR_TO_FULL_LENGTH</td>
+<td>对于 CHAR 类型字段，不要节段空洞数据。也就是自动填充值为 0x20的数据，默认情况下，如果 a CHAR(10)，使用 CHAR_LENGTH(a)，MySQL 返回长度为 1，hex(a): 61。启用该选项后，长度为 10，hex(a):61202020202020&hellip;。</td>
+</tr>
+<tr>
+<td>PIPES_AS_CONCAT</td>
+<td>将 | 视为字符串的连接操作符而非或运算符。</td>
+</tr>
+<tr>
+<td>REAL_AS_FLOAT</td>
+<td>将 REAL 视为 FLOAT 的同义词，而不是 DOUBLE 的同义词。</td>
+</tr>
+<tr>
+<td>STRICT_ALL_TABLES</td>
+<td>对所有引擎的表都启用严格模式。严格模式下，一旦任何操作的数据产生问题，都会终止当前的操作。</td>
+</tr>
+</tbody>
+</table>
+<p>还有些其他的组合操作：ANCI、ORACLE、TRADITIONAL、MSSQL、DB2等不详细赘述。</p>
+<h2 id="数字类型" class="heading-element"><span>数字类型</span>
+  <a href="#%e6%95%b0%e5%ad%97%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 id="整形" class="heading-element"><span>整形</span>
+  <a href="#%e6%95%b4%e5%bd%a2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>MySQL 数据库支持 SQL 标准支持的整型类型：INT、SMALLINT。此外还支持 TINYINT、MEDIUMINT、BIGINT 等类型。</p>
+<p>范围如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用字节</th>
+<th>最小值(SIGNED/UNSIGNED)</th>
+<th>最大值(SIGNED/UNSIGNED)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>-128 / 0</td>
+<td>127 / 255</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+<td>-32768 / 0</td>
+<td>32767 / 65535</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>-8388608 / 0</td>
+<td>8388607 / 16777215</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+<td>-2147483648 / 0</td>
+<td>2147483647/ 4294967295</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>-9223372036854775808 / 0</td>
+<td>-9223372036854775807 / 18446744073709551615</td>
+</tr>
+</tbody>
+</table>
+<p>一旦启用了 ZEROFILL 属性，MySQL 数据库为列自动添加 UNSIGNED 属性。</p>
+<h3 id="浮点型" class="heading-element"><span>浮点型</span>
+  <a href="#%e6%b5%ae%e7%82%b9%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>MySQL 支持两种浮点型数据：FLOAT（单精度）和 DOUBLE PRECISION（双精度）类型。这两种类型都是非精确类型，经过一些操作后并不能保证运算的精准型。</p>
+<p>SQL 标准允许在关键字 FLOAT 后面的括号中用位来指定精度。MySQL 还支持可选的只用于确定存储大小的精度规定，0~23 位精度对应 FLOAT 列的 4 字节单精度，24~53的精度对应 DOUBLE 列的 8 字节双精度。</p>
+<p>但 MySQL 允许使用非标准语法：FLOAT(M, D) 或 REAL(M, D) 或 DOUBLE PRECISION(M, D)。其中 M 表示该值一共显示 M 位整数，其中 D 位时小数点后面的位数。例如：FLOAT(7, 4) 的一个列可以显示为 -999.9999。MySQL 在保存值的时候会进行四舍五入，因此在 FLOAT(7, 4) 列内插入 999.00009 的近似结果是 999.0001。</p>
+<p>MySQL 将 DOUBLE 和 REAL 视为 DOUBLE PRECISION 的同义词。但如果将 MySQL 服务器的模式设置为 REAL_AS_FLOAT，这时 REAL 将被视为 FLOAT 类型。</p>
+<p>为了保证最大可以执行，最好使用 FLOAT 或 DOUBLE PRECISION，并不规定精度或位数。</p>
+<h3 id="高精度类型" class="heading-element"><span>高精度类型</span>
+  <a href="#%e9%ab%98%e7%b2%be%e5%ba%a6%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>除此之外：DECIMAL 和 NUMERIC 类型在 MySQL 中被视为相同的类型，用于保存必须为确切精度的值。在计算工资时，可以指定精度和标度，例如：salary DECIMAL(5, 2)。其中，5 是精度，2 是标度。精度表示保存值的主要位数，标度表示小数点后面可以保存的位数。DECIMAL(M) 等价于 DECIMAL(M, 0)。在 MySQL 中 M 的值默认为 10。DECIMAL 或 NUMERIC 的最大位数为 65，如果值的小数点后位数超过指定的标度允许的范围，值将按该标度进行转换。</p>
+<h3 id="位类型" class="heading-element"><span>位类型</span>
+  <a href="#%e4%bd%8d%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>即 BIT 数据类型可以用来保存字段的值。BIT(M) 类型表示允许存储 M 位数值，M 范围为 1 到 64，占用的空间为 (M+7)/8 字节。如果为 BIT(M) 列分配的的长度消息 M 位，在值的左边用 0 填充。例如 BIT(6) 列分配一个值位 b'101&rsquo; 和分配 b'000101&rsquo;相同，要指定位值，可以使用 b&rsquo;value&rsquo; 符，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">msyql&gt; CREATE TABLE t (a BIT(4));
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT b&#39;1000&#39;;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;                  # 这里查出来的值位空的，因为采用位的存储方式，不能直接查看，需要做转换
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT HEX(a) FROM t;            # 采用这样的转换得到值为8</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="字符类型" class="heading-element"><span>字符类型</span>
+  <a href="#%e5%ad%97%e7%ac%a6%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 id="字符集" class="heading-element"><span>字符集</span>
+  <a href="#%e5%ad%97%e7%ac%a6%e9%9b%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>在字符类型前，先说一下字符集。很多问题因为开发人员忽视了字符集问题，导致后期维护成本很高。在 MySQL 中，默认的字符集为 lantin1，对于以英文为母语的国家应用 MySQL 来说，这个字符集并不会带来什么问题，但是对于中文字符集，这可能会是一个灾难。</p>
+<p>通过 SHOW CHARSET 可以查看 MySQL 数据库支持的字符集。MySQL 字符集有很多种，如下图：</p>
+<p>对于简体中文，我们常常使用的是 gbk 或 gb2312，gdb 是 gb2313 的超集，因此可以支持更多汉字。对于繁体中文，首选的字符集为 big5。</p>
+<p>而如果存储的字符是多种多样的，有必要将字符集设置成 Unicode 编码，比如一些游戏如果要输出到其他国家。</p>
+<p>此外，Unicode 和 UTF-8 并不是等价的，两者还是存在很大的区别。Unicode 是一种在计算机上使用的字符编码。为每种语言的字符设定了统一的二进制编码，以满足跨语言和跨平台文本转换和处理的要求。</p>
+<p>Unicode 是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。Unicode 使用数字 0~0x10FFFF来映射这些字符，最多可以容纳 114112 个字符，或者说是码位（码位就是可以分配给字符的数字）。UTF-8、UTF-16、UTF-12 都是将数字转换到程序的编码方案。</p>
+<p>可以通过 SQL 语句来查村 MySQL 支持的 Unicode 编码的字符集。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT * FROM CHARACTER_SETS WHERE DESCRIPTION like &#39;%Unicode&#39;\G;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>MySQL 5.5 支持 ucs2、utf8(utf8mb3)、utf8mb4、utf16、以及 utf32 五种 Unicode 编码。utf-8 目前被视为 utf8mb3，也就是最大占用 3 个字节，而 utf8mb4 作为 utf8mb3 的拓展。对于 Basic Multilinggual Plane 字符的存储，utf8mb3 和 utf8mb4 两者是完全一样的，区别是 utf8mb4 对拓展字符的支持。</p>
+<p>对于 Unicode 编码的字符集，强烈建议将所有的 CHAR 字段设置为 VARCHAR 字段，因为对于 CHAR 字段，数据库会保存最大可能的字节数。例如 CHAR(30)，数据库可能存储 90 个字节的数据。</p>
+<p>字符集的设置可以在 MySQL 的配置中完成，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">[mysqld]
+</span></span><span class="line"><span class="cl">character_set_server=utf8</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果要查看当前使用的字符集，可以使用 STATUS 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; STATUS;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>命令 SET NAMES 可以用来更改当前会话连接的字符集、当前会话的客户端的字符集，以及当前会话返回结果集的字符集，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SET NAMES &#39;gdk&#39;;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>MySQL 数据库还有一个比较强悍的地方是，可以细化每个对象字符集的设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CREATE TABLE t (
+</span></span><span class="line"><span class="cl">  a VARCHAR(10) CHARSET gbk,
+</span></span><span class="line"><span class="cl">  b VARCHAR(10) CHARSET lantin1,
+</span></span><span class="line"><span class="cl">  c VARCHAR(10) CHARSET=utf8;
+</span></span><span class="line"><span class="cl">)</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果定义表时没有给出具体字符集，则采用创建架构(Schema)时指定的字符集。如果没有在创建架构时指定字符集，则使用数据配置文件中指定的字符集。</p>
+<p>SQL 标准支持 NCHAR 类型（National Character Set），在 MySQL 5.5 数据库中使用 utf8 来表示这种类型。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t(a NCHAR(10)) CHARSET=gbk;
+</span></span><span class="line"><span class="cl">mysql&gt; SHOW CREATE TABLE t\G;                      # 实际会使用 utf8 字符集</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面创建表时将 a 列定义为 NCHAR(10)，但是在创建数据库过程中，实际使用的时 utf8 字符集。</p>
+<h3 id="排序规则" class="heading-element"><span>排序规则</span>
+  <a href="#%e6%8e%92%e5%ba%8f%e8%a7%84%e5%88%99" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>排序规则是指对指定字符集下不同字符的比较规则。有以下特征：</p>
+<ol>
+<li>不同的字符集不能有相同的排序规则。</li>
+<li>每个字符集有一个默认的排序规则。</li>
+<li>有一些常用的命名规则。如 <em>ci 表示大小写不敏感（case insensitive），</em> cs 表示大小写敏感（case sensitive），_bin 表示二进制的比较（binary）。</li>
+</ol>
+<p>MySQL 中可以通过命令 SHOW COLLATION 查看支持的各种排序规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; show collation;
+</span></span><span class="line"><span class="cl">+------------------------------+----------+------+---------+----------+---------+
+</span></span><span class="line"><span class="cl">| Collation                    | Charset  | Id   | Default | Compiled | Sortlen |
+</span></span><span class="line"><span class="cl">+------------------------------+----------+------+---------+----------+---------+
+</span></span><span class="line"><span class="cl">| big5_chinese_ci              | big5     |    1 | Yes     | Yes      |       1 |
+</span></span><span class="line"><span class="cl">| big5_bin                     | big5     |   84 |         | Yes      |       1 |</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也可以通过 information_schema 架构下的表 COLLATIONS 来查看。</p>
+<p>可以看到，对于 gbk 字符集，有两种排序规则，分别是 gdk_chinese_ci 和 gdb_bin。前面介绍的命令 SHOW CHARSET 已经显示了每种字符集的默认排序规则，如果用户需要查看 gdk 字符集，可以使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SHOW CHARSET LIKE &#39;gbk%\G&#39;;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>排序规则有什么用呢，下面将详细介绍：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (
+</span></span><span class="line"><span class="cl">   a VARCHAR(10)
+</span></span><span class="line"><span class="cl">) CHARSET=utf8;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;a&#39;;
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;A&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; select * from t where a=&#39;a&#39;;   # 结果会有两个：a 和 A</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行 SQL 查询语句的时候可能只是搜索小写字符 a，但是 A 也返回到结果集中。这个问题是因为 utf8 字符集默认的排序规则是 utf8_general_ci。之前介绍过 _ci 结尾表示大小写不敏感，所以 a 和 A 被视为一致的字符返回了。也可以直接对这两个字符进行比较：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SET NAMES utf8;
+</span></span><span class="line"><span class="cl">Query OK, 0 rows AFFECTED.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT &#39;a&#39; = &#39;A&#39;;
+</span></span><span class="line"><span class="cl">1 row in set.</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到返回值为 1，即两个字符相等。</p>
+<p>如果我们需要更改当前会话的排序规则，可以通过命令 SET NAMES&hellip; COLLATE&hellip; 来实现，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SET NAMES utf8 COLLATE utf8_bin;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT &#39;a&#39; = &#39;A&#39;;
+</span></span><span class="line"><span class="cl">0 row in set.</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到这时数据库会认为 a 和 A 是不同的字符。对于创建的表 t 如果需要对 a 列区分大小字符，则可以将 a 列的排序规则修改为 utf8_bin，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; ALTER TABLE t MODIFY COLUMN a VARCHAR(10) COLLATE UTF8_BIN;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; select * from t where a = &#39;a&#39;;        # 结果为a.</span></span></code></pre></td></tr></table>
+</div>
+</div><p>是否要设置大小写敏感，需要根据程序的需求而定，并不是总要求区分大小写字符。比如：用户注册表如果希望用户再注册时不要区分大小写。另外排序规则不仅影响大小写的比较，还影响着索引。例如：我们将表 t 的 a 列修改为之前的定义，然后再创建一个 a 列上的唯一索引。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; ALTER TABLE t MODIFY COLUMN a VARCHAR(10) COLLATE UTF8_GENERAL_CI;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; ALTER TABLE t ADD UNIQUE KEY(a);
+</span></span><span class="line"><span class="cl">ERROR 1062: Duplicate entry &#39;a&#39; for key &#39;a&#39;.</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，a 列不区分大小写后，就不能再 a 列上创建一个唯一索引，提示有重复数据。索引是 B+ 树，同样需要对字符进行比较，因此再建立唯一索引时，由于排序规则对大小写不敏感而导致了错误。</p>
+<p>再 MySQL 数据库中还有一种被称为 binary 的排序规则，其和 _bin 的排序规则大致相同。</p>
+<h3 id="char和varchar" class="heading-element"><span>CHAR和VARCHAR</span>
+  <a href="#char%e5%92%8cvarchar" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>CHAR 和 VARCHAR 是最常用的两种字符串类型。</p>
+<p>CHAR(N)：用来保存固定长度的字符串，N 的范围为 0~255。</p>
+<p>VARCHAR(N)：用来保存变长字符类型，N 的范围为 0~65525。</p>
+<p>CHAR(N) 和 VARCHAR(N) 中的 N 都代表字符长度，而非字节长度（但在老版本中 N 代表的是字节长度）。</p>
+<p>对于 CHAR 类型的字符串，MySQL 数据库会自动对存储列的右边进行填充操作，直到字符串达到指定长度 N。</p>
+<p>而在读取该列时，MySQL 数据库会自动将填充的字符删除。另外一种情况，就是显示的将 SQL_MODE 设置为 PAD_CHAR_TO_FULL_LENGTH，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t(a CHAR(10));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;abc&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT a, HEX(a), LENGTH(a) FROM t\G;      # abc   616263   3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SET SQL_MODE=&#39;PAD_CHAR_TO_FULL_LENGTH&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT a, HEX(a), LENGTH(a) FROM t\G;      # abc   61626320202020202020   10</span></span></code></pre></td></tr></table>
+</div>
+</div><p>LENGTH 函数返回的是字节长度而非字符长度。</p>
+<p>对于多结字字符集，CHAR(N) 长度的列最多可占用 30 个字节。通过对多字节字符串使用 CHAR_LENGTH 函数 和 LENGTH 函数，可以发现两者的不同，示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SET NAMES gbk;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT @a:=&#39;MySQL技术内幕&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT @a, HEX(@a), LENGTH(@a), CHAR_LENGTH(@a)\G;
+</span></span><span class="line"><span class="cl">********************************************************
+</span></span><span class="line"><span class="cl">a：MySQL技术内幕
+</span></span><span class="line"><span class="cl">HEX(a)：4D7953514CBCBCCAF5C4DAC4BB
+</span></span><span class="line"><span class="cl">LENGTH(a)：13
+</span></span><span class="line"><span class="cl">CHAR_LENGTH(a)：9</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为中文 gdk 字符集的中文字符占用两个字节，因此一共占用 13 字节，而字符串的长度为 9。</p>
+<p>VARCHAR 类型存储变长字段的字符类型，与 CHAR 类型不同的是，其存储时需要在前缀列表加上实际存储的字符，该字符占用 1~2 字节空间。当存储的字符串长度小于 255 字节时，需要 1 字节空间，当大于 255 字节时，需要 2 字节空间。如果数据的实际长度比设定长度短，那么它将按照实际长度储存，而不占用剩余的空间。</p>
+<p>所以，对于单字节的 lantin1 来说，CHAR(10) 和 VARCHAR(10) 最大占用的存储空间是不同的，CHAR(10) 占用 10 字节，而 VARCHAR(10) 占用 11 字节。</p>
+<p>虽然 char 和 varchar 存储方式不太相同，但是对于两个字符串的比较，都是比较其值，忽略 CHAR 值存在的填充，即使将 SQL_MODE 设置为 PAD_CHAR_TO_FULL_LENGTH 也一样。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (a CHAR(10), b VARCHAR(10));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;a&#39;, &#39;a&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT a=b FROM t;       # 结果1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SET SQL_MODE=&#39;PAD_CHAR_TO_FULL_LENGTH&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT a=b FROM t;        # 结果1</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="binary-和-varbinary" class="heading-element"><span>BINARY 和 VARBINARY</span>
+  <a href="#binary-%e5%92%8c-varbinary" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>BINARY 和 VARBINARY 与前面介绍的 CHAR 和 VARCHAR 类型有点类似，但是 BINARY 和 VARBINARY 存储的是二进制的字符串， 没有任何字符集的概念，而且对其排序和比较都是按照二进制进行对比的。</p>
+<p>无论实际存储的数据有多少，BINARY 类型都会占用n个字节的存储空间。如果插入的数据长度小于n，SQL Server会在数据的右侧用0x00（即二进制的0）进行填充，以达到指定的长度。</p>
+<p>与 BINARY 不同，VARBINARY 只占用实际数据的长度加上额外的2到4个字节（用于存储数据的长度信息）的存储空间。如果指定了max，则最大可以存储2^31-1个字节的数据，即最大4GB。</p>
+<p>BINARY(N) 和 VARBINARY(N) 中的 N 指的是字节长度，并不是 CHAR(N) 和 VARCHAR(N) 中的字符长度。比如 BINARY(10) 表示存储的字节固定为 10，但对于 CHAR(10) 其存储的字节和字符集的情况而定。</p>
+<p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE T (
+</span></span><span class="line"><span class="cl">  a BINARY(1)
+</span></span><span class="line"><span class="cl">) ENGINE=InnoDB CHARSET=GBK;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SET NAMES GBK;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;我&#39;;      # 默认有警告
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECE a, HEX(a) FROM t;          # a:  HEX(A):CE</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为 gdk 字符集中“我”占用两个字节，所以在插入时会有警告，提示字符被截断。如果 SQL_MODE 设置为严格模式，将直接报错。在插入后，直插入了“我”的前一个字节，后一个 字符被截断了。如果改为 CHAR 类型，将完全不会出现上述的问题。</p>
+<p>所以 BINARY 和 VARBINARY 与 CHAR 和 VARCHAR 的最主要的区别是：</p>
+<ol>
+<li>BINARY(N) 和 VARCHAR(N) 中的 N 代表的是数字，并不是字符长度。</li>
+<li>CHAR 和 VARCHAR 在进行字符比较时，比较的只是字符本身的存储，忽略字符后的填充字符。而 BINARY 和 VARBINARY 是直接按照二进制进行对比。</li>
+<li>对于 BINARY 字符串，填充值是 0x00，而 CHAR 的填充字符为 0x20。可能是因为 BINARY 的比较需要，0x00 是比较的最小字符。</li>
+</ol>
+<h3 id="blob-和-text" class="heading-element"><span>BLOB 和 TEXT</span>
+  <a href="#blob-%e5%92%8c-text" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>BLOB (Binary Large Object) 用来存储二进制大数据的类型。而且根据长度不同，BLOB 可以细分为以下 4 中类型，括号中表示存储的字节数：</p>
+<p><strong>TINYBLOB</strong> (2^8) = 256 字节</p>
+<p><strong>BLOB</strong> (2^16) = 65536 字节 = 64 KB</p>
+<p><strong>MEDIUMBLOB</strong> (2^24) = 16777216 字节 = 16384 KB = 16 MB</p>
+<p><strong>LONGBLOB</strong> (2^32) = 4294967296 字节 = 4194394 KB = 4096 MB = 1GB</p>
+<p>同样 TEXT 类型同 BLOB 一样，可以细分为 4 种：</p>
+<p><strong>TINYTEXT</strong> (2^8) = 256 字节</p>
+<p><strong>TEXT</strong> (2^16) = 65536 字节 = 64 KB</p>
+<p><strong>MEDIUMTEXT</strong> (2^24) = 16777216 字节 = 16384 KB = 16 MB</p>
+<p><strong>LONGTEXT</strong> (2^32) = 4294967296 字节 = 4194394 KB = 4096 MB = 1GB</p>
+<p>多数情况下，可以将 BLOB 类型视为足够大的 VARBINARY 类型的列，TEXT 也可以视为足够大的 VARCHAR 类型的列。</p>
+<p>但是 BLOB 和 TEXT 在以下几个方面不同于 VARBINARY 和 VARCHAR：</p>
+<ol>
+<li>在 BLOB 和 TEXT 类型的列上创建索引时，必须指定索引前缀的长度。但 VARCHAR 和 VARBINARY 的前缀长度是可选的。</li>
+<li>BLOB 和 TEXT 类型的列不能有默认值。</li>
+<li>在排列时只使用列的前 max_sort_length 个字节。</li>
+</ol>
+<p>max_sort_length 默认值是 1024，该参数为动态参数，任何客户端都可以在 MySQL 数据库运行时更改该参数的值。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SET GLOBAL max_sort_length=2048;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据库中最小的存储单元是页（也成为块），为了有效存储 BLOB 类型或 TEXT 大数据类型，一般将 BLOB 列的具体数据存放在行溢出页，而数据页存储的行数据只包含 BLOB 或 TEXT 类型数据列前一部分数据。这种方式使得页中能存放大量的行数据，从而提高了数据的查询效率。
+有点类似于 C 语言中的指针，列中存储的只是指针变量，而实际的数据则在指针所指向的实际地址。
+如下图所示：</p>
+<p><img loading="lazy" src="image/image_Xpd5yv8EzR.png" alt="image/image_Xpd5yv8EzR.png" srcset="image/image_Xpd5yv8EzR.png?size=small, image/image_Xpd5yv8EzR.png?size=medium 1.5x, image/image_Xpd5yv8EzR.png?size=large 2x" data-title="image/image_Xpd5yv8EzR.png" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<p>此外，有些存储引擎中，比如 InnoDB 存储引擎，会将大的 VARCHAR 类型字符串（VARCHAR(65530)）自动转换为 TEXT 或 BLOB 类型。</p>
+<h3 id="enum-和-set" class="heading-element"><span>ENUM 和 SET</span>
+  <a href="#enum-%e5%92%8c-set" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>ENUM 和 SET 类型都是集合类型，不同的是 ENUM 类型最多可以枚举 65525 个元素，二 SET 只能枚举 64 个元素。</p>
+<p>由于 MySQL 不支持传统的 CHECK 约束，因此通过 ENUM 和 SET 类型并结合 SQL_MODE 可以解决一部分问题。例如：表中有一个“性别”列，规定范围只能是 male 和 female，这种情况下可通过严格的 SQL_MODE 模式进行约束，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (
+</span></span><span class="line"><span class="cl">  user VARCHAR(30),
+</span></span><span class="line"><span class="cl">  sex ENUM(&#39;male&#39;, &#39;female&#39;)
+</span></span><span class="line"><span class="cl">) ENGINE=InnoDB;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SET SQL_MODE=&#39;strict_trans_tables&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;David&#39;, &#39;male&#39;;  # 正确
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INFO t SELECT &#39;John&#39;, &#39;bimale&#39;;  # 错误，bimale未定义，在严格的 SQL_MODE下报错警告</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="日期和时间类型" class="heading-element"><span>日期和时间类型</span>
+  <a href="#%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>MySQL 中有物种与日期和时间有关的数据类型，各种日期数据类型所占空间如下：</p>
+<p>DATETIME 8 字节</p>
+<p>DATE 3 字节</p>
+<p>TIMESTAMP 4 字节</p>
+<p>YEAR 1 字节</p>
+<p>TIME 3 字节</p>
+<h3 id="datetime-和-date" class="heading-element"><span>DATETIME 和 DATE</span>
+  <a href="#datetime-%e5%92%8c-date" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>DATETIME 是占用空间最多的一种类型，即显示了日期，同时也显示了时间。表达的日期范围为“1000-01-01 00:00:00”到“9999-12-31 23:59:59”。</p>
+<p>DATE 占用 3 字节，可显示的日期范围为“1000-01-01”到“9999-12-31”。</p>
+<p>在 MySQL 中，对日期的和时间输入格式的要求是非常宽松的，比如下面的输入都可以视为日期类型。</p>
+<p>2011-01-01 00:01:10</p>
+<p>2011/01/01 00+01+10</p>
+<p>20110101000110</p>
+<p>11/01/01 00@01@01 注：这种将其视为离现在最近的一个年份，不是好的习惯。</p>
+<p>如果没有特别的条件和要求，按照标准的“YYYY-MM-DD HH:MM:SS”格式进行。</p>
+<p>在MySQL 5.5 之前，数据库的日期类型都不能精确到微秒级别，任何微秒数值都会被数据库截断，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (a DATETIME);
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;2021-01-01 00:01:10.123456&#34;;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;    # a:2011-01-01 00:01:10</span></span></code></pre></td></tr></table>
+</div>
+</div><p>虽然也有一些函数可以用来显示微秒值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT MICROSECOND(&#39;2011-01-10 00:01:10.123456&#39;);  # 123456</span></span></code></pre></td></tr></table>
+</div>
+</div><p>CAST 函数在强制转换到 DATETIME 时会保留到微秒数，不过在插入后依旧会被截断，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT CAST(&#39;2011-01-01 00:01:10.123456&#39; AS DATETIME);    # 2011-01-01 00:01:10.123456
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT CASE(&#39;2021-02-01 00:01:10.123456&#39; AS DATETIME);    # 2011-01-01 00:01:10</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从 MySQL 5.6.4 版本，MySQL 增加了对秒的小数部分的支持，语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">type_name(fsp)</span></span></code></pre></td></tr></table>
+</div>
+</div><p>type_name 类型可以是 TIME、DATETIME、TIMESTAMP。fsp 表示支持秒的小鼠部分的精度，最大为 6，表示微秒，默认为 0，表示没有小数部分，同时也是为了兼容之前版本中的 TIME、DATETIME 和 TIMESTAMP 类型。对于时间函数，如 CURTIME()、SYSDATE()、UTC_TIMESTAMPP() 也增加了对 fsp 的支持，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT CURTIME(4) AS time;    # 10:22:37.4456</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="timestamp" class="heading-element"><span>TIMESTAMP</span>
+  <a href="#timestamp" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>TIMESTAMP 和 DATETIME 显示的结果是一样的，都是固定的“YYYY-MM-DD HH:MM:SS”，但是 TIMESTAMP 只占用 4 字节，而且表示的时间范围也只有“1970-01-01 00:00:00”到“2038-01-19 03:14:07”，但实际存储的是当前时间的毫秒数。这一点和 Linux 中时间戳对应的。</p>
+<p>除了时间范围上不同，还有以下区别：</p>
+<ol>
+<li>建表时，列为 TIMESTAMP 类型可以设置一个默认值，而 DATETIME 不行。</li>
+<li>更新表时，可以设置 TIMESTAMP 类型的列自动更新时间为当前时间。</li>
+</ol>
+<p>如下实例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (
+</span></span><span class="line"><span class="cl">  a INT,
+</span></span><span class="line"><span class="cl">  b TIMESTAMP DEFAULT CURTIME_TIMESTAMP
+</span></span><span class="line"><span class="cl">) ENGINE_InnoDB;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t (a) VALUES (1);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;                        # a:1    b:2011-02-02 16:42:57
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (
+</span></span><span class="line"><span class="cl">  a INT,
+</span></span><span class="line"><span class="cl">  B TIMESTAMP ON UPDATE CURTIME_TIMESTAMP
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT 1, CURRENT_TIMESTAMP;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;                        # a:1    b:2011-02-02 16:45:40
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 等待一段时间
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; UPDATE t SET a=2;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;                        # a:2    b:2011-02-02 16:47:39</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以发现在执行 UPDATE 操作后，b 列的时间由原来的 16:45:40 更新为 16:47:39。</p>
+<p>如果执行了上面的 UPDATE 操作，但并没有改变 a 本来的值，那么也不会更新 b 列的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; UPDATE t SET a=2;          # 0 rews affected.
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;            # a:2 b:2011-02-02 16:47:39   并没有改变</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="year-和-time" class="heading-element"><span>YEAR 和 TIME</span>
+  <a href="#year-%e5%92%8c-time" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>YEAR 类型占用 1 字节，并且可以在定义时指定显示的宽度为 YEAR(4) 和 YEAR(2)，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CRTEAT TABLE t(
+</span></span><span class="line"><span class="cl">  a YEAR(2)
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#39;1990&#39;;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;                # 90</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于 YEAR(4)，其显示年份范围为 1901~2155；对于 YEAR(2)，其显示年份的范围为 1970~2070。在 YEAR(2) 的是遏制，00~69 代表 2000~2069 年。</p>
+<p>TIME 类型占用 3 字节，显示的范围为“-839:59:59”到“838:59:59”，为什么 TIME 时间可以大于 23，因为 TIME 类型不仅可以用来保存这一天中的时间，也可以用来保存时间间隔，这就是为什么 TIME 类型可以为负数。和 DATATIME 类型一样，TIME 类型同样可以显示微秒时间，但是在插入时，数据库同样会进行截断操作，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; CREATE TABLE t (
+</span></span><span class="line"><span class="cl">  a TIME
+</span></span><span class="line"><span class="cl">);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt; INSERT INTO t SELECT &#34;14:40:20.123456&#34;;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT * FROM t;            # 14:40:20</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="与日期和时间相关的函数" class="heading-element"><span>与日期和时间相关的函数</span>
+  <a href="#%e4%b8%8e%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e7%9b%b8%e5%85%b3%e7%9a%84%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>日期函数可能是比较常用的一种函数。</p>
+<p>NOW、CURRENT_TIMESTAMP 和 SYSDATE</p>
+<p>这些函数都能返回系统当前的时间，但是有一定区别：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT NOW(), 
+</span></span><span class="line"><span class="cl">              CURRENT_TIMESTAMP(), 
+</span></span><span class="line"><span class="cl">              SYSDATE(), 
+</span></span><span class="line"><span class="cl">              SLEEP(2),
+</span></span><span class="line"><span class="cl">              NOW(),
+</span></span><span class="line"><span class="cl">              CURRENT_TIMESTAMP(),
+</span></span><span class="line"><span class="cl">              SYSDATE();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*****************************************
+</span></span><span class="line"><span class="cl">NOW():                 2011-11-29 21:04:49
+</span></span><span class="line"><span class="cl">CURRENT_TIMESTAMP():   2011-11-29 21:04:49
+</span></span><span class="line"><span class="cl">SYSDATE():             2011-11-29 21:04:49
+</span></span><span class="line"><span class="cl">SLEEP(2):              0
+</span></span><span class="line"><span class="cl">NOW():                 2011-11-29 21:04:49
+</span></span><span class="line"><span class="cl">CURRENT_TIMESTAMP():   2011-11-29 21:04:49
+</span></span><span class="line"><span class="cl">SYSDATE():             2011-11-29 21:04:51</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到 SYSDATE 返回的时间慢了 2 秒。这三个函数有略微区别：</p>
+<p>CURTIME_TIMESTAMP 是 NOW 的同义词，也就是说两者是相同的。</p>
+<p>SYSDATE 函数返回的是执行到当前函数时的时间，而 NOW 返回的是执行 SQL 语句时的时间。</p>
+<p>因此在上面的例子中，两次执行 SYSDATE 函数返回不同的的时间是因为第二次调用之前 SLEEP 了 2 秒。而对于 NOW 函数，不论在 SLEEP 函数之前还是之后，返回都是执行这条 SQL 语句时间。</p>
+<h3 id="时间加减函数" class="heading-element"><span>时间加减函数</span>
+  <a href="#%e6%97%b6%e9%97%b4%e5%8a%a0%e5%87%8f%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>想要对当前时间进行增加或减少，并不能直接加或减一个数字，而需要使用特定的函数，如 DATE_ADD 或 DATA_SUB，前者表示增加，后者表示减少。具体的使用方法有：</p>
+<p>DATE_ADD(date, INTERVAL expr unit) 和 DATE_SUB(date, INTERVAL expr unit)，实例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT NOW() AS now(),
+</span></span><span class="line"><span class="cl">              DATE_ADD(now(), INTERVAL 1 DAY) AS tomorrow,
+</span></span><span class="line"><span class="cl">              DATE_SUB(now(), INTERVAL 1 DAY) AS yesterday;
+</span></span><span class="line"><span class="cl">*************************************************************
+</span></span><span class="line"><span class="cl">now:        2011-02-04 20:53:25
+</span></span><span class="line"><span class="cl">tomorrow:   2011-02-05 20:53:25
+</span></span><span class="line"><span class="cl">yesterday:  2011-02-03 20:53:25</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 expr 值可以是正值，也可以是负值，因此可以使用 DATE_ADD 函数完成 DATE_SUB 函数的工作例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT NOW() AS now,
+</span></span><span class="line"><span class="cl">              DATE_ADD(NOW(), INTERVAL 1 DAY) AS tomorrow,
+</span></span><span class="line"><span class="cl">              DATE_ADD(NOW(), INTERVAL -1 DAY) AS yesterday;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>怎么处理闰月？MySQL 默认如果目标年份时闰月，那么 2 月就有 29 号，否则 2 月就只有 28 号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT DATE_ADD(&#39;2000-2-29&#39;, INTERVAL 4 YEAR) AS year;      # 2004-02-29
+</span></span><span class="line"><span class="cl">mysql&gt; SLEECT DATE_ADD(&#39;2000-2-29&#39;, INTERVAL 1 YEAR) AS year;      # 2001-02-28</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面使用了 DAY 和 YEAR 数据类型，其实也可以使用 MICROSECOND、SECOND、MINUTE、HOUR、WEEK、MONTH 等类型，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT NOW() AS now,
+</span></span><span class="line"><span class="cl">              DATE_ADD(NOW(), INTERVAL 1 HOUR) AS next time;</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="date_fromat-函数" class="heading-element"><span>DATE_FROMAT 函数</span>
+  <a href="#date_fromat-%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>这个函数是按照用户的需求格式化打印出日期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT DATE_FORMAT(NOW(), &#39;%Y%m%d&#39;) AS datetime;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是可能会误用这个函数，导致严重后果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql&gt; SELECT t WHERE DATE_FORMAT(date, &#39;%Y%m%d&#39;)=&#39;xxxx-xx-xx&#39;;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般情况，表中都会对一个日期类型索引，如果使用上述语句，优化器将不会使用索引，也不可能通过索引来查询数据，因此上述查询的执行效率可能非常低。</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%a</td>
+<td>缩写星期名</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>缩写月名</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>月，数值</td>
+</tr>
+<tr>
+<td>%D</td>
+<td>带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>微秒</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>小时 (00-23)</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>分钟，数值(00-59)</td>
+</tr>
+<tr>
+<td>%j</td>
+<td>年的天 (001-366)</td>
+</tr>
+<tr>
+<td>%k</td>
+<td>小时 (0-23)</td>
+</tr>
+<tr>
+<td>%l</td>
+<td>小时 (1-12)</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>月名</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>月，数值(00-12)</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM 或 PM</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>时间，12-小时（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%T</td>
+<td>时间, 24-小时 (hh:mm:ss)</td>
+</tr>
+<tr>
+<td>%U</td>
+<td>周 (00-53) 星期日是一周的第一天</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>周 (00-53) 星期一是一周的第一天</td>
+</tr>
+<tr>
+<td>%V</td>
+<td>周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+</tr>
+<tr>
+<td>%v</td>
+<td>周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+</tr>
+<tr>
+<td>%W</td>
+<td>星期名</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+</tr>
+<tr>
+<td>%Y</td>
+<td>年，4 位</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年，2 位</td>
+</tr>
+</tbody>
+</table>
+</div><hr class="awesome-hr" />
+    <h2 id="see-also">相关内容</h2>
+    <ul><li>
+          <a href="/posts/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Redis基础知识">Redis基础知识</a></li><li>
+          <a href="/posts/%E8%8B%B1%E6%96%87%E6%B5%8B%E8%AF%95/" title="English Test">English Test</a></li><li>
+          <a href="/posts/markdown%E6%B5%8B%E8%AF%95/" title="Markdown测试">Markdown测试</a></li><li>
+          <a href="/posts/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/" title="中文测试">中文测试</a></li><li>
+          <a href="/posts/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/" title="代码高亮测试">代码高亮测试</a></li></ul><div class="post-reward">
+    <div class="comment"></div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>赞赏</label>
+    <div class="reward-ways" data-mode="fixed"><div><img loading="lazy" src="/images/alipay.jpg" alt="WindSun 支付宝" data-title="WindSun 支付宝" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>支付宝</span>
+          </div><div><img loading="lazy" src="/images/wechat.jpg" alt="WindSun 微信" data-title="WindSun 微信" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span data-animation>微信</span>
+          </div></div>
+  </div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-09-17 10:14:29">更新于 2024-09-17&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/" data-title="MySQL数据类型"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/"><i class="fa-brands fa-get-pocket fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/" data-title="MySQL数据类型"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/" data-title="MySQL数据类型"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Skype" data-sharer="skype" data-url="http://localhost:1313/notes/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-copy/" data-title="MySQL数据类型"><i class="fa-brands fa-skype fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.128.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-1" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">WindSun</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">博客已运行</span><span class="run-times ms-1">网站运行中……</span></span></div><div class="footer-line beian order-3"><span class="gov">陕ICP备</span><span class="icp footer-divider">2021003707号</span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><a href="https://github.com/137782866" title="查看GitHub"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true" width="56" height="56"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--progress-h: 3px;--bg-progress: #2376b7;--bg-progress-dark: #2376b7;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/lib/pace/themes/blue/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pace/pace.min.js" async defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"siteTime":"2024-07-20T12:00:00+08:00","typeit":{"cursorChar":"|","cursorSpeed":1000,"duration":-1,"loop":false,"speed":100},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
